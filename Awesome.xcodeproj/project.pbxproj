@@ -11,6 +11,8 @@
 		AB576D8C1AC61AD500AABBF5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB576D8B1AC61AD500AABBF5 /* Images.xcassets */; };
 		AB576D8F1AC61AD500AABBF5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB576D8D1AC61AD500AABBF5 /* MainMenu.xib */; };
 		AB576D9B1AC61AD500AABBF5 /* AwesomeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB576D9A1AC61AD500AABBF5 /* AwesomeTests.swift */; };
+		AB576DA51AC6231100AABBF5 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB576DA41AC6231100AABBF5 /* Application.swift */; };
+		AB576DA71AC633AB00AABBF5 /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB576DA61AC633AB00AABBF5 /* Window.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +34,8 @@
 		AB576D941AC61AD500AABBF5 /* AwesomeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AwesomeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB576D991AC61AD500AABBF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB576D9A1AC61AD500AABBF5 /* AwesomeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwesomeTests.swift; sourceTree = "<group>"; };
+		AB576DA41AC6231100AABBF5 /* Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
+		AB576DA61AC633AB00AABBF5 /* Window.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Window.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +81,8 @@
 				AB576D8B1AC61AD500AABBF5 /* Images.xcassets */,
 				AB576D8D1AC61AD500AABBF5 /* MainMenu.xib */,
 				AB576D871AC61AD500AABBF5 /* Supporting Files */,
+				AB576DA41AC6231100AABBF5 /* Application.swift */,
+				AB576DA61AC633AB00AABBF5 /* Window.swift */,
 			);
 			path = Awesome;
 			sourceTree = "<group>";
@@ -205,7 +211,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB576DA51AC6231100AABBF5 /* Application.swift in Sources */,
 				AB576D8A1AC61AD500AABBF5 /* AppDelegate.swift in Sources */,
+				AB576DA71AC633AB00AABBF5 /* Window.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
