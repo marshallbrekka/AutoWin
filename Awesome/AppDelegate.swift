@@ -42,7 +42,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             println("App Name " + app.title())
             var windows = app.windows()
             for window in windows {
-                println("  window name " + window.title()!)
+                var p = window.position()
+                var s = window.size()
+                println("  window name \(window.title()!): x=\(p.x), y=\(p.y), w=\(s.width), h=\(s.height)")
             }
         }
     }

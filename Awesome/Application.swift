@@ -29,24 +29,14 @@ class Application {
     
     func windows() -> [Window] {
         var windowObjects: [Window]! = []
-        var windows: Unmanaged<CFArray>?
-        
-        var result:AXError = AXUIElementCopyAttributeValues(ref, NSAccessibilityWindowsAttribute, 0, 100, &windows)
-        var converted = AXError(kAXErrorSuccess)
-        if result == converted {
-            //println("did get windows" + String(result))
-            var win:NSArray = windows!.takeRetainedValue() as NSArray
-            for window in win {
-                var windowObject:Window = Window(ref: window as AXUIElementRef)
-                if windowObject.isWindow() {
-                    windowObjects.append(windowObject)
+        var windowRefs: [AXUIElementRef]? = AccessibilityAPI.getAttributes(self.ref, property: NSAccessibilityWindowsAttribute) as [AXUIElementRef]?
+        if windowRefs != nil {
+            windowRefs?.map({
+                if Window.isWindow($0) {
+                    windowObjects.append(Window(ref: $0))
                 }
-            }
-        } else {
-//            println("did not get windows" + String(result))
+            }) as [Void]!
         }
-        
-       
         return windowObjects
     }
     
