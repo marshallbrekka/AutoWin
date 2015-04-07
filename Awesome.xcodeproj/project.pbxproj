@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB025BD71ACF460100C825BD /* JSType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB025BD61ACF460100C825BD /* JSType.swift */; };
 		AB576D8A1AC61AD500AABBF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB576D891AC61AD500AABBF5 /* AppDelegate.swift */; };
 		AB576D8C1AC61AD500AABBF5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB576D8B1AC61AD500AABBF5 /* Images.xcassets */; };
 		AB576D8F1AC61AD500AABBF5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB576D8D1AC61AD500AABBF5 /* MainMenu.xib */; };
@@ -27,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AB025BD61ACF460100C825BD /* JSType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSType.swift; sourceTree = "<group>"; };
 		AB576D841AC61AD500AABBF5 /* Awesome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Awesome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB576D881AC61AD500AABBF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB576D891AC61AD500AABBF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				AB576DA41AC6231100AABBF5 /* Application.swift */,
 				AB576DA61AC633AB00AABBF5 /* Window.swift */,
 				AB576DA81AC8CA8C00AABBF5 /* AccessibilityAPI.swift */,
+				AB025BD61ACF460100C825BD /* JSType.swift */,
 			);
 			path = Awesome;
 			sourceTree = "<group>";
@@ -214,6 +217,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB025BD71ACF460100C825BD /* JSType.swift in Sources */,
 				AB576DA51AC6231100AABBF5 /* Application.swift in Sources */,
 				AB576D8A1AC61AD500AABBF5 /* AppDelegate.swift in Sources */,
 				AB576DA71AC633AB00AABBF5 /* Window.swift in Sources */,
@@ -405,6 +409,7 @@
 				AB576DA01AC61AD500AABBF5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AB576DA11AC61AD500AABBF5 /* Build configuration list for PBXNativeTarget "AwesomeTests" */ = {
 			isa = XCConfigurationList;
@@ -413,6 +418,7 @@
 				AB576DA31AC61AD500AABBF5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
