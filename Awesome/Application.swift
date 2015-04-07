@@ -23,6 +23,16 @@ class Application {
         ref = AXUIElementCreateApplication(pid).takeRetainedValue()
     }
     
+    func watchCallback(observer: AXObserverRef, element: AXUIElementRef, name: CFStringRef, inout data: Void) {
+        
+    }
+    
+    func watch(() -> Void) {
+        
+        var x:Unmanaged<AXObserverRef>?
+        AXObserverCreateWithInfoCallback(pid, watchCallback, &x)
+    }
+    
     func title() -> String {
         return app.localizedName!
     }
