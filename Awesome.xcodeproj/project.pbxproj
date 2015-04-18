@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D2FD4A81AE05DE5002641E0 /* AWObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2FD4A71AE05DE5002641E0 /* AWObserver.m */; };
 		AB576D8A1AC61AD500AABBF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB576D891AC61AD500AABBF5 /* AppDelegate.swift */; };
 		AB576D8C1AC61AD500AABBF5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB576D8B1AC61AD500AABBF5 /* Images.xcassets */; };
 		AB576D8F1AC61AD500AABBF5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB576D8D1AC61AD500AABBF5 /* MainMenu.xib */; };
@@ -27,6 +28,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3D2FD4A61AE05DE5002641E0 /* AWObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWObserver.h; sourceTree = "<group>"; };
+		3D2FD4A71AE05DE5002641E0 /* AWObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWObserver.m; sourceTree = "<group>"; };
+		3DAA27A41AD44A6C008DDFC1 /* Awesome-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Awesome-Bridging-Header.h"; sourceTree = "<group>"; };
 		AB576D841AC61AD500AABBF5 /* Awesome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Awesome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB576D881AC61AD500AABBF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB576D891AC61AD500AABBF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +90,9 @@
 				AB576DA41AC6231100AABBF5 /* Application.swift */,
 				AB576DA61AC633AB00AABBF5 /* Window.swift */,
 				AB576DA81AC8CA8C00AABBF5 /* AccessibilityAPI.swift */,
+				3DAA27A41AD44A6C008DDFC1 /* Awesome-Bridging-Header.h */,
+				3D2FD4A61AE05DE5002641E0 /* AWObserver.h */,
+				3D2FD4A71AE05DE5002641E0 /* AWObserver.m */,
 			);
 			path = Awesome;
 			sourceTree = "<group>";
@@ -215,6 +222,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB576DA51AC6231100AABBF5 /* Application.swift in Sources */,
+				3D2FD4A81AE05DE5002641E0 /* AWObserver.m in Sources */,
 				AB576D8A1AC61AD500AABBF5 /* AppDelegate.swift in Sources */,
 				AB576DA71AC633AB00AABBF5 /* Window.swift in Sources */,
 				AB576DA91AC8CA8C00AABBF5 /* AccessibilityAPI.swift in Sources */,
@@ -332,10 +340,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Awesome/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Awesome/Awesome-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -343,10 +355,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Awesome/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Awesome/Awesome-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -405,6 +420,7 @@
 				AB576DA01AC61AD500AABBF5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AB576DA11AC61AD500AABBF5 /* Build configuration list for PBXNativeTarget "AwesomeTests" */ = {
 			isa = XCConfigurationList;
@@ -413,6 +429,7 @@
 				AB576DA31AC61AD500AABBF5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
