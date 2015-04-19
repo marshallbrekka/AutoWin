@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3D2FD4A81AE05DE5002641E0 /* AWObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2FD4A71AE05DE5002641E0 /* AWObserver.m */; };
+		3D2FD4AA1AE36C2D002641E0 /* ApplicationNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2FD4A91AE36C2D002641E0 /* ApplicationNotification.swift */; };
 		AB576D8A1AC61AD500AABBF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB576D891AC61AD500AABBF5 /* AppDelegate.swift */; };
 		AB576D8C1AC61AD500AABBF5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB576D8B1AC61AD500AABBF5 /* Images.xcassets */; };
 		AB576D8F1AC61AD500AABBF5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB576D8D1AC61AD500AABBF5 /* MainMenu.xib */; };
@@ -30,6 +31,7 @@
 /* Begin PBXFileReference section */
 		3D2FD4A61AE05DE5002641E0 /* AWObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWObserver.h; sourceTree = "<group>"; };
 		3D2FD4A71AE05DE5002641E0 /* AWObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWObserver.m; sourceTree = "<group>"; };
+		3D2FD4A91AE36C2D002641E0 /* ApplicationNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationNotification.swift; sourceTree = "<group>"; };
 		3DAA27A41AD44A6C008DDFC1 /* Awesome-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Awesome-Bridging-Header.h"; sourceTree = "<group>"; };
 		AB576D841AC61AD500AABBF5 /* Awesome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Awesome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB576D881AC61AD500AABBF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 				3DAA27A41AD44A6C008DDFC1 /* Awesome-Bridging-Header.h */,
 				3D2FD4A61AE05DE5002641E0 /* AWObserver.h */,
 				3D2FD4A71AE05DE5002641E0 /* AWObserver.m */,
+				3D2FD4A91AE36C2D002641E0 /* ApplicationNotification.swift */,
 			);
 			path = Awesome;
 			sourceTree = "<group>";
@@ -226,6 +229,7 @@
 				AB576D8A1AC61AD500AABBF5 /* AppDelegate.swift in Sources */,
 				AB576DA71AC633AB00AABBF5 /* Window.swift in Sources */,
 				AB576DA91AC8CA8C00AABBF5 /* AccessibilityAPI.swift in Sources */,
+				3D2FD4AA1AE36C2D002641E0 /* ApplicationNotification.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

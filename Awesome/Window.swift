@@ -11,10 +11,14 @@ import Cocoa
 
 class Window {
     let ref:AXUIElementRef
-    //let id:CGWindowID // uint32_t
+    let id: CGWindowID
+    
     init(ref:AXUIElementRef) {
         self.ref = ref
-        //_AXUIElementGetWindow(ref, &id);
+        
+        // get the id using private function
+        id = CGWindowID()
+        _AXUIElementGetWindow(ref, &id)
     }
     
     func title() -> String? {
