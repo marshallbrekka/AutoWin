@@ -30,7 +30,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var window: NSWindow!
     
-    var iapps:[Application]?
+    var iapps:[AWApplication]?
     var notifo:ApplicationNotification?
 
 
@@ -77,7 +77,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         
         println("Are we trusted " + String(AXIsProcessTrusted()) + " "  + String(kAXErrorSuccess))
-        iapps = Application.applications()
+        iapps = AWApplication.applications()
         var apps = iapps!
         for app in apps {
             println("App Name " + app.title())

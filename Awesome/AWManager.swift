@@ -24,7 +24,7 @@ class AWManager: AWApplicationJSInterface {
         var key = NSNumber(int: pid)
         var app:AWApplication? = apps.objectForKey(key) as AWApplication?
         if app != nil {
-            return app.activate()
+            return app!.activate()
         } else {
             println("application wasn't found for pid")
             return false

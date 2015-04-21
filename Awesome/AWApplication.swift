@@ -82,9 +82,9 @@ class AWApplication {
     class func applications() -> [AWApplication] {
         let workspace = NSWorkspace.sharedWorkspace()
         let runningApps:[NSRunningApplication] =  workspace.runningApplications as [NSRunningApplication]
-        var apps:[Application] = []
+        var apps:[AWApplication] = []
         for runningApp in runningApps {
-            apps.append(Application(app: runningApp))
+            apps.append(AWApplication(app: runningApp))
         }
         return apps
     }
