@@ -13,19 +13,24 @@ import JavaScriptCore
 
 class AWJSContext {
     let context: JSContext = JSContext()
+    let events: AWJSEvent
     let application: AWJSApplication;
+    
     let api:NSDictionary
 
     init() {
         context.exceptionHandler = { context, exception in
             println("JS Error: \(exception)")
         }
-        
-        application =  AWJSApplication()
+        context.setObject(AWJSConsole.self, forKeyedSubscript: "console")
+        events = AWJSEvent(context: context)
+        application =  AWJSApplication(events: events)
         // initialize api objects here
         api = [
-            "application": application
+            "application": application,
+            "events": events
         ]
+
         context.setObject(api, forKeyedSubscript: "aw")
         context.evaluateScript("document.createEvent('mousemove');")
     }

@@ -25,14 +25,18 @@ let result2 = tripleFunction.callWithArguments([5])
 
 
 
-
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var window: NSWindow!
+    
+    var iapps:[Application]?
+    var notifo:ApplicationNotification?
 
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
+        AWJSContext()
+        notifo = ApplicationNotification()
         
         let context = JSContext()
         context.exceptionHandler = { context, exception in
@@ -73,20 +77,25 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         
         println("Are we trusted " + String(AXIsProcessTrusted()) + " "  + String(kAXErrorSuccess))
-        var apps = Application.applications()
+        iapps = Application.applications()
+        var apps = iapps!
         for app in apps {
             println("App Name " + app.title())
             var windows = app.windows()
             for window in windows {
                 var p = window.position()
                 var s = window.size()
+                //var id = window.getId()
                 println("  window name \(window.title()!): x=\(p.x), y=\(p.y), w=\(s.width), h=\(s.height)")
             }
         }
+        iapps = apps;
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
         // Insert code here to tear down your application
+        println("terminating")
+        
     }
 
 

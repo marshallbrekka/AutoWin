@@ -12,25 +12,54 @@ import Carbon
 
 
 
-class Application {
+class AWApplication {
     let app:NSRunningApplication
     let ref:AXUIElementRef
     let pid:pid_t
+    var observer:AWObserver?;
+
     
     init(app:NSRunningApplication) {
         self.app = app
         pid = app.processIdentifier
         ref = AXUIElementCreateApplication(pid).takeRetainedValue()
+
+        if pid == 198 {
+            watch()
+        } else {
+            self.observer = nil
+        }
     }
     
-    func watchCallback(observer: AXObserverRef, element: AXUIElementRef, name: CFStringRef, inout data: Void) {
-        
+    func activate() -> Bool {
+        return AccessibilityAPI.setAttribute(
+            ref,
+            property: NSAccessibilityFrontmostAttribute,
+            value: true)
     }
     
-    func watch(() -> Void) {
-        
-        var x:Unmanaged<AXObserverRef>?
-        AXObserverCreateWithInfoCallback(pid, watchCallback, &x)
+    func notificationCallback(ob: AXObserver!, element:AXUIElement!, notification:CFString!) {
+        println("notifo callback: " + notification);
+        println(pid)
+        println(CFEqual(element, ref))
+        println(element);
+        if notification == NSAccessibilityWindowCreatedNotification {
+            var window = Window(ref: element)
+            println(window.title())
+            println(window.size())
+        } else {
+            println("is the app ref equal")
+            println(self.ref)
+            println(CFEqual(element, ref))
+        }
+    }
+
+    
+    func watch() {
+        observer = AWObserver(pid, notificationCallback);
+        observer!.addNotification(ref, notification: NSAccessibilityApplicationHiddenNotification)
+        observer!.addNotification(ref, notification: NSAccessibilityWindowCreatedNotification)
+        println("watching now")
     }
     
     func title() -> String {
@@ -50,7 +79,7 @@ class Application {
         return windowObjects
     }
     
-    class func applications() -> [Application] {
+    class func applications() -> [AWApplication] {
         let workspace = NSWorkspace.sharedWorkspace()
         let runningApps:[NSRunningApplication] =  workspace.runningApplications as [NSRunningApplication]
         var apps:[Application] = []
