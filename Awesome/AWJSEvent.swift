@@ -10,9 +10,8 @@ import Foundation
 import JavaScriptCore
 
 @objc protocol AWJSEventInterface: JSExport {
-    func addEventListener(eventName:String, eventFunction: JSValue)
-    
-    func removeEventListener(eventName:String, eventFunction: JSValue)
+    func addEvent(eventName:String, listener:JSValue)
+    func removeEvent(eventName:String, listener:JSValue)
 }
 
 @objc class AWJSEvent: NSObject, AWJSEventInterface {
@@ -23,16 +22,39 @@ import JavaScriptCore
         self.context = context
         self.eventListeners = NSMutableDictionary()
     }
-    
-    func addEventListener(eventName: String, eventFunction: JSValue) {
+
+    func addEvent(eventName: String, listener:JSValue) {
         println("adding event listener: " + eventName)
+        var listeners:[JSValue]? = eventListeners.objectForKey(eventName) as [JSValue]?
+        if (listeners == nil) {
+            listeners = [listener];
+        } else {
+            // Exit early if the listener is already present
+            for existingListener in listeners! {
+                if (listener.isEqual(existingListener)) {
+                    return;
+                }
+            }
+            listeners!.append(listener)
+        }
+        eventListeners.setObject(listeners!, forKey: eventName)
     }
     
-    func removeEventListener(eventName: String, eventFunction: JSValue) {
+    func removeEvent(eventName: String, listener:JSValue) {
         println("removing event listener: " + eventName)
+        var listeners:[JSValue]? = eventListeners.objectForKey(eventName) as [JSValue]?
+        if (listeners != nil) {
+            listeners = listeners!.filter( {(existingListener: JSValue) -> Bool in
+                return listener.isNotEqualTo(existingListener)
+            })
+            eventListeners.setObject(listeners!, forKey: eventName)
+        }
     }
     
     func triggerEvent(eventName: String, eventData: NSDictionary) {
-        println("triggering event: " + eventName)
+        var listeners: [JSValue]? = eventListeners.objectForKey(eventName) as [JSValue]?
+        for listener in listeners! {
+            listener.callWithArguments([eventName, eventData])
+        }
     }
 }
