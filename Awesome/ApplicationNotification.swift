@@ -10,13 +10,24 @@ import Foundation
 import Cocoa
 
 class ApplicationNotification {
+    let notificationMapping = [
+        NSWorkspaceWillLaunchApplicationNotification:    "launched",
+        NSWorkspaceDidTerminateApplicationNotification:  "terminated",
+        NSWorkspaceDidHideApplicationNotification:       "hidden",
+        NSWorkspaceDidUnhideApplicationNotification:     "unhidden",
+        NSWorkspaceDidActivateApplicationNotification:   "activated",
+        NSWorkspaceDidDeactivateApplicationNotification: "deactivated"
+    ]
     let center:NSNotificationCenter
     let observers:[NSObjectProtocol] = []
+    let manager:AWManager
     
-    init () {
+    init (manager:AWManager) {
+        self.manager = manager
+        
         // All notifications to listen for
         let notifications = [
-            NSWorkspaceDidLaunchApplicationNotification,
+            NSWorkspaceWillLaunchApplicationNotification,
             NSWorkspaceDidTerminateApplicationNotification,
             NSWorkspaceDidHideApplicationNotification,
             NSWorkspaceDidUnhideApplicationNotification,
@@ -43,6 +54,9 @@ class ApplicationNotification {
     }
     
     func reciever(notification:NSNotification!) {
-        println(notification.name)
+        println("got notification: " + notification.name)
+        var name = notificationMapping[notification.name]
+        var app = notification.userInfo![NSWorkspaceApplicationKey] as NSRunningApplication
+        manager.applicationEvent(name!, runningApp: app)
     }
 }

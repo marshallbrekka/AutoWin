@@ -31,65 +31,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var window: NSWindow!
     
     var iapps:[AWApplication]?
-    var notifo:ApplicationNotification?
+    var context: AWJSContext?
+    //var notifo:ApplicationNotification?
 
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-        AWJSContext()
-        notifo = ApplicationNotification()
-        
-        let context = JSContext()
-        context.exceptionHandler = { context, exception in
-            println("JS Error: \(exception)")
-        }
-        var s = CGSize(width: 20, height: 10)
-        var sValue = JSValue(size: s, inContext: context)
-        
-        context.evaluateScript("var num = 5 + 5")
-        context.evaluateScript("var names = ['Grace', 'Ada', 'Margaret']")
-        context.evaluateScript("var triple = function(value) { return value * 3 }")
-        let tripleNum: JSValue = context.evaluateScript("triple(num)")
-        
-        context.evaluateScript("var x = function (arg) {return {width: arg.width, height: arg.height}}")
-        let hifn = context.objectForKeyedSubscript("x")
-        let hire = hifn.callWithArguments([sValue])
-        println("hi fn \(hire.toSize())")
-        println("Tripled: \(tripleNum.toInt32())")
-        let names = context.objectForKeyedSubscript("names")
-        let initialName = names.objectAtIndexedSubscript(0)
-        println("The first name: \(initialName.toString())")
-        let tripleFunction = context.objectForKeyedSubscript("triple")
-        let result = tripleFunction.callWithArguments([5])
-        println("Five tripled: \(result.toInt32())")
-
-        
-        println(kAXErrorFailure)
-        println(kAXErrorIllegalArgument)
-        println(kAXErrorInvalidUIElement)
-        println(kAXErrorInvalidUIElementObserver)
-        println(kAXErrorCannotComplete)
-        println(kAXErrorAttributeUnsupported)
-        println(kAXErrorActionUnsupported)
-        println(kAXErrorNotImplemented)
-        println(kAXErrorAPIDisabled)
-        println(kAXErrorNoValue)
-        println(kAXErrorParameterizedAttributeUnsupported)
-        
-        
-        println("Are we trusted " + String(AXIsProcessTrusted()) + " "  + String(kAXErrorSuccess))
-        iapps = AWApplication.applications()
-        var apps = iapps!
-        for app in apps {
-            println("App Name " + app.title())
-            var windows = app.windows()
-            for window in windows {
-                var p = window.position()
-                var s = window.size()
-                //var id = window.getId()
-                println("  window name \(window.title()!): x=\(p.x), y=\(p.y), w=\(s.width), h=\(s.height)")
-            }
-        }
-        iapps = apps;
+        context = AWJSContext()
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {

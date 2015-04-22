@@ -7,13 +7,14 @@
 //
 
 import Foundation
+import JavaScriptCore
 
-@objc protocol AWJSConsoleInterface {
-    class func log(item: AnyObject)
+@objc protocol AWJSConsoleInterface : JSExport {
+    class func log(item: JSValue)
 }
 
 @objc class AWJSConsole: NSObject, AWJSConsoleInterface {
-    class func log(item: AnyObject) {
+    class func log(item: JSValue) {
         println("JS Log: " + item.toString())
     }
 }

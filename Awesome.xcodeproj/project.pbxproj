@@ -38,11 +38,11 @@
 		3D2FD4A61AE05DE5002641E0 /* AWObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWObserver.h; sourceTree = "<group>"; };
 		3D2FD4A71AE05DE5002641E0 /* AWObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWObserver.m; sourceTree = "<group>"; };
 		3D2FD4A91AE36C2D002641E0 /* ApplicationNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationNotification.swift; sourceTree = "<group>"; };
-		3D2FD4AB1AE46407002641E0 /* JSInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSInterface.swift; sourceTree = "<group>"; };
-		3D2FD4AE1AE5EE7A002641E0 /* AWJSApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWJSApplication.swift; sourceTree = "<group>"; };
-		3D2FD4B01AE5FFB7002641E0 /* AWJSContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWJSContext.swift; sourceTree = "<group>"; };
-		3D2FD4B31AE617A2002641E0 /* AWJSEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWJSEvent.swift; sourceTree = "<group>"; };
-		3D2FD4B51AE69744002641E0 /* AWJSConsole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWJSConsole.swift; sourceTree = "<group>"; };
+		3D2FD4AB1AE46407002641E0 /* JSInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSInterface.swift; path = Awesome/JSInterface.swift; sourceTree = SOURCE_ROOT; };
+		3D2FD4AE1AE5EE7A002641E0 /* AWJSApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWJSApplication.swift; path = JS/AWJSApplication.swift; sourceTree = "<group>"; };
+		3D2FD4B01AE5FFB7002641E0 /* AWJSContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWJSContext.swift; path = JS/AWJSContext.swift; sourceTree = "<group>"; };
+		3D2FD4B31AE617A2002641E0 /* AWJSEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWJSEvent.swift; path = JS/AWJSEvent.swift; sourceTree = "<group>"; };
+		3D2FD4B51AE69744002641E0 /* AWJSConsole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWJSConsole.swift; path = JS/AWJSConsole.swift; sourceTree = "<group>"; };
 		3D2FD4B71AE6A365002641E0 /* AWManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWManager.swift; sourceTree = "<group>"; };
 		3DAA27A41AD44A6C008DDFC1 /* Awesome-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Awesome-Bridging-Header.h"; sourceTree = "<group>"; };
 		AB576D841AC61AD500AABBF5 /* Awesome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Awesome.app; sourceTree = BUILT_PRODUCTS_DIR; };

@@ -26,7 +26,9 @@ protocol AWApplicationJSInterface {
     func activate(pid:pid_t) -> Bool
 }
 
-
+/*
+Class that provides the javascript interface for aw.application.
+*/
 @objc class AWJSApplication :  NSObject, AWJSApplicationInterface {
     let events: AWJSEvent
     let delegate: AWApplicationJSInterface?
@@ -53,33 +55,13 @@ protocol AWApplicationJSInterface {
         }
     }
     
-    // event handling api that impliments a protocol (soon)
-    func launchedEvent(app:AWApplication) {
-        triggerEvent("launched", app: app)
-    }
-    
-    func terminatedEvent(app:AWApplication) {
-        triggerEvent("terminated", app: app)
-    }
-    
-    func activatedEvent(app:AWApplication) {
-        triggerEvent("activated", app: app)
-    }
-    
-    func deactivatedEvent(app:AWApplication) {
-        triggerEvent("deactivated", app: app)
-    }
-    
-    func hiddenEvent(app:AWApplication) {
-        triggerEvent("hidden", app: app)
-    }
-    
-    func unhiddenEvent(app:AWApplication) {
-        triggerEvent("unhidden", app: app)
-    }
-    
-    // generic fn for triggering an application event
+    /*
+    Triggers an event.
+    Valid events are:
+    launched, terminated, activated, deactivated, hidden, unhidden.
+    */
     func triggerEvent(eventName: String, app: AWApplication) {
+        println("triggering js app event: " + eventName)
         events.triggerEvent(
             "aw.application." + eventName,
             eventData: AWJSApplication.applicationToDictionary(app))
