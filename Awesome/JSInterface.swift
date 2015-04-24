@@ -55,6 +55,12 @@ aw.window.setMinimized(window,boolean)
 ** Mouse functions **
 aw.mouse.getPosition()
 aw.mouse.setPosition(point)
+
+
+** Hot key functions **
+
+aw.hotkey.add(key, modifiers, callback)
+aw.hotkey.remove(key, modifiers, callback)
 */
 
 import Foundation
