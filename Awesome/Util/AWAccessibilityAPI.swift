@@ -4,7 +4,7 @@
 
 import Foundation
 
-class AccessibilityAPI {
+class AWAccessibilityAPI {
     
     class func getAttribute<T>(ref: AXUIElementRef, property: String) -> T? {
         var pointer: Unmanaged<AnyObject>?

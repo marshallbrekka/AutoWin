@@ -11,7 +11,7 @@
 		3D1C3DD51AE8680D00EEE08A /* AWKeyCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1C3DD41AE8680D00EEE08A /* AWKeyCodes.swift */; };
 		3D1C3DD81AE8955200EEE08A /* AWHotKeyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D1C3DD71AE8955200EEE08A /* AWHotKeyManager.m */; };
 		3D2FD4A81AE05DE5002641E0 /* AWObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2FD4A71AE05DE5002641E0 /* AWObserver.m */; };
-		3D2FD4AA1AE36C2D002641E0 /* ApplicationNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2FD4A91AE36C2D002641E0 /* ApplicationNotification.swift */; };
+		3D2FD4AA1AE36C2D002641E0 /* AWApplicationNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2FD4A91AE36C2D002641E0 /* AWApplicationNotification.swift */; };
 		3D2FD4AC1AE46407002641E0 /* JSInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2FD4AB1AE46407002641E0 /* JSInterface.swift */; };
 		3D2FD4AF1AE5EE7A002641E0 /* AWJSApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2FD4AE1AE5EE7A002641E0 /* AWJSApplication.swift */; };
 		3D2FD4B11AE5FFB7002641E0 /* AWJSContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2FD4B01AE5FFB7002641E0 /* AWJSContext.swift */; };
@@ -23,8 +23,8 @@
 		AB576D8F1AC61AD500AABBF5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB576D8D1AC61AD500AABBF5 /* MainMenu.xib */; };
 		AB576D9B1AC61AD500AABBF5 /* AwesomeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB576D9A1AC61AD500AABBF5 /* AwesomeTests.swift */; };
 		AB576DA51AC6231100AABBF5 /* AWApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB576DA41AC6231100AABBF5 /* AWApplication.swift */; };
-		AB576DA71AC633AB00AABBF5 /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB576DA61AC633AB00AABBF5 /* Window.swift */; };
-		AB576DA91AC8CA8C00AABBF5 /* AccessibilityAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB576DA81AC8CA8C00AABBF5 /* AccessibilityAPI.swift */; };
+		AB576DA71AC633AB00AABBF5 /* AWWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB576DA61AC633AB00AABBF5 /* AWWindow.swift */; };
+		AB576DA91AC8CA8C00AABBF5 /* AWAccessibilityAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB576DA81AC8CA8C00AABBF5 /* AWAccessibilityAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,14 +38,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3D1C3DD11AE83BE200EEE08A /* AWJSHotKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWJSHotKey.swift; sourceTree = "<group>"; };
-		3D1C3DD41AE8680D00EEE08A /* AWKeyCodes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWKeyCodes.swift; sourceTree = "<group>"; };
+		3D1C3DD11AE83BE200EEE08A /* AWJSHotKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWJSHotKey.swift; path = JS/AWJSHotKey.swift; sourceTree = "<group>"; };
+		3D1C3DD41AE8680D00EEE08A /* AWKeyCodes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWKeyCodes.swift; path = Util/AWKeyCodes.swift; sourceTree = "<group>"; };
 		3D1C3DD61AE8955200EEE08A /* AWHotKeyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AWHotKeyManager.h; path = Util/AWHotKeyManager.h; sourceTree = "<group>"; };
 		3D1C3DD71AE8955200EEE08A /* AWHotKeyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AWHotKeyManager.m; path = Util/AWHotKeyManager.m; sourceTree = "<group>"; };
-		3D2FD4A61AE05DE5002641E0 /* AWObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWObserver.h; sourceTree = "<group>"; };
-		3D2FD4A71AE05DE5002641E0 /* AWObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWObserver.m; sourceTree = "<group>"; };
-		3D2FD4A91AE36C2D002641E0 /* ApplicationNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationNotification.swift; sourceTree = "<group>"; };
-		3D2FD4AB1AE46407002641E0 /* JSInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSInterface.swift; path = Awesome/JSInterface.swift; sourceTree = SOURCE_ROOT; };
+		3D2FD4A61AE05DE5002641E0 /* AWObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AWObserver.h; path = Notifications/AWObserver.h; sourceTree = "<group>"; };
+		3D2FD4A71AE05DE5002641E0 /* AWObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AWObserver.m; path = Notifications/AWObserver.m; sourceTree = "<group>"; };
+		3D2FD4A91AE36C2D002641E0 /* AWApplicationNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWApplicationNotification.swift; path = Notifications/AWApplicationNotification.swift; sourceTree = "<group>"; };
+		3D2FD4AB1AE46407002641E0 /* JSInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSInterface.swift; path = Awesome/JS/JSInterface.swift; sourceTree = SOURCE_ROOT; };
 		3D2FD4AE1AE5EE7A002641E0 /* AWJSApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWJSApplication.swift; path = JS/AWJSApplication.swift; sourceTree = "<group>"; };
 		3D2FD4B01AE5FFB7002641E0 /* AWJSContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWJSContext.swift; path = JS/AWJSContext.swift; sourceTree = "<group>"; };
 		3D2FD4B31AE617A2002641E0 /* AWJSEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWJSEvent.swift; path = JS/AWJSEvent.swift; sourceTree = "<group>"; };
@@ -60,9 +60,9 @@
 		AB576D941AC61AD500AABBF5 /* AwesomeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AwesomeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB576D991AC61AD500AABBF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB576D9A1AC61AD500AABBF5 /* AwesomeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwesomeTests.swift; sourceTree = "<group>"; };
-		AB576DA41AC6231100AABBF5 /* AWApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWApplication.swift; sourceTree = "<group>"; };
-		AB576DA61AC633AB00AABBF5 /* Window.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Window.swift; sourceTree = "<group>"; };
-		AB576DA81AC8CA8C00AABBF5 /* AccessibilityAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessibilityAPI.swift; sourceTree = "<group>"; };
+		AB576DA41AC6231100AABBF5 /* AWApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWApplication.swift; path = Model/AWApplication.swift; sourceTree = "<group>"; };
+		AB576DA61AC633AB00AABBF5 /* AWWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWWindow.swift; path = Model/AWWindow.swift; sourceTree = "<group>"; };
+		AB576DA81AC8CA8C00AABBF5 /* AWAccessibilityAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWAccessibilityAPI.swift; path = Util/AWAccessibilityAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +86,7 @@
 		3D1C3DD31AE867FE00EEE08A /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				AB576DA81AC8CA8C00AABBF5 /* AWAccessibilityAPI.swift */,
 				3D1C3DD41AE8680D00EEE08A /* AWKeyCodes.swift */,
 				3D1C3DD61AE8955200EEE08A /* AWHotKeyManager.h */,
 				3D1C3DD71AE8955200EEE08A /* AWHotKeyManager.m */,
@@ -104,6 +105,25 @@
 				3D1C3DD11AE83BE200EEE08A /* AWJSHotKey.swift */,
 			);
 			name = JS;
+			sourceTree = "<group>";
+		};
+		3D57E9621AEAA71A002F50A2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AB576DA41AC6231100AABBF5 /* AWApplication.swift */,
+				AB576DA61AC633AB00AABBF5 /* AWWindow.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		3D57E9631AEAA749002F50A2 /* Notificatons */ = {
+			isa = PBXGroup;
+			children = (
+				3D2FD4A91AE36C2D002641E0 /* AWApplicationNotification.swift */,
+				3D2FD4A61AE05DE5002641E0 /* AWObserver.h */,
+				3D2FD4A71AE05DE5002641E0 /* AWObserver.m */,
+			);
+			name = Notificatons;
 			sourceTree = "<group>";
 		};
 		AB576D7B1AC61AD400AABBF5 = {
@@ -127,19 +147,15 @@
 		AB576D861AC61AD500AABBF5 /* Awesome */ = {
 			isa = PBXGroup;
 			children = (
+				3D57E9631AEAA749002F50A2 /* Notificatons */,
+				3D57E9621AEAA71A002F50A2 /* Model */,
 				3D1C3DD31AE867FE00EEE08A /* Util */,
 				3D2FD4B21AE61780002641E0 /* JS */,
 				AB576D891AC61AD500AABBF5 /* AppDelegate.swift */,
 				AB576D8B1AC61AD500AABBF5 /* Images.xcassets */,
 				AB576D8D1AC61AD500AABBF5 /* MainMenu.xib */,
 				AB576D871AC61AD500AABBF5 /* Supporting Files */,
-				AB576DA41AC6231100AABBF5 /* AWApplication.swift */,
-				AB576DA61AC633AB00AABBF5 /* Window.swift */,
-				AB576DA81AC8CA8C00AABBF5 /* AccessibilityAPI.swift */,
 				3DAA27A41AD44A6C008DDFC1 /* Awesome-Bridging-Header.h */,
-				3D2FD4A61AE05DE5002641E0 /* AWObserver.h */,
-				3D2FD4A71AE05DE5002641E0 /* AWObserver.m */,
-				3D2FD4A91AE36C2D002641E0 /* ApplicationNotification.swift */,
 				3D2FD4B71AE6A365002641E0 /* AWManager.swift */,
 			);
 			path = Awesome;
@@ -281,9 +297,9 @@
 				3D2FD4A81AE05DE5002641E0 /* AWObserver.m in Sources */,
 				3D1C3DD81AE8955200EEE08A /* AWHotKeyManager.m in Sources */,
 				AB576D8A1AC61AD500AABBF5 /* AppDelegate.swift in Sources */,
-				AB576DA71AC633AB00AABBF5 /* Window.swift in Sources */,
-				AB576DA91AC8CA8C00AABBF5 /* AccessibilityAPI.swift in Sources */,
-				3D2FD4AA1AE36C2D002641E0 /* ApplicationNotification.swift in Sources */,
+				AB576DA71AC633AB00AABBF5 /* AWWindow.swift in Sources */,
+				AB576DA91AC8CA8C00AABBF5 /* AWAccessibilityAPI.swift in Sources */,
+				3D2FD4AA1AE36C2D002641E0 /* AWApplicationNotification.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

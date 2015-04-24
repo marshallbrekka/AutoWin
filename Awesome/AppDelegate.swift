@@ -32,11 +32,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     var iapps:[AWApplication]?
     var context: AWJSContext?
+    var hkm: AWHotKeyManager?
+    var id1:UInt32?
     //var notifo:ApplicationNotification?
 
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         context = AWJSContext()
+        /*hkm = AWHotKeyManager()
+        id1 = hkm!.addHotKey("e", withModifiers: ["cmd", "opt", "ctrl", "shift"], forCallback: {(down:Bool, key:String!, modifiers:[AnyObject]!) in
+            println("got hotkey event callback")
+            if (!down) {
+                self.hkm!.removeHotKey(self.id1!);
+            }
+        })*/
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {

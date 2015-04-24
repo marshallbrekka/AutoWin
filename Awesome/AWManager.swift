@@ -14,7 +14,7 @@ class AWManager: AWApplicationJSInterface {
     // A map of pid (NSNumber) to application (AWApplication)
     let apps:NSMutableDictionary = NSMutableDictionary()
     let jsApp: AWJSApplication
-    let appNotification: ApplicationNotification?
+    let appNotification: AWApplicationNotification?
     
     init(jsApp: AWJSApplication) {
         self.jsApp = jsApp
@@ -24,7 +24,7 @@ class AWManager: AWApplicationJSInterface {
             var key = NSNumber(int: app.pid)
             self.apps.setObject(app, forKey: key)
         }
-        appNotification = ApplicationNotification(manager: self)
+        appNotification = AWApplicationNotification(manager: self)
         
     }
     

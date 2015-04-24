@@ -42,7 +42,7 @@ class AWJSContext {
         context.evaluateScript("aw.events.addEventListener('hi', myThing)")
         context.evaluateScript("aw.events.addEventListener('hi', myThing)")
         context.evaluateScript("aw.events.addEventListener('hi', function(){})")
-        context.evaluateScript("function hotkey(){console.log('hotkey called');}; aw.hotkey.addHotkeyListener('y', ['cmd'], hotkey);")
+        context.evaluateScript("function hotkey(){console.log('hotkey called'); aw.hotkey.removeHotkey('y', ['cmd'])}; aw.hotkey.addHotkeyListener('y', ['cmd'], hotkey);")
     }
 
 }

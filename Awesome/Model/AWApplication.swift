@@ -32,7 +32,7 @@ class AWApplication {
     }
     
     func activate() -> Bool {
-        return AccessibilityAPI.setAttribute(
+        return AWAccessibilityAPI.setAttribute(
             ref,
             property: NSAccessibilityFrontmostAttribute,
             value: true)
@@ -44,7 +44,7 @@ class AWApplication {
         println(CFEqual(element, ref))
         println(element);
         if notification == NSAccessibilityWindowCreatedNotification {
-            var window = Window(ref: element)
+            var window = AWWindow(ref: element)
             println(window.title())
             println(window.size())
         } else {
@@ -66,13 +66,13 @@ class AWApplication {
         return app.localizedName!
     }
     
-    func windows() -> [Window] {
-        var windowObjects: [Window]! = []
-        var windowRefs: [AXUIElementRef]? = AccessibilityAPI.getAttributes(self.ref, property: NSAccessibilityWindowsAttribute) as [AXUIElementRef]?
+    func windows() -> [AWWindow] {
+        var windowObjects: [AWWindow]! = []
+        var windowRefs: [AXUIElementRef]? = AWAccessibilityAPI.getAttributes(self.ref, property: NSAccessibilityWindowsAttribute) as [AXUIElementRef]?
         if windowRefs != nil {
             windowRefs?.map({
-                if Window.isWindow($0) {
-                    windowObjects.append(Window(ref: $0))
+                if AWWindow.isWindow($0) {
+                    windowObjects.append(AWWindow(ref: $0))
                 }
             }) as [Void]!
         }

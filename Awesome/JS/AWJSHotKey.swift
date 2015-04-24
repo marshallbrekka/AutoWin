@@ -11,8 +11,9 @@ import Foundation
 import JavaScriptCore
 
 @objc protocol AWJSHotKeyInterface :JSExport {
-    // Use hacky param names so that we get
+    // Use hacky param names so that we get addHotkeyListener as the js method
     func add(key:String, hotkey modifiers:[String], listener callback: JSValue)
+    // Use hacky param names so that we get removeHotkey as the js method
     func remove(key:String, hotkey modifiers:[String])
 }
 
@@ -24,7 +25,7 @@ import JavaScriptCore
     
     func add(key: String, hotkey modifiers: [String], listener callback: JSValue) {
         var modListeners = listenersForKey(key)
-        var modKey = NSNumber(unsignedInt: AWKeyCodes.modifiersToModCode(modifiers))
+        var modKey = modifiersToModKey(modifiers)
         var watcher:NSMutableDictionary? = modListeners.objectForKey(modKey) as NSMutableDictionary?
         var casted:[AnyObject] = modifiers as [AnyObject]
         if (watcher == nil) {
@@ -41,7 +42,23 @@ import JavaScriptCore
     }
     
     func remove(key: String, hotkey modifiers: [String]) {
-        
+        var modListeners:NSMutableDictionary? = listeners.objectForKey(key) as NSMutableDictionary?
+        if modListeners != nil {
+            var modKey = modifiersToModKey(modifiers)
+            var watcher:NSMutableDictionary? = modListeners?.objectForKey(modKey) as NSMutableDictionary?
+            if watcher != nil {
+                var watcherId:NSNumber = watcher?.objectForKey("id") as NSNumber
+                manager.removeHotKey(watcherId.unsignedIntValue)
+                modListeners!.removeObjectForKey(modKey)
+                if (modListeners!.count == 0) {
+                    listeners.removeObjectForKey(key)
+                }
+            }
+        }
+    }
+    
+    func modifiersToModKey(modifiers: [String]) -> NSNumber {
+        return NSNumber(unsignedInt: AWKeyCodes.modifiersToModCode(modifiers))
     }
 
     /*
@@ -56,7 +73,7 @@ import JavaScriptCore
             var listeners:NSMutableDictionary? = self.listeners.objectForKey(key) as NSMutableDictionary?
             if (listeners != nil) {
                 println("found listeners")
-                var modKey = NSNumber(unsignedInt: AWKeyCodes.modifiersToModCode(modifiers as [String]!))
+                var modKey = modifiersToModKey(modifiers as [String])
                 var watcher = listeners!.objectForKey(modKey) as NSMutableDictionary?
                 if (watcher != nil) {
                     var callback: JSValue = watcher?.objectForKey("callback") as JSValue

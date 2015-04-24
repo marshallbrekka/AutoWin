@@ -9,7 +9,7 @@
 import Foundation
 import Cocoa
 
-class ApplicationNotification {
+class AWApplicationNotification {
     let notificationMapping = [
         NSWorkspaceWillLaunchApplicationNotification:    "launched",
         NSWorkspaceDidTerminateApplicationNotification:  "terminated",
