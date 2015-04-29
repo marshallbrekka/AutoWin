@@ -51,12 +51,16 @@ import JavaScriptCore
         }
     }
     
-    func triggerEvent(eventName: String, eventData: NSDictionary) {
+    func triggerEvent(eventName: String, eventData: NSDictionary?) {
         var listeners: [JSValue]? = eventListeners.objectForKey(eventName) as! [JSValue]?
         if (listeners != nil) {
             println("triggering listeners for: " + eventName)
             for listener in listeners! {
-                listener.callWithArguments([eventName, eventData])
+                if eventData == nil {
+                    listener.callWithArguments([eventName])
+                } else {
+                    listener.callWithArguments([eventName, eventData!])
+                }
             }
         } else {
             println("no listeners for: " + eventName)

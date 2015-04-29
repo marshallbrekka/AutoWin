@@ -10,6 +10,7 @@
 		3D1C3DD21AE83BE200EEE08A /* AWJSHotKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1C3DD11AE83BE200EEE08A /* AWJSHotKey.swift */; };
 		3D1C3DD51AE8680D00EEE08A /* AWKeyCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1C3DD41AE8680D00EEE08A /* AWKeyCodes.swift */; };
 		3D1C3DD81AE8955200EEE08A /* AWHotKeyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D1C3DD71AE8955200EEE08A /* AWHotKeyManager.m */; };
+		3D2D8BF01AF0A749009406B8 /* JSType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2D8BEF1AF0A749009406B8 /* JSType.swift */; };
 		3D2FD4A81AE05DE5002641E0 /* AWObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2FD4A71AE05DE5002641E0 /* AWObserver.m */; };
 		3D2FD4AA1AE36C2D002641E0 /* AWApplicationNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2FD4A91AE36C2D002641E0 /* AWApplicationNotification.swift */; };
 		3D2FD4AC1AE46407002641E0 /* JSInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2FD4AB1AE46407002641E0 /* JSInterface.swift */; };
@@ -43,6 +44,7 @@
 		3D1C3DD41AE8680D00EEE08A /* AWKeyCodes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWKeyCodes.swift; path = Util/AWKeyCodes.swift; sourceTree = "<group>"; };
 		3D1C3DD61AE8955200EEE08A /* AWHotKeyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AWHotKeyManager.h; path = Util/AWHotKeyManager.h; sourceTree = "<group>"; };
 		3D1C3DD71AE8955200EEE08A /* AWHotKeyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AWHotKeyManager.m; path = Util/AWHotKeyManager.m; sourceTree = "<group>"; };
+		3D2D8BEF1AF0A749009406B8 /* JSType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSType.swift; path = JS/JSType.swift; sourceTree = "<group>"; };
 		3D2FD4A61AE05DE5002641E0 /* AWObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AWObserver.h; path = Notifications/AWObserver.h; sourceTree = "<group>"; };
 		3D2FD4A71AE05DE5002641E0 /* AWObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AWObserver.m; path = Notifications/AWObserver.m; sourceTree = "<group>"; };
 		3D2FD4A91AE36C2D002641E0 /* AWApplicationNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWApplicationNotification.swift; path = Notifications/AWApplicationNotification.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 		3D2FD4B21AE61780002641E0 /* JS */ = {
 			isa = PBXGroup;
 			children = (
+				3D2D8BEF1AF0A749009406B8 /* JSType.swift */,
 				3D2FD4AB1AE46407002641E0 /* JSInterface.swift */,
 				3D2FD4AE1AE5EE7A002641E0 /* AWJSApplication.swift */,
 				3D2FD4B01AE5FFB7002641E0 /* AWJSContext.swift */,
@@ -304,6 +307,7 @@
 				3D6AE0851AF08A8C00FC0B2D /* AWJSMonitors.swift in Sources */,
 				AB576DA91AC8CA8C00AABBF5 /* AWAccessibilityAPI.swift in Sources */,
 				3D2FD4AA1AE36C2D002641E0 /* AWApplicationNotification.swift in Sources */,
+				3D2D8BF01AF0A749009406B8 /* JSType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

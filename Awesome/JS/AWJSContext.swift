@@ -16,6 +16,7 @@ class AWJSContext {
     let events: AWJSEvent
     let application: AWJSApplication
     let hotkeys: AWJSHotKey
+    let monitors: AWJSMonitors
     
     let api:NSDictionary
 
@@ -29,13 +30,15 @@ class AWJSContext {
         hotkeys = AWJSHotKey()
         manager = AWManager(jsApp: application)
         appEvents = AWApplicationNotification(manager: manager)
+        monitors = AWJSMonitors(events: events)
         
 
         // initialize api objects here
         api = [
             "application": application,
             "events": events,
-            "hotkey": hotkeys
+            "hotkey": hotkeys,
+            "monitors": monitors
         ]
 
         context.setObject(api, forKeyedSubscript: "aw")
@@ -46,6 +49,8 @@ class AWJSContext {
         context.evaluateScript("aw.events.addEventListener('hi', myThing)")
         context.evaluateScript("aw.events.addEventListener('hi', function(){})")
         context.evaluateScript("function hotkey(){console.log('hotkey called'); aw.hotkey.removeHotkey('y', ['cmd'])}; aw.hotkey.addHotkeyListener('y', ['cmd'], hotkey);")
+        context.evaluateScript("var m = aw.monitors.monitors(); console.log(m[0].id); console.log(m[0].frame.width); console.log(m[0].frame.height);")
+        context.evaluateScript("console.log(m[0].frame.x); console.log(m[0].frame.y);")
     }
 
 }
