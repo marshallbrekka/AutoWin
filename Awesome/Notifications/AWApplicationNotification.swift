@@ -19,7 +19,7 @@ class AWApplicationNotification {
         NSWorkspaceDidDeactivateApplicationNotification: "deactivated"
     ]
     let center:NSNotificationCenter
-    let observers:[NSObjectProtocol] = []
+    var observers:[NSObjectProtocol] = []
     let manager:AWManager
     
     init (manager:AWManager) {
@@ -56,7 +56,7 @@ class AWApplicationNotification {
     func reciever(notification:NSNotification!) {
         println("got notification: " + notification.name)
         var name = notificationMapping[notification.name]
-        var app = notification.userInfo![NSWorkspaceApplicationKey] as NSRunningApplication
+        var app = notification.userInfo![NSWorkspaceApplicationKey] as! NSRunningApplication
         manager.applicationEvent(name!, runningApp: app)
     }
 }

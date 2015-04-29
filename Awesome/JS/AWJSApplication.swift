@@ -31,7 +31,7 @@ Class that provides the javascript interface for aw.application.
 */
 @objc class AWJSApplication :  NSObject, AWJSApplicationInterface {
     let events: AWJSEvent
-    let delegate: AWApplicationJSInterface?
+    let delegate: AWApplicationJSInterface? = nil
     
     init(events: AWJSEvent) {
         self.events = events

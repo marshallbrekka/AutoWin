@@ -14,7 +14,6 @@ class AWManager: AWApplicationJSInterface {
     // A map of pid (NSNumber) to application (AWApplication)
     let apps:NSMutableDictionary = NSMutableDictionary()
     let jsApp: AWJSApplication
-    let appNotification: AWApplicationNotification?
     
     init(jsApp: AWJSApplication) {
         self.jsApp = jsApp
@@ -24,12 +23,10 @@ class AWManager: AWApplicationJSInterface {
             var key = NSNumber(int: app.pid)
             self.apps.setObject(app, forKey: key)
         }
-        appNotification = AWApplicationNotification(manager: self)
-        
     }
     
     func applicationEvent(event: NSString, runningApp: NSRunningApplication) {
-        println("application event " + event)
+        println("application event " + (event as String))
         println(runningApp.processIdentifier)
         var app: AWApplication?
         // Get an application instance, either an existing one or create a new one
@@ -38,12 +35,12 @@ class AWManager: AWApplicationJSInterface {
             addApplication(app!)
         } else {
             var key = NSNumber(int: runningApp.processIdentifier)
-            app = apps.objectForKey(key) as AWApplication?
+            app = apps.objectForKey(key) as! AWApplication?
         }
         
         if (app != nil) {
             // Trigger an event
-            jsApp.triggerEvent(event, app: app!)
+            jsApp.triggerEvent(event as String, app: app!)
             
             // Remove the terminated app
             if (event == "terminated") {
@@ -63,15 +60,15 @@ class AWManager: AWApplicationJSInterface {
     }
     
     func applications() -> [AWApplication] {
-        var keys:[NSNumber] = apps.allKeys as [NSNumber]
+        var keys:[NSNumber] = apps.allKeys as! [NSNumber]
         return keys.map({(pid:NSNumber) -> AWApplication in
-            return self.apps.objectForKey(pid) as AWApplication
+            return self.apps.objectForKey(pid) as! AWApplication
         });
     }
     
     func activate(pid: pid_t) -> Bool {
         var key = NSNumber(int: pid)
-        var app:AWApplication? = apps.objectForKey(key) as AWApplication?
+        var app:AWApplication? = apps.objectForKey(key) as! AWApplication?
         if app != nil {
             return app!.activate()
         } else {

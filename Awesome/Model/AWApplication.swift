@@ -39,11 +39,12 @@ class AWApplication {
     }
     
     func notificationCallback(ob: AXObserver!, element:AXUIElement!, notification:CFString!) {
-        println("notifo callback: " + notification);
+        var notifo:String = String(notification)
+        println("notifo callback: " + notifo);
         println(pid)
         println(CFEqual(element, ref))
         println(element);
-        if notification == NSAccessibilityWindowCreatedNotification {
+        if notifo == NSAccessibilityWindowCreatedNotification {
             var window = AWWindow(ref: element)
             println(window.title())
             println(window.size())
@@ -56,7 +57,7 @@ class AWApplication {
 
     
     func watch() {
-        observer = AWObserver(pid, notificationCallback);
+        observer = AWObserver(pid, callback: notificationCallback);
         observer!.addNotification(ref, notification: NSAccessibilityApplicationHiddenNotification)
         observer!.addNotification(ref, notification: NSAccessibilityWindowCreatedNotification)
         println("watching now")
@@ -81,7 +82,7 @@ class AWApplication {
     
     class func applications() -> [AWApplication] {
         let workspace = NSWorkspace.sharedWorkspace()
-        let runningApps:[NSRunningApplication] =  workspace.runningApplications as [NSRunningApplication]
+        let runningApps:[NSRunningApplication] =  workspace.runningApplications as! [NSRunningApplication]
         var apps:[AWApplication] = []
         for runningApp in runningApps {
             apps.append(AWApplication(app: runningApp))

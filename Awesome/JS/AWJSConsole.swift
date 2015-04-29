@@ -10,7 +10,7 @@ import Foundation
 import JavaScriptCore
 
 @objc protocol AWJSConsoleInterface : JSExport {
-    class func log(item: JSValue)
+    static func log(item: JSValue)
 }
 
 @objc class AWJSConsole: NSObject, AWJSConsoleInterface {

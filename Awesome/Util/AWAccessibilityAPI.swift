@@ -35,7 +35,7 @@ class AWAccessibilityAPI {
             return nil
         }
         
-        let array: Array<AnyObject>? = pointer?.takeRetainedValue()
+        let array: Array<AnyObject>? = pointer?.takeRetainedValue() as Array<AnyObject>?
         if array == nil {
             return nil
         } else {

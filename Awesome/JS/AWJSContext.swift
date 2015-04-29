@@ -12,6 +12,7 @@ import JavaScriptCore
 class AWJSContext {
     let context: JSContext = JSContext()
     let manager: AWManager
+    let appEvents: AWApplicationNotification
     let events: AWJSEvent
     let application: AWJSApplication
     let hotkeys: AWJSHotKey
@@ -27,6 +28,8 @@ class AWJSContext {
         application =  AWJSApplication(events: events)
         hotkeys = AWJSHotKey()
         manager = AWManager(jsApp: application)
+        appEvents = AWApplicationNotification(manager: manager)
+        
 
         // initialize api objects here
         api = [

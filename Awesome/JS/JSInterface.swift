@@ -61,6 +61,9 @@ aw.mouse.setPosition(point)
 
 aw.hotkey.add(key, modifiers, callback)
 aw.hotkey.remove(key, modifiers, callback)
+
+** Monitor Functions **
+aw.monitors.monitors()
 */
 
 import Foundation

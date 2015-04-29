@@ -18,6 +18,7 @@
 		3D2FD4B41AE617A2002641E0 /* AWJSEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2FD4B31AE617A2002641E0 /* AWJSEvent.swift */; };
 		3D2FD4B61AE69744002641E0 /* AWJSConsole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2FD4B51AE69744002641E0 /* AWJSConsole.swift */; };
 		3D2FD4B81AE6A365002641E0 /* AWManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2FD4B71AE6A365002641E0 /* AWManager.swift */; };
+		3D6AE0851AF08A8C00FC0B2D /* AWJSMonitors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6AE0841AF08A8C00FC0B2D /* AWJSMonitors.swift */; };
 		AB576D8A1AC61AD500AABBF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB576D891AC61AD500AABBF5 /* AppDelegate.swift */; };
 		AB576D8C1AC61AD500AABBF5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB576D8B1AC61AD500AABBF5 /* Images.xcassets */; };
 		AB576D8F1AC61AD500AABBF5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB576D8D1AC61AD500AABBF5 /* MainMenu.xib */; };
@@ -51,6 +52,7 @@
 		3D2FD4B31AE617A2002641E0 /* AWJSEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWJSEvent.swift; path = JS/AWJSEvent.swift; sourceTree = "<group>"; };
 		3D2FD4B51AE69744002641E0 /* AWJSConsole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWJSConsole.swift; path = JS/AWJSConsole.swift; sourceTree = "<group>"; };
 		3D2FD4B71AE6A365002641E0 /* AWManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWManager.swift; sourceTree = "<group>"; };
+		3D6AE0841AF08A8C00FC0B2D /* AWJSMonitors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWJSMonitors.swift; path = JS/AWJSMonitors.swift; sourceTree = "<group>"; };
 		3DAA27A41AD44A6C008DDFC1 /* Awesome-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Awesome-Bridging-Header.h"; sourceTree = "<group>"; };
 		AB576D841AC61AD500AABBF5 /* Awesome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Awesome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB576D881AC61AD500AABBF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				3D2FD4B31AE617A2002641E0 /* AWJSEvent.swift */,
 				3D2FD4B51AE69744002641E0 /* AWJSConsole.swift */,
 				3D1C3DD11AE83BE200EEE08A /* AWJSHotKey.swift */,
+				3D6AE0841AF08A8C00FC0B2D /* AWJSMonitors.swift */,
 			);
 			name = JS;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 				3D1C3DD81AE8955200EEE08A /* AWHotKeyManager.m in Sources */,
 				AB576D8A1AC61AD500AABBF5 /* AppDelegate.swift in Sources */,
 				AB576DA71AC633AB00AABBF5 /* AWWindow.swift in Sources */,
+				3D6AE0851AF08A8C00FC0B2D /* AWJSMonitors.swift in Sources */,
 				AB576DA91AC8CA8C00AABBF5 /* AWAccessibilityAPI.swift in Sources */,
 				3D2FD4AA1AE36C2D002641E0 /* AWApplicationNotification.swift in Sources */,
 			);
