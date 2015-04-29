@@ -9,7 +9,7 @@
 import Foundation
 import Cocoa
 
-class AWApplicationNotification {
+class AWApplicationNotification : AWNotificationTarget {
     let notificationMapping = [
         NSWorkspaceWillLaunchApplicationNotification:    "launched",
         NSWorkspaceDidTerminateApplicationNotification:  "terminated",
@@ -18,9 +18,8 @@ class AWApplicationNotification {
         NSWorkspaceDidActivateApplicationNotification:   "activated",
         NSWorkspaceDidDeactivateApplicationNotification: "deactivated"
     ]
-    let center:NSNotificationCenter
-    var observers:[NSObjectProtocol] = []
     let manager:AWManager
+    var notifier:AWNotification!
     
     init (manager:AWManager) {
         self.manager = manager
@@ -34,29 +33,13 @@ class AWApplicationNotification {
             NSWorkspaceDidActivateApplicationNotification,
             NSWorkspaceDidDeactivateApplicationNotification
         ]
-        
-        center = NSWorkspace.sharedWorkspace().notificationCenter
-        for notification in notifications {
-            var observer = center.addObserverForName(
-                notification,
-                object: nil,
-                queue: nil,
-                usingBlock: reciever);
-            observers.append(observer)
-        }
+        notifier = AWNotification(center: NSWorkspace.sharedWorkspace().notificationCenter, target: self, notifications: notifications)
     }
     
-    deinit {
-        // Unregister the notifications
-        for observer in observers {
-            center.removeObserver(observer)
-        }
-    }
-    
-    func reciever(notification:NSNotification!) {
-        println("got notification: " + notification.name)
+    func recieveNotification(notification: NSNotification) {
         var name = notificationMapping[notification.name]
         var app = notification.userInfo![NSWorkspaceApplicationKey] as! NSRunningApplication
         manager.applicationEvent(name!, runningApp: app)
     }
+    
 }

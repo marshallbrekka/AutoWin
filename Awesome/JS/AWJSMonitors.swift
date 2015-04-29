@@ -14,11 +14,28 @@ import JavaScriptCore
     func monitors() -> [NSDictionary]
 }
 
-@objc class AWJSMonitors: NSObject, AWJSMonitorsInterface {
+class AWJSMonitorsEvent: AWNotificationTarget {
     let events: AWJSEvent
+    var notifier:AWNotification!
+    
+    init(events: AWJSEvent) {
+        self.events = events
+        self.notifier = AWNotification(center: NSNotificationCenter.defaultCenter(), target: self, notifications: [NSApplicationDidChangeScreenParametersNotification])
+    }
+    
+    func recieveNotification(notification: NSNotification) {
+        println("monitors changed")
+        events.triggerEvent(
+            "aw.monitors.layoutChange",
+            eventData: nil)
+    }
+}
+
+@objc class AWJSMonitors: NSObject, AWJSMonitorsInterface {
+    let events: AWJSMonitorsEvent
     
     init(events:AWJSEvent) {
-        self.events = events
+        self.events = AWJSMonitorsEvent(events: events);
     }
     
     /*
@@ -34,12 +51,6 @@ import JavaScriptCore
         return monitorDictionarys
     }
     
-    func layoutChange() {
-        events.triggerEvent(
-            "aw.monitors.layoutChange",
-            eventData: nil)
-    }
-    
     class func monitorToDictionary(monitor:NSScreen) -> NSDictionary {
         var frame = monitor.visibleFrame
         var objFrame = ["width": frame.size.width, "height": frame.size.height, "x": frame.origin.x, "y": frame.origin.y]
@@ -50,5 +61,6 @@ import JavaScriptCore
         ]
         return result
     }
+    
 }
 
