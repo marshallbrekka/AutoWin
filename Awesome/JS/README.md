@@ -10,64 +10,62 @@ The initial API is documented below.
 # Events
 
 ## Application Level Events - DONE
-
-aw.application.launched
-aw.application.terminated
-aw.application.activated
-aw.application.deactivated
-aw.application.hidden
-aw.application.unhidden
-
+- aw.application.launched
+- aw.application.terminated
+- aw.application.activated
+- aw.application.deactivated
+- aw.application.hidden
+- aw.application.unhidden
 
 ## Window Level Events
 
-aw.window.created
-aw.window.destroyed
-aw.window.focused
-aw.window.mainWindow
-aw.window.moved
-aw.window.resized
-aw.window.titleChanged
-aw.window.minimized
-aw.window.diminimized
-
+- aw.window.created
+- aw.window.destroyed
+- aw.window.focused
+- aw.window.mainWindow
+- aw.window.moved
+- aw.window.resized
+- aw.window.titleChanged
+- aw.window.minimized
+- aw.window.diminimized
 
 ## Mouse Events - PUNT
 
-aw.mouse.moved
+- aw.mouse.moved
 
 
 ## Monitor Events - DONE
 
-aw.monitors.layoutChange
+- aw.monitors.layoutChange
 
 
 # Functional API
 
 ## Application functions -  DONE
 
-aw.application.applications()
-aw.application.activate()
+- aw.application.applications()
+- aw.application.activate()
 
 ## Window Functions
 
-aw.window.windows()
-aw.window.close()
-aw.window.focusedWindow()
-aw.window.becomeMain(window)
-aw.window.setFrame(window,frame)
-aw.window.setMinimized(window,boolean)
+- aw.window.windows()
+- aw.window.close()
+- aw.window.focusedWindow()
+- aw.window.becomeMain(window)
+- aw.window.setFrame(window,frame)
+- aw.window.setMinimized(window,boolean)
 
 ## Mouse functions
-aw.mouse.getPosition()
-aw.mouse.setPosition(point)
+
+- aw.mouse.getPosition()
+- aw.mouse.setPosition(point)
 
 
 ## Hot key functions - DONE
 
-aw.hotkey.add(key, modifiers, callback)
-aw.hotkey.remove(key, modifiers, callback)
+- aw.hotkey.add(key, modifiers, callback)
+- aw.hotkey.remove(key, modifiers, callback)
 
 ## Monitor Functions - DONE
 
-aw.monitors.monitors()
+- aw.monitors.monitors()
