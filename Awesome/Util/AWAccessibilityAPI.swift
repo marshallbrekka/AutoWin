@@ -4,7 +4,7 @@
 
 import Foundation
 
-class AccessibilityAPI {
+class AWAccessibilityAPI {
     
     class func getAttribute<T>(ref: AXUIElementRef, property: String) -> T? {
         var pointer: Unmanaged<AnyObject>?
@@ -35,7 +35,7 @@ class AccessibilityAPI {
             return nil
         }
         
-        let array: Array<AnyObject>? = pointer?.takeRetainedValue()
+        let array: Array<AnyObject>? = pointer?.takeRetainedValue() as Array<AnyObject>?
         if array == nil {
             return nil
         } else {
