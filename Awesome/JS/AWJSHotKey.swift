@@ -24,16 +24,16 @@ import JavaScriptCore
     let listeners = NSMutableDictionary()
     
     func add(key: String, hotkey modifiers: [String], listener callback: JSValue) {
-        var modListeners = listenersForKey(key)
-        var modKey = modifiersToModKey(modifiers)
+        let modListeners = listenersForKey(key)
+        let modKey = modifiersToModKey(modifiers)
         var watcher:NSMutableDictionary? = modListeners.objectForKey(modKey) as! NSMutableDictionary?
-        var casted:[AnyObject] = modifiers as [AnyObject]
+        let casted:[AnyObject] = modifiers as [AnyObject]
         if (watcher == nil) {
-            println("add listener")
+            print("add listener")
             watcher = NSMutableDictionary()
             modListeners.setObject(watcher!, forKey: modKey)
             watcher?.setObject(callback, forKey: "callback")
-            var hotKeyId = manager.addHotKey(key, withModifiers: casted, forCallback: recievedEvent);
+            let hotKeyId = manager.addHotKey(key, withModifiers: casted, forCallback: recievedEvent);
             watcher?.setObject(NSNumber(unsignedInt: hotKeyId), forKey: "id")
             modListeners.setObject(watcher!, forKey: modKey)
         } else {
@@ -42,12 +42,12 @@ import JavaScriptCore
     }
     
     func remove(key: String, hotkey modifiers: [String]) {
-        var modListeners:NSMutableDictionary? = listeners.objectForKey(key) as! NSMutableDictionary?
+        let modListeners:NSMutableDictionary? = listeners.objectForKey(key) as! NSMutableDictionary?
         if modListeners != nil {
-            var modKey = modifiersToModKey(modifiers)
-            var watcher:NSMutableDictionary? = modListeners?.objectForKey(modKey) as! NSMutableDictionary?
+            let modKey = modifiersToModKey(modifiers)
+            let watcher:NSMutableDictionary? = modListeners?.objectForKey(modKey) as! NSMutableDictionary?
             if watcher != nil {
-                var watcherId:NSNumber = watcher?.objectForKey("id") as! NSNumber
+                let watcherId:NSNumber = watcher?.objectForKey("id") as! NSNumber
                 manager.removeHotKey(watcherId.unsignedIntValue)
                 modListeners!.removeObjectForKey(modKey)
                 if (modListeners!.count == 0) {
@@ -66,17 +66,17 @@ import JavaScriptCore
     the registered JS function.
     */
     func recievedEvent(down:Bool, key: String!, modifiers: [AnyObject]!) {
-        println("recieved event")
+        print("recieved event")
         // Only call events on down for now.
         if (down) {
-            println("its down")
-            var listeners:NSMutableDictionary? = self.listeners.objectForKey(key) as! NSMutableDictionary?
+            print("its down")
+            let listeners:NSMutableDictionary? = self.listeners.objectForKey(key) as! NSMutableDictionary?
             if (listeners != nil) {
-                println("found listeners")
-                var modKey = modifiersToModKey(modifiers as! [String])
-                var watcher = listeners!.objectForKey(modKey) as! NSMutableDictionary?
+                print("found listeners")
+                let modKey = modifiersToModKey(modifiers as! [String])
+                let watcher = listeners!.objectForKey(modKey) as! NSMutableDictionary?
                 if (watcher != nil) {
-                    var callback: JSValue = watcher?.objectForKey("callback") as! JSValue
+                    let callback: JSValue = watcher?.objectForKey("callback") as! JSValue
                     callback.callWithArguments([key, modifiers])
                 }
             }

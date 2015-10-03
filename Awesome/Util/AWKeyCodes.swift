@@ -69,9 +69,9 @@ let AWCharToKeyCode:NSDictionary = [
     "§":kVK_ISO_Section
     ]
 
-@objc class AWKeyCodes {
+@objc class AWKeyCodes:NSObject {
     class func charToKeyCode(key:String) -> UInt32 {
-        var code = AWCharToKeyCode.objectForKey(key) as! Int
+        let code = AWCharToKeyCode.objectForKey(key) as! Int
         return UInt32(code)
         
     }
@@ -79,7 +79,7 @@ let AWCharToKeyCode:NSDictionary = [
     class func modifiersToModCode(modifiers:[String]) -> UInt32 {
         var code = 0 as UInt32
         for mod in modifiers {
-            var modCode:UInt32 = UInt32(AWCharToModCode.objectForKey(mod) as! Int)
+            let modCode:UInt32 = UInt32(AWCharToModCode.objectForKey(mod) as! Int)
             code |= modCode
         }
         return code

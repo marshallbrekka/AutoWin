@@ -39,19 +39,19 @@ class AWApplication {
     }
     
     func notificationCallback(ob: AXObserver!, element:AXUIElement!, notification:CFString!) {
-        var notifo:String = String(notification)
-        println("notifo callback: " + notifo);
-        println(pid)
-        println(CFEqual(element, ref))
-        println(element);
+        let notifo:String = String(notification)
+        print("notifo callback: " + notifo);
+        print(pid)
+        print(CFEqual(element, ref))
+        print(element);
         if notifo == NSAccessibilityWindowCreatedNotification {
-            var window = AWWindow(ref: element)
-            println(window.title())
-            println(window.size())
+            let window = AWWindow(ref: element)
+            print(window.title())
+            print(window.size())
         } else {
-            println("is the app ref equal")
-            println(self.ref)
-            println(CFEqual(element, ref))
+            print("is the app ref equal")
+            print(self.ref)
+            print(CFEqual(element, ref))
         }
     }
 
@@ -60,7 +60,7 @@ class AWApplication {
         observer = AWObserver(pid, callback: notificationCallback);
         observer!.addNotification(ref, notification: NSAccessibilityApplicationHiddenNotification)
         observer!.addNotification(ref, notification: NSAccessibilityWindowCreatedNotification)
-        println("watching now")
+        print("watching now")
     }
     
     func title() -> String {
@@ -69,7 +69,7 @@ class AWApplication {
     
     func windows() -> [AWWindow] {
         var windowObjects: [AWWindow]! = []
-        var windowRefs: [AXUIElementRef]? = AWAccessibilityAPI.getAttributes(self.ref, property: NSAccessibilityWindowsAttribute) as [AXUIElementRef]?
+        let windowRefs: [AXUIElementRef]? = AWAccessibilityAPI.getAttributes(self.ref, property: NSAccessibilityWindowsAttribute) as [AXUIElementRef]?
         if windowRefs != nil {
             windowRefs?.map({
                 if AWWindow.isWindow($0) {
@@ -82,7 +82,7 @@ class AWApplication {
     
     class func applications() -> [AWApplication] {
         let workspace = NSWorkspace.sharedWorkspace()
-        let runningApps:[NSRunningApplication] =  workspace.runningApplications as! [NSRunningApplication]
+        let runningApps:[NSRunningApplication] =  workspace.runningApplications 
         var apps:[AWApplication] = []
         for runningApp in runningApps {
             apps.append(AWApplication(app: runningApp))

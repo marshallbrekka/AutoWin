@@ -37,8 +37,8 @@ class AWApplicationNotification : AWNotificationTarget {
     }
     
     func recieveNotification(notification: NSNotification) {
-        var name = notificationMapping[notification.name]
-        var app = notification.userInfo![NSWorkspaceApplicationKey] as! NSRunningApplication
+        let name = notificationMapping[notification.name]
+        let app = notification.userInfo![NSWorkspaceApplicationKey] as! NSRunningApplication
         manager.applicationEvent(name!, runningApp: app)
     }
     

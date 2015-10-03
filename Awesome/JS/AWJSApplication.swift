@@ -29,7 +29,7 @@ protocol AWApplicationJSInterface {
 /*
 Class that provides the javascript interface for aw.application.
 */
-@objc class AWJSApplication :  NSObject, AWJSApplicationInterface {
+@objc class AWJSApplication : NSObject, AWJSApplicationInterface {
     let events: AWJSEvent
     let delegate: AWApplicationJSInterface? = nil
     
@@ -61,7 +61,7 @@ Class that provides the javascript interface for aw.application.
     launched, terminated, activated, deactivated, hidden, unhidden.
     */
     func triggerEvent(eventName: String, app: AWApplication) {
-        println("triggering js app event: " + eventName)
+        print("triggering js app event: " + eventName)
         events.triggerEvent(
             "aw.application." + eventName,
             eventData: AWJSApplication.applicationToDictionary(app))
@@ -69,7 +69,7 @@ Class that provides the javascript interface for aw.application.
     }
     
     class func applicationToDictionary(app: AWApplication) -> NSDictionary {
-        var pid: NSNumber = NSNumber(int: app.pid)
+        let pid: NSNumber = NSNumber(int: app.pid)
         return ["pid": pid]
     }
 }

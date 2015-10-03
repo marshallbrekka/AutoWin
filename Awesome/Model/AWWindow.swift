@@ -29,7 +29,7 @@ class AWWindow {
         var size = CGSize()
         return AWAccessibilityAPI.getValueAttribute(self.ref,
             property: NSAccessibilitySizeAttribute,
-            type: kAXValueCGSizeType,
+            type: AXValueType.CGSize,
             destination:&size)
     }
     
@@ -37,12 +37,12 @@ class AWWindow {
         var point = CGPoint()
         return AWAccessibilityAPI.getValueAttribute(self.ref,
             property: NSAccessibilityPositionAttribute,
-            type: kAXValueCGPointType,
+            type: AXValueType.CGPoint,
             destination:&point)
     }
     
     class func isWindow(ref:AXUIElementRef) -> Bool {
-        var role:String? = AWAccessibilityAPI.getAttribute(ref, property: NSAccessibilityRoleAttribute) as String?
+        let role:String? = AWAccessibilityAPI.getAttribute(ref, property: NSAccessibilityRoleAttribute) as String?
         // The role attribute on a window can potentially be something
         // other than kAXWindowRole (e.g. Emacs does not claim kAXWindowRole)
         // so we will do the simple test first, but then also attempt to duck-type

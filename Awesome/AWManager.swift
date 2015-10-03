@@ -13,28 +13,54 @@ class AWManager: AWApplicationJSInterface {
     
     // A map of pid (NSNumber) to application (AWApplication)
     let apps:NSMutableDictionary = NSMutableDictionary()
+    let windows:NSMutableDictionary = NSMutableDictionary()
     let jsApp: AWJSApplication
+    let jsWindow: AWJSWindow
     
-    init(jsApp: AWJSApplication) {
+    init(jsApp: AWJSApplication, jsWindow: AWJSWindow) {
         self.jsApp = jsApp
+        self.jsWindow = jsWindow
         // get all applications and watch for new ones.
-        var apps = AWApplication.applications()
+        let apps = AWApplication.applications()
         for app in apps {
-            var key = NSNumber(int: app.pid)
-            self.apps.setObject(app, forKey: key)
+            initApp(app, triggerEvents: false);
         }
     }
     
+    /*
+    Takes an AWApplication object and adds it to the tracked apps,
+    also gets all its windows and starts listening for window events.
+    */
+    func initApp(app: AWApplication, triggerEvents: Bool) {
+        let appKey = NSNumber(int: app.pid)
+        self.apps.setObject(app, forKey: appKey);
+        if (triggerEvents) {
+            print("app launched");
+            jsApp.triggerEvent("launched", app: app);
+        }
+
+        let windows = app.windows();
+        for window in windows {
+            let windowId = NSNumber(unsignedInt: window.id);
+            self.windows.setObject(window, forKey: windowId);
+            jsWindow.triggerEvent("created", window: window);
+        }
+    }
+    
+    func destroyApp(app: AWApplication) {
+        
+    }
+    
     func applicationEvent(event: NSString, runningApp: NSRunningApplication) {
-        println("application event " + (event as String))
-        println(runningApp.processIdentifier)
-        var app: AWApplication?
+        print("application event " + (event as String));
+        print(runningApp.processIdentifier);
+        var app: AWApplication?;
         // Get an application instance, either an existing one or create a new one
         if (event == "launched") {
-            app = AWApplication(app: runningApp)
-            addApplication(app!)
+            app = AWApplication(app: runningApp);
+            initApp(app!, triggerEvents: true);
         } else {
-            var key = NSNumber(int: runningApp.processIdentifier)
+            let key = NSNumber(int: runningApp.processIdentifier)
             app = apps.objectForKey(key) as! AWApplication?
         }
         
@@ -49,30 +75,25 @@ class AWManager: AWApplicationJSInterface {
         }
     }
     
-    func addApplication(app: AWApplication) {
-        apps.setObject(app, forKey: NSNumber(int: app.pid))
-        println("adding application: " + String(app.pid))
-    }
-    
     func removeApplication(app: AWApplication) {
         apps.removeObjectForKey(NSNumber(int: app.pid))
-        println("removing application: " + String(app.pid))
+        print("removing application: " + String(app.pid))
     }
     
     func applications() -> [AWApplication] {
-        var keys:[NSNumber] = apps.allKeys as! [NSNumber]
+        let keys:[NSNumber] = apps.allKeys as! [NSNumber]
         return keys.map({(pid:NSNumber) -> AWApplication in
             return self.apps.objectForKey(pid) as! AWApplication
         });
     }
     
     func activate(pid: pid_t) -> Bool {
-        var key = NSNumber(int: pid)
-        var app:AWApplication? = apps.objectForKey(key) as! AWApplication?
+        let key = NSNumber(int: pid)
+        let app:AWApplication? = apps.objectForKey(key) as! AWApplication?
         if app != nil {
             return app!.activate()
         } else {
-            println("application wasn't found for pid")
+            print("application wasn't found for pid")
             return false
         }
     }

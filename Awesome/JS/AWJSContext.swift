@@ -10,27 +10,29 @@ import Foundation
 import JavaScriptCore
 
 class AWJSContext {
-    let context: JSContext = JSContext()
-    let manager: AWManager
-    let appEvents: AWApplicationNotification
-    let events: AWJSEvent
+    let context:     JSContext = JSContext()
+    let manager:     AWManager
+    let appEvents:   AWApplicationNotification
+    let events:      AWJSEvent
     let application: AWJSApplication
-    let hotkeys: AWJSHotKey
-    let monitors: AWJSMonitors
+    let window:      AWJSWindow
+    let hotkeys:     AWJSHotKey
+    let monitors:    AWJSMonitors
     
-    let api:NSDictionary
+    let api:         NSDictionary
 
     init() {
         context.exceptionHandler = { context, exception in
-            println("JS Error: \(exception)")
+            print("JS Error: \(exception)")
         }
         context.setObject(AWJSConsole.self, forKeyedSubscript: "console")
-        events = AWJSEvent(context: context)
-        application =  AWJSApplication(events: events)
-        hotkeys = AWJSHotKey()
-        manager = AWManager(jsApp: application)
-        appEvents = AWApplicationNotification(manager: manager)
-        monitors = AWJSMonitors(events: events)
+        events      = AWJSEvent(context: context)
+        application = AWJSApplication(events: events)
+        window      = AWJSWindow(events: events)
+        hotkeys     = AWJSHotKey()
+        manager     = AWManager(jsApp: application, jsWindow: window)
+        appEvents   = AWApplicationNotification(manager: manager)
+        monitors    = AWJSMonitors(events: events)
         
 
         // initialize api objects here

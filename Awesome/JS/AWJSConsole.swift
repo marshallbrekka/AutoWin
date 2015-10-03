@@ -15,6 +15,6 @@ import JavaScriptCore
 
 @objc class AWJSConsole: NSObject, AWJSConsoleInterface {
     class func log(item: JSValue) {
-        println("JS Log: " + item.toString())
+        print("JS Log: " + item.toString())
     }
 }

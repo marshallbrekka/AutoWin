@@ -5,6 +5,7 @@ Class for registering global hotkeys and tracking them.
 #import <Foundation/Foundation.h>
 #import <Carbon/Carbon.h>
 
+
 typedef void (^AWHotKeyCallback)(BOOL isDown, NSString* key, NSArray* modifiers);
 
 @interface AWHotKeyManager : NSObject

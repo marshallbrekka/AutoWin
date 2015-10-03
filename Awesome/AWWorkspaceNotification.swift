@@ -23,7 +23,7 @@ class AWNotification {
         
         self.center = center
         for notification in notifications {
-            var observer = center.addObserverForName(
+            let observer = center.addObserverForName(
                 notification,
                 object: nil,
                 queue: nil,
@@ -40,7 +40,7 @@ class AWNotification {
     }
     
     func reciever(notification:NSNotification!) {
-        println("got notification: " + notification.name)
+        print("got notification: " + notification.name)
         target.recieveNotification(notification)
     }
 }

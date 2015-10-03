@@ -3,7 +3,7 @@ Javascript interface for exposing native internals to the JS/ClojureScript envir
 
 This should be thought of as the main class that sits between the native and js environments.
 It is responsible for creating the js environment, listening for native events, and holding references
-to all applications and windows for the lifetime of the progrea.
+to all applications and windows for the lifetime of the program.
 
 The initial API is documented below.
 
@@ -27,7 +27,7 @@ The initial API is documented below.
 - aw.window.resized
 - aw.window.titleChanged
 - aw.window.minimized
-- aw.window.diminimized
+- aw.window.unminimized
 
 ## Mouse Events - PUNT
 

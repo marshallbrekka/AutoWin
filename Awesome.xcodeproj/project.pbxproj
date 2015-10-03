@@ -20,7 +20,10 @@
 		3D2FD4B61AE69744002641E0 /* AWJSConsole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2FD4B51AE69744002641E0 /* AWJSConsole.swift */; };
 		3D2FD4B81AE6A365002641E0 /* AWManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2FD4B71AE6A365002641E0 /* AWManager.swift */; };
 		3D50BB901AF1455E00C1E583 /* AWWorkspaceNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D50BB8F1AF1455E00C1E583 /* AWWorkspaceNotification.swift */; };
+		3D5DF6231BC0434F0043179C /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 3D5DF6221BC0434F0043179C /* README.md */; settings = {ASSET_TAGS = (); }; };
 		3D6AE0851AF08A8C00FC0B2D /* AWJSMonitors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6AE0841AF08A8C00FC0B2D /* AWJSMonitors.swift */; };
+		3DAA7B521B1B6F07004C2BFB /* AWApplicationWindowTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAA7B511B1B6F07004C2BFB /* AWApplicationWindowTracker.swift */; };
+		3DAA7B541B1B7498004C2BFB /* AWJSWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAA7B531B1B7498004C2BFB /* AWJSWindow.swift */; };
 		AB576D8A1AC61AD500AABBF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB576D891AC61AD500AABBF5 /* AppDelegate.swift */; };
 		AB576D8C1AC61AD500AABBF5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB576D8B1AC61AD500AABBF5 /* Images.xcassets */; };
 		AB576D8F1AC61AD500AABBF5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB576D8D1AC61AD500AABBF5 /* MainMenu.xib */; };
@@ -56,8 +59,11 @@
 		3D2FD4B51AE69744002641E0 /* AWJSConsole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWJSConsole.swift; path = JS/AWJSConsole.swift; sourceTree = "<group>"; };
 		3D2FD4B71AE6A365002641E0 /* AWManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWManager.swift; sourceTree = "<group>"; };
 		3D50BB8F1AF1455E00C1E583 /* AWWorkspaceNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWWorkspaceNotification.swift; sourceTree = "<group>"; };
+		3D5DF6221BC0434F0043179C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		3D6AE0841AF08A8C00FC0B2D /* AWJSMonitors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWJSMonitors.swift; path = JS/AWJSMonitors.swift; sourceTree = "<group>"; };
 		3DAA27A41AD44A6C008DDFC1 /* Awesome-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Awesome-Bridging-Header.h"; sourceTree = "<group>"; };
+		3DAA7B511B1B6F07004C2BFB /* AWApplicationWindowTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWApplicationWindowTracker.swift; path = Model/AWApplicationWindowTracker.swift; sourceTree = "<group>"; };
+		3DAA7B531B1B7498004C2BFB /* AWJSWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWJSWindow.swift; path = JS/AWJSWindow.swift; sourceTree = "<group>"; };
 		AB576D841AC61AD500AABBF5 /* Awesome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Awesome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB576D881AC61AD500AABBF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB576D891AC61AD500AABBF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -111,6 +117,7 @@
 				3D2FD4B51AE69744002641E0 /* AWJSConsole.swift */,
 				3D1C3DD11AE83BE200EEE08A /* AWJSHotKey.swift */,
 				3D6AE0841AF08A8C00FC0B2D /* AWJSMonitors.swift */,
+				3DAA7B531B1B7498004C2BFB /* AWJSWindow.swift */,
 			);
 			name = JS;
 			sourceTree = "<group>";
@@ -120,6 +127,7 @@
 			children = (
 				AB576DA41AC6231100AABBF5 /* AWApplication.swift */,
 				AB576DA61AC633AB00AABBF5 /* AWWindow.swift */,
+				3DAA7B511B1B6F07004C2BFB /* AWApplicationWindowTracker.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -166,6 +174,7 @@
 				AB576D871AC61AD500AABBF5 /* Supporting Files */,
 				3DAA27A41AD44A6C008DDFC1 /* Awesome-Bridging-Header.h */,
 				3D2FD4B71AE6A365002641E0 /* AWManager.swift */,
+				3D5DF6221BC0434F0043179C /* README.md */,
 			);
 			path = Awesome;
 			sourceTree = "<group>";
@@ -239,6 +248,8 @@
 		AB576D7C1AC61AD400AABBF5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Marshall Brekka";
 				TargetAttributes = {
@@ -297,9 +308,12 @@
 				3D2FD4B61AE69744002641E0 /* AWJSConsole.swift in Sources */,
 				3D2FD4B81AE6A365002641E0 /* AWManager.swift in Sources */,
 				3D1C3DD21AE83BE200EEE08A /* AWJSHotKey.swift in Sources */,
+				3D5DF6231BC0434F0043179C /* README.md in Sources */,
 				3D2FD4AF1AE5EE7A002641E0 /* AWJSApplication.swift in Sources */,
+				3DAA7B541B1B7498004C2BFB /* AWJSWindow.swift in Sources */,
 				AB576DA51AC6231100AABBF5 /* AWApplication.swift in Sources */,
 				3D2FD4B41AE617A2002641E0 /* AWJSEvent.swift in Sources */,
+				3DAA7B521B1B6F07004C2BFB /* AWApplicationWindowTracker.swift in Sources */,
 				3D1F0F6C1AF9B40700437F97 /* README.md in Sources */,
 				3D2FD4B11AE5FFB7002641E0 /* AWJSContext.swift in Sources */,
 				3D1C3DD51AE8680D00EEE08A /* AWKeyCodes.swift in Sources */,
@@ -432,7 +446,7 @@
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Awesome/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Awesome/Awesome-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -449,7 +463,7 @@
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Awesome/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Awesome/Awesome-Bridging-Header.h";
 			};

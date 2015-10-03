@@ -24,7 +24,7 @@ import JavaScriptCore
     }
 
     func addEvent(eventName: String, listener:JSValue) {
-        println("adding event listener: " + eventName)
+        print("adding event listener: " + eventName)
         var listeners:[JSValue]? = eventListeners.objectForKey(eventName) as! [JSValue]?
         if (listeners == nil) {
             listeners = [listener];
@@ -41,7 +41,7 @@ import JavaScriptCore
     }
     
     func removeEvent(eventName: String, listener:JSValue) {
-        println("removing event listener: " + eventName)
+        print("removing event listener: " + eventName)
         var listeners:[JSValue]? = eventListeners.objectForKey(eventName) as! [JSValue]?
         if (listeners != nil) {
             listeners = listeners!.filter( {(existingListener: JSValue) -> Bool in
@@ -52,9 +52,9 @@ import JavaScriptCore
     }
     
     func triggerEvent(eventName: String, eventData: NSDictionary?) {
-        var listeners: [JSValue]? = eventListeners.objectForKey(eventName) as! [JSValue]?
+        let listeners: [JSValue]? = eventListeners.objectForKey(eventName) as! [JSValue]?
         if (listeners != nil) {
-            println("triggering listeners for: " + eventName)
+            print("triggering listeners for: " + eventName)
             for listener in listeners! {
                 if eventData == nil {
                     listener.callWithArguments([eventName])
@@ -63,7 +63,7 @@ import JavaScriptCore
                 }
             }
         } else {
-            println("no listeners for: " + eventName)
+            print("no listeners for: " + eventName)
         }
     }
 }
