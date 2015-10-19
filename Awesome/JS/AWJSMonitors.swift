@@ -14,13 +14,13 @@ import JavaScriptCore
     func monitors() -> [NSDictionary]
 }
 
-class AWJSMonitorsEvent: AWNotificationTarget {
+class AWJSMonitorsEvent {
     let events: AWJSEvent
     var notifier:AWNotification!
     
     init(events: AWJSEvent) {
         self.events = events
-        self.notifier = AWNotification(center: NSNotificationCenter.defaultCenter(), target: self, notifications: [NSApplicationDidChangeScreenParametersNotification])
+        self.notifier = AWNotification(center: NSNotificationCenter.defaultCenter(), target: self.recieveNotification, notifications: [NSApplicationDidChangeScreenParametersNotification])
     }
     
     func recieveNotification(notification: NSNotification) {

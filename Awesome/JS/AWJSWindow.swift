@@ -73,7 +73,7 @@ Class that provides the javascript interface for aw.window.
     }
     
     class func toDictionary(window: AWWindow) -> NSDictionary {
-        let windowId: NSNumber = NSNumber(unsignedInt: window.id)
+        let windowId: NSNumber = NSNumber(unsignedLong: window.id)
         return ["id": windowId]
     }
 }

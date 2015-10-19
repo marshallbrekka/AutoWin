@@ -1,10 +1,6 @@
-//
-//  AWObserver.h
-//  Awesome
-//
-//  Created by Marshall Brekka on 4/16/15.
-//  Copyright (c) 2015 Marshall Brekka. All rights reserved.
-//
+/**
+Observer class for listening to accessibility notifications.
+*/
 
 #import <Foundation/Foundation.h>
 
@@ -16,7 +12,7 @@ AXObserverRef makeObserver(pid_t pid);
 @interface AWObserver : NSObject {
 }
 
-@property (retain) Callback callback;
+@property (strong) Callback callback;
 @property AXObserverRef observer;
 
 

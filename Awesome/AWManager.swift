@@ -1,101 +1,116 @@
-//
-//  AWManager.swift
-//  Awesome
-//
-//  Created by Marshall Brekka on 4/21/15.
-//  Copyright (c) 2015 Marshall Brekka. All rights reserved.
-//
+/**
+High level goal, does not reflect the existing code below yet.
 
+On Application "get" (either on initial launch, or via event),
+create an application object, get all its windows, and start
+listening for app events.
+
+In a dict keyed by PID, store a map with keys
+app: AWApplication Object
+windows: dict of windows
+observer: the application observer instance
+
+The windows dict is keyed by the hash of the AXUIElementRef, and maps
+to an instance of a AWWindow.
+*/
 import Foundation
 import Cocoa
 
-class AWManager: AWApplicationJSInterface {
+class AWManager {
+    
+    class AppMeta {
+        var app: AWApplication
+        var windows: NSMutableDictionary
+        var observer: AWObserver
+        
+        init(app: AWApplication,
+            windows: NSMutableDictionary,
+            observer: AWObserver) {
+                self.app = app
+                self.windows = windows
+                self.observer = observer
+        }
+    }
     
     // A map of pid (NSNumber) to application (AWApplication)
     let apps:NSMutableDictionary = NSMutableDictionary()
-    let windows:NSMutableDictionary = NSMutableDictionary()
-    let jsApp: AWJSApplication
-    let jsWindow: AWJSWindow
+    var notifier:AWNotification? = nil
     
-    init(jsApp: AWJSApplication, jsWindow: AWJSWindow) {
-        self.jsApp = jsApp
-        self.jsWindow = jsWindow
+    init() {
         // get all applications and watch for new ones.
-        let apps = AWApplication.applications()
+        let apps = AWManagerInternal.applications()
         for app in apps {
-            initApp(app, triggerEvents: false);
+            initApp(app)
         }
+        notifier = AWManagerInternal.createApplicationListener(appNotificationHandler)
     }
     
-    /*
-    Takes an AWApplication object and adds it to the tracked apps,
-    also gets all its windows and starts listening for window events.
-    */
-    func initApp(app: AWApplication, triggerEvents: Bool) {
-        let appKey = NSNumber(int: app.pid)
-        self.apps.setObject(app, forKey: appKey);
-        if (triggerEvents) {
-            print("app launched");
-            jsApp.triggerEvent("launched", app: app);
+    func triggerWindowNotification(notifo: String, window: AWWindow) {
+        print("trigger notifo", notifo, window.id)
+    }
+    
+    func appNotificationHandler(notification: NSNotification) {
+        let app = notification.userInfo![NSWorkspaceApplicationKey] as! NSRunningApplication
+        print("app event:", notification.name, app.processIdentifier)
+        switch notification.name {
+        case NSWorkspaceDidTerminateApplicationNotification:
+            AWManagerInternal.removeApplication(apps, pid: app.processIdentifier)
+            print("removed app notifications")
+        case NSWorkspaceDidLaunchApplicationNotification:
+            print("tracking app")
+            initApp(app)
+        default:
+            print("other notifo")
         }
 
-        let windows = app.windows();
-        for window in windows {
-            let windowId = NSNumber(unsignedInt: window.id);
-            self.windows.setObject(window, forKey: windowId);
-            jsWindow.triggerEvent("created", window: window);
-        }
     }
     
-    func destroyApp(app: AWApplication) {
+    func observerHandler(observer: AXObserverRef!, element: AXUIElementRef!, notification: CFString!) {
         
-    }
-    
-    func applicationEvent(event: NSString, runningApp: NSRunningApplication) {
-        print("application event " + (event as String));
-        print(runningApp.processIdentifier);
-        var app: AWApplication?;
-        // Get an application instance, either an existing one or create a new one
-        if (event == "launched") {
-            app = AWApplication(app: runningApp);
-            initApp(app!, triggerEvents: true);
-        } else {
-            let key = NSNumber(int: runningApp.processIdentifier)
-            app = apps.objectForKey(key) as! AWApplication?
-        }
-        
-        if (app != nil) {
-            // Trigger an event
-            jsApp.triggerEvent(event as String, app: app!)
-            
-            // Remove the terminated app
-            if (event == "terminated") {
-                removeApplication(app!)
+        print("window event:", notification, CFHash(element), kAXWindowCreatedNotification, NSAccessibilityWindowCreatedNotification)
+        let appMeta = AWManagerInternal.elementRefToAppMeta(apps, ref: element)
+        if appMeta != nil {
+            let notifo = notification! as String
+            switch notifo {
+            case NSAccessibilityWindowCreatedNotification:
+                let window = AWManagerInternal.createAndTrackWindow(apps, ref: element!)
+                triggerWindowNotification(notifo, window: window)
+            case NSAccessibilityUIElementDestroyedNotification:
+                let window = AWManagerInternal.removeTrackedWindowByElement(apps, ref: element)
+                if (window != nil) {
+                    triggerWindowNotification(notifo, window: window!)
+                }
+            default:
+                let window = AWManagerInternal.elementRefToWindow(apps, ref: element!)
+                if (window != nil) {
+                    triggerWindowNotification(notifo, window: window!)
+                }
             }
         }
     }
-    
-    func removeApplication(app: AWApplication) {
-        apps.removeObjectForKey(NSNumber(int: app.pid))
-        print("removing application: " + String(app.pid))
-    }
-    
-    func applications() -> [AWApplication] {
-        let keys:[NSNumber] = apps.allKeys as! [NSNumber]
-        return keys.map({(pid:NSNumber) -> AWApplication in
-            return self.apps.objectForKey(pid) as! AWApplication
-        });
-    }
-    
-    func activate(pid: pid_t) -> Bool {
-        let key = NSNumber(int: pid)
-        let app:AWApplication? = apps.objectForKey(key) as! AWApplication?
-        if app != nil {
-            return app!.activate()
+
+    func initApp(app: NSRunningApplication) -> Bool {
+        print("initing app", app.processIdentifier, NSDate().timeIntervalSince1970)
+        let awApp = AWApplication(app: app)
+        print("created awApp", app.processIdentifier, NSDate().timeIntervalSince1970)
+        if AWApplication.isSupportedApplication(awApp) {
+            let observer = AWManagerInternal.createAWObserver(
+                awApp.pid,
+                appRef: awApp.ref,
+                callback: observerHandler)
+            let meta = AppMeta(
+                app: awApp,
+                windows: AWManagerInternal.createWindowDictonary(awApp),
+                observer: observer)
+            AWManagerInternal.trackApplication(self.apps, appMeta: meta)
+            print("done init app", app.processIdentifier, NSDate().timeIntervalSince1970)
+            return true
         } else {
-            print("application wasn't found for pid")
+            print("not init app", app.processIdentifier, NSDate().timeIntervalSince1970)
             return false
         }
+        
     }
+    
     
 }

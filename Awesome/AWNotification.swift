@@ -1,24 +1,25 @@
-//
-//  ApplicationNotification.swift
-//  Awesome
-//
-//  Created by Marshall Brekka on 4/18/15.
-//  Copyright (c) 2015 Marshall Brekka. All rights reserved.
-//
+/**
+Class for listening to notifications that come from an NSNotificationCenter object.
+Currently this is used for application and window level events.
+*/
 
 import Foundation
 import Cocoa
 
-protocol AWNotificationTarget {
-    func recieveNotification(notification:NSNotification)
+protocol AWNotificationProto {
+    
 }
 
-class AWNotification {
+class AWNotificationStub : AWNotificationProto {
+
+}
+
+class AWNotification : AWNotificationProto {
     let center:NSNotificationCenter
     var observers:[NSObjectProtocol] = []
-    let target:AWNotificationTarget
+    let target:(NSNotification) -> Void
     
-    init (center: NSNotificationCenter, target:AWNotificationTarget, notifications:[String]) {
+    init (center: NSNotificationCenter, target:(NSNotification) -> Void, notifications:[String]) {
         self.target = target
         
         self.center = center
@@ -41,6 +42,6 @@ class AWNotification {
     
     func reciever(notification:NSNotification!) {
         print("got notification: " + notification.name)
-        target.recieveNotification(notification)
+        target(notification)
     }
 }

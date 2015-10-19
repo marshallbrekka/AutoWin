@@ -12,7 +12,6 @@ import JavaScriptCore
 class AWJSContext {
     let context:     JSContext = JSContext()
     let manager:     AWManager
-    let appEvents:   AWApplicationNotification
     let events:      AWJSEvent
     let application: AWJSApplication
     let window:      AWJSWindow
@@ -30,8 +29,8 @@ class AWJSContext {
         application = AWJSApplication(events: events)
         window      = AWJSWindow(events: events)
         hotkeys     = AWJSHotKey()
-        manager     = AWManager(jsApp: application, jsWindow: window)
-        appEvents   = AWApplicationNotification(manager: manager)
+        // this should be removed, only leaving to get it to compile
+        manager     = AWManager()
         monitors    = AWJSMonitors(events: events)
         
 

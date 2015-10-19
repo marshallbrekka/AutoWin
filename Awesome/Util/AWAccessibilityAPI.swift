@@ -6,6 +6,12 @@ import Foundation
 
 class AWAccessibilityAPI {
     
+    class func getPid(ref: AXUIElementRef) -> pid_t {
+        var pid:pid_t = 0
+        AXUIElementGetPid(ref, &pid)
+        return pid
+    }
+    
     class func getAttribute<T>(ref: AXUIElementRef, property: String) -> T? {
         var pointer:AnyObject?
         let status:AXError = AXUIElementCopyAttributeValue(ref, property, &pointer)
@@ -49,8 +55,12 @@ class AWAccessibilityAPI {
     }
     
     class func getValueAttribute<T>(ref: AXUIElementRef, property: String, type: AXValueType, inout destination: T) -> T {
-        let value:AXValue = getAttribute(ref, property: property) as AXValue!
-        return convertValue(value, type: type, destination: &destination)
+        let value:AXValue? = getAttribute(ref, property: property) as AXValue?
+        if (value != nil) {
+            return convertValue(value!, type: type, destination: &destination)
+        } else {
+            return destination;
+        }
     }
     
     /*

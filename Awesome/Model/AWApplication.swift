@@ -16,19 +16,11 @@ class AWApplication {
     let app:NSRunningApplication
     let ref:AXUIElementRef
     let pid:pid_t
-    var observer:AWObserver?;
-
     
     init(app:NSRunningApplication) {
         self.app = app
         pid = app.processIdentifier
         ref = AXUIElementCreateApplication(pid).takeRetainedValue()
-
-        if pid == 198 {
-            watch()
-        } else {
-            self.observer = nil
-        }
     }
     
     func activate() -> Bool {
@@ -38,55 +30,18 @@ class AWApplication {
             value: true)
     }
     
-    func notificationCallback(ob: AXObserver!, element:AXUIElement!, notification:CFString!) {
-        let notifo:String = String(notification)
-        print("notifo callback: " + notifo);
-        print(pid)
-        print(CFEqual(element, ref))
-        print(element);
-        if notifo == NSAccessibilityWindowCreatedNotification {
-            let window = AWWindow(ref: element)
-            print(window.title())
-            print(window.size())
-        } else {
-            print("is the app ref equal")
-            print(self.ref)
-            print(CFEqual(element, ref))
-        }
-    }
-
-    
-    func watch() {
-        observer = AWObserver(pid, callback: notificationCallback);
-        observer!.addNotification(ref, notification: NSAccessibilityApplicationHiddenNotification)
-        observer!.addNotification(ref, notification: NSAccessibilityWindowCreatedNotification)
-        print("watching now")
-    }
-    
     func title() -> String {
         return app.localizedName!
     }
     
-    func windows() -> [AWWindow] {
-        var windowObjects: [AWWindow]! = []
-        let windowRefs: [AXUIElementRef]? = AWAccessibilityAPI.getAttributes(self.ref, property: NSAccessibilityWindowsAttribute) as [AXUIElementRef]?
-        if windowRefs != nil {
-            windowRefs?.map({
-                if AWWindow.isWindow($0) {
-                    windowObjects.append(AWWindow(ref: $0))
-                }
-            }) as [Void]!
+    class func isSupportedApplication(app: AWApplication) -> Bool {
+        print("getting application role", NSDate().timeIntervalSince1970)
+        let role = AWAccessibilityAPI.getAttribute(app.ref, property: NSAccessibilityRoleAttribute) as String?
+        print("got application role", NSDate().timeIntervalSince1970)
+        if role != nil {
+            return role! == NSAccessibilityApplicationRole
+        } else {
+            return false
         }
-        return windowObjects
-    }
-    
-    class func applications() -> [AWApplication] {
-        let workspace = NSWorkspace.sharedWorkspace()
-        let runningApps:[NSRunningApplication] =  workspace.runningApplications 
-        var apps:[AWApplication] = []
-        for runningApp in runningApps {
-            apps.append(AWApplication(app: runningApp))
-        }
-        return apps
     }
 }

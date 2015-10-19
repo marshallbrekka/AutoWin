@@ -13,16 +13,15 @@
 		3D1F0F6C1AF9B40700437F97 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 3D1F0F6B1AF9B40700437F97 /* README.md */; };
 		3D2D8BF01AF0A749009406B8 /* JSType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2D8BEF1AF0A749009406B8 /* JSType.swift */; };
 		3D2FD4A81AE05DE5002641E0 /* AWObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2FD4A71AE05DE5002641E0 /* AWObserver.m */; };
-		3D2FD4AA1AE36C2D002641E0 /* AWApplicationNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2FD4A91AE36C2D002641E0 /* AWApplicationNotification.swift */; };
 		3D2FD4AF1AE5EE7A002641E0 /* AWJSApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2FD4AE1AE5EE7A002641E0 /* AWJSApplication.swift */; };
 		3D2FD4B11AE5FFB7002641E0 /* AWJSContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2FD4B01AE5FFB7002641E0 /* AWJSContext.swift */; };
 		3D2FD4B41AE617A2002641E0 /* AWJSEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2FD4B31AE617A2002641E0 /* AWJSEvent.swift */; };
 		3D2FD4B61AE69744002641E0 /* AWJSConsole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2FD4B51AE69744002641E0 /* AWJSConsole.swift */; };
 		3D2FD4B81AE6A365002641E0 /* AWManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2FD4B71AE6A365002641E0 /* AWManager.swift */; };
-		3D50BB901AF1455E00C1E583 /* AWWorkspaceNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D50BB8F1AF1455E00C1E583 /* AWWorkspaceNotification.swift */; };
+		3D50BB901AF1455E00C1E583 /* AWNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D50BB8F1AF1455E00C1E583 /* AWNotification.swift */; };
 		3D5DF6231BC0434F0043179C /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 3D5DF6221BC0434F0043179C /* README.md */; settings = {ASSET_TAGS = (); }; };
+		3D5DF6251BC42AFA0043179C /* AWManagerInternal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5DF6241BC42AFA0043179C /* AWManagerInternal.swift */; settings = {ASSET_TAGS = (); }; };
 		3D6AE0851AF08A8C00FC0B2D /* AWJSMonitors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6AE0841AF08A8C00FC0B2D /* AWJSMonitors.swift */; };
-		3DAA7B521B1B6F07004C2BFB /* AWApplicationWindowTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAA7B511B1B6F07004C2BFB /* AWApplicationWindowTracker.swift */; };
 		3DAA7B541B1B7498004C2BFB /* AWJSWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAA7B531B1B7498004C2BFB /* AWJSWindow.swift */; };
 		AB576D8A1AC61AD500AABBF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB576D891AC61AD500AABBF5 /* AppDelegate.swift */; };
 		AB576D8C1AC61AD500AABBF5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB576D8B1AC61AD500AABBF5 /* Images.xcassets */; };
@@ -52,17 +51,16 @@
 		3D2D8BEF1AF0A749009406B8 /* JSType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSType.swift; path = JS/JSType.swift; sourceTree = "<group>"; };
 		3D2FD4A61AE05DE5002641E0 /* AWObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AWObserver.h; path = Notifications/AWObserver.h; sourceTree = "<group>"; };
 		3D2FD4A71AE05DE5002641E0 /* AWObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AWObserver.m; path = Notifications/AWObserver.m; sourceTree = "<group>"; };
-		3D2FD4A91AE36C2D002641E0 /* AWApplicationNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWApplicationNotification.swift; path = Notifications/AWApplicationNotification.swift; sourceTree = "<group>"; };
 		3D2FD4AE1AE5EE7A002641E0 /* AWJSApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWJSApplication.swift; path = JS/AWJSApplication.swift; sourceTree = "<group>"; };
 		3D2FD4B01AE5FFB7002641E0 /* AWJSContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWJSContext.swift; path = JS/AWJSContext.swift; sourceTree = "<group>"; };
 		3D2FD4B31AE617A2002641E0 /* AWJSEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWJSEvent.swift; path = JS/AWJSEvent.swift; sourceTree = "<group>"; };
 		3D2FD4B51AE69744002641E0 /* AWJSConsole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWJSConsole.swift; path = JS/AWJSConsole.swift; sourceTree = "<group>"; };
 		3D2FD4B71AE6A365002641E0 /* AWManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWManager.swift; sourceTree = "<group>"; };
-		3D50BB8F1AF1455E00C1E583 /* AWWorkspaceNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWWorkspaceNotification.swift; sourceTree = "<group>"; };
+		3D50BB8F1AF1455E00C1E583 /* AWNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWNotification.swift; sourceTree = "<group>"; };
 		3D5DF6221BC0434F0043179C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		3D5DF6241BC42AFA0043179C /* AWManagerInternal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWManagerInternal.swift; path = Model/internal/AWManagerInternal.swift; sourceTree = "<group>"; };
 		3D6AE0841AF08A8C00FC0B2D /* AWJSMonitors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWJSMonitors.swift; path = JS/AWJSMonitors.swift; sourceTree = "<group>"; };
 		3DAA27A41AD44A6C008DDFC1 /* Awesome-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Awesome-Bridging-Header.h"; sourceTree = "<group>"; };
-		3DAA7B511B1B6F07004C2BFB /* AWApplicationWindowTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWApplicationWindowTracker.swift; path = Model/AWApplicationWindowTracker.swift; sourceTree = "<group>"; };
 		3DAA7B531B1B7498004C2BFB /* AWJSWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWJSWindow.swift; path = JS/AWJSWindow.swift; sourceTree = "<group>"; };
 		AB576D841AC61AD500AABBF5 /* Awesome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Awesome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB576D881AC61AD500AABBF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -125,9 +123,10 @@
 		3D57E9621AEAA71A002F50A2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3D2FD4B71AE6A365002641E0 /* AWManager.swift */,
+				3D5DF6261BC42B140043179C /* internal */,
 				AB576DA41AC6231100AABBF5 /* AWApplication.swift */,
 				AB576DA61AC633AB00AABBF5 /* AWWindow.swift */,
-				3DAA7B511B1B6F07004C2BFB /* AWApplicationWindowTracker.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -135,12 +134,19 @@
 		3D57E9631AEAA749002F50A2 /* Notificatons */ = {
 			isa = PBXGroup;
 			children = (
-				3D2FD4A91AE36C2D002641E0 /* AWApplicationNotification.swift */,
 				3D2FD4A61AE05DE5002641E0 /* AWObserver.h */,
 				3D2FD4A71AE05DE5002641E0 /* AWObserver.m */,
-				3D50BB8F1AF1455E00C1E583 /* AWWorkspaceNotification.swift */,
+				3D50BB8F1AF1455E00C1E583 /* AWNotification.swift */,
 			);
 			name = Notificatons;
+			sourceTree = "<group>";
+		};
+		3D5DF6261BC42B140043179C /* internal */ = {
+			isa = PBXGroup;
+			children = (
+				3D5DF6241BC42AFA0043179C /* AWManagerInternal.swift */,
+			);
+			name = internal;
 			sourceTree = "<group>";
 		};
 		AB576D7B1AC61AD400AABBF5 = {
@@ -173,7 +179,6 @@
 				AB576D8D1AC61AD500AABBF5 /* MainMenu.xib */,
 				AB576D871AC61AD500AABBF5 /* Supporting Files */,
 				3DAA27A41AD44A6C008DDFC1 /* Awesome-Bridging-Header.h */,
-				3D2FD4B71AE6A365002641E0 /* AWManager.swift */,
 				3D5DF6221BC0434F0043179C /* README.md */,
 			);
 			path = Awesome;
@@ -309,11 +314,11 @@
 				3D2FD4B81AE6A365002641E0 /* AWManager.swift in Sources */,
 				3D1C3DD21AE83BE200EEE08A /* AWJSHotKey.swift in Sources */,
 				3D5DF6231BC0434F0043179C /* README.md in Sources */,
+				3D5DF6251BC42AFA0043179C /* AWManagerInternal.swift in Sources */,
 				3D2FD4AF1AE5EE7A002641E0 /* AWJSApplication.swift in Sources */,
 				3DAA7B541B1B7498004C2BFB /* AWJSWindow.swift in Sources */,
 				AB576DA51AC6231100AABBF5 /* AWApplication.swift in Sources */,
 				3D2FD4B41AE617A2002641E0 /* AWJSEvent.swift in Sources */,
-				3DAA7B521B1B6F07004C2BFB /* AWApplicationWindowTracker.swift in Sources */,
 				3D1F0F6C1AF9B40700437F97 /* README.md in Sources */,
 				3D2FD4B11AE5FFB7002641E0 /* AWJSContext.swift in Sources */,
 				3D1C3DD51AE8680D00EEE08A /* AWKeyCodes.swift in Sources */,
@@ -322,9 +327,8 @@
 				AB576D8A1AC61AD500AABBF5 /* AppDelegate.swift in Sources */,
 				AB576DA71AC633AB00AABBF5 /* AWWindow.swift in Sources */,
 				3D6AE0851AF08A8C00FC0B2D /* AWJSMonitors.swift in Sources */,
-				3D50BB901AF1455E00C1E583 /* AWWorkspaceNotification.swift in Sources */,
+				3D50BB901AF1455E00C1E583 /* AWNotification.swift in Sources */,
 				AB576DA91AC8CA8C00AABBF5 /* AWAccessibilityAPI.swift in Sources */,
-				3D2FD4AA1AE36C2D002641E0 /* AWApplicationNotification.swift in Sources */,
 				3D2D8BF01AF0A749009406B8 /* JSType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

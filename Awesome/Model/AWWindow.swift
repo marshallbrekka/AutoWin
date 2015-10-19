@@ -11,14 +11,11 @@ import Cocoa
 
 class AWWindow {
     let ref:AXUIElementRef
-    let id: CGWindowID
+    let id: UInt
     
     init(ref:AXUIElementRef) {
         self.ref = ref
-        
-        // get the id using private function
-        id = CGWindowID()
-        _AXUIElementGetWindow(ref, &id)
+        id = CFHash(ref)
     }
     
     func title() -> String? {
@@ -47,7 +44,9 @@ class AWWindow {
         // other than kAXWindowRole (e.g. Emacs does not claim kAXWindowRole)
         // so we will do the simple test first, but then also attempt to duck-type
         // the object, to see if it has a property that any window should have
-        if role! == NSAccessibilityWindowRole {
+        if role == nil {
+            return false
+        } else if role! == NSAccessibilityWindowRole {
             return true
         } else {
             return AWAccessibilityAPI.getAttribute(ref, property: NSAccessibilityMinimizedAttribute) as String? != nil
