@@ -16,8 +16,19 @@ class AWManagerInternal {
         NSAccessibilityWindowCreatedNotification,
         NSAccessibilityWindowMovedNotification,
         NSAccessibilityWindowResizedNotification,
-        NSAccessibilityMainWindowChangedNotification,
-        NSAccessibilityFocusedWindowChangedNotification
+        NSAccessibilityFocusedWindowChangedNotification,
+        NSAccessibilityMainWindowChangedNotification
+    ]
+    
+    // Some or all of these events are fired when a window is created
+    // and the order is not specified, so instead we will see if the
+    // window already exists in our tracking for each of these events
+    // and if it doesnt we will track it and trigger a window creation
+    // event (if the original event was not a window creation event).
+    static let windowCreateNotifications:Set = [
+        NSAccessibilityWindowCreatedNotification,
+        NSAccessibilityFocusedWindowChangedNotification,
+        NSAccessibilityMainWindowChangedNotification
     ]
     
     class func applications() -> [NSRunningApplication] {
@@ -70,6 +81,14 @@ class AWManagerInternal {
     
     class func trackApplication(apps: NSMutableDictionary, appMeta: AWManager.AppMeta) {
         apps.setObject(appMeta, forKey: NSNumber(int: appMeta.app.pid))
+    }
+    
+    class func pidToApplication(apps: NSMutableDictionary, pid: pid_t) -> AWApplication? {
+        if let meta = apps.objectForKey(NSNumber(int: pid)) as? AWManager.AppMeta {
+            return meta.app
+        } else {
+            return nil
+        }
     }
     
     class func removeApplication(apps: NSMutableDictionary, pid: pid_t) -> AWManager.AppMeta? {

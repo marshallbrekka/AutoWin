@@ -31,7 +31,11 @@ class AWApplication {
     }
     
     func title() -> String {
-        return app.localizedName!
+        if (app.localizedName == nil) {
+            return ""
+        } else {
+            return app.localizedName!
+        }
     }
     
     class func isSupportedApplication(app: AWApplication) -> Bool {

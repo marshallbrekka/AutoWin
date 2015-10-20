@@ -39,7 +39,9 @@ class AWWindow {
     }
     
     class func isWindow(ref:AXUIElementRef) -> Bool {
+        print("IS WINDOW")
         let role:String? = AWAccessibilityAPI.getAttribute(ref, property: NSAccessibilityRoleAttribute) as String?
+        print("IS WINDOW", role)
         // The role attribute on a window can potentially be something
         // other than kAXWindowRole (e.g. Emacs does not claim kAXWindowRole)
         // so we will do the simple test first, but then also attempt to duck-type
@@ -47,8 +49,11 @@ class AWWindow {
         if role == nil {
             return false
         } else if role! == NSAccessibilityWindowRole {
-            return true
+            let subrole:String? = AWAccessibilityAPI.getAttribute(ref, property: NSAccessibilitySubroleAttribute) as String?
+            return (subrole == nil ||
+                    subrole! == NSAccessibilityStandardWindowSubrole)
         } else {
+            print("window doesn't have standard role")
             return AWAccessibilityAPI.getAttribute(ref, property: NSAccessibilityMinimizedAttribute) as String? != nil
         }
     }
