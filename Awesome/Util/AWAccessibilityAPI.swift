@@ -12,6 +12,11 @@ class AWAccessibilityAPI {
         return pid
     }
     
+    class func performAction(ref: AXUIElementRef, action: String) -> Bool {
+        let status:AXError = AXUIElementPerformAction(ref, action)
+        return status == AXError.Success
+    }
+    
     class func getAttribute<T>(ref: AXUIElementRef, property: String) -> T? {
         var pointer:AnyObject?
         let status:AXError = AXUIElementCopyAttributeValue(ref, property, &pointer)
@@ -51,15 +56,24 @@ class AWAccessibilityAPI {
     
     class func setAttribute<T: AnyObject>(ref: AXUIElementRef, property: String, value: T) -> Bool {
         let status:AXError = AXUIElementSetAttributeValue(ref, property, value)
-        return status != AXError.Success
+        print("set attr status", status)
+        return status == AXError.Success
     }
     
     class func getValueAttribute<T>(ref: AXUIElementRef, property: String, type: AXValueType, inout destination: T) -> T {
         let value:AXValue? = getAttribute(ref, property: property) as AXValue?
         if (value != nil) {
-            return convertValue(value!, type: type, destination: &destination)
+            return AXValueToValue(value!, type: type, destination: &destination)
         } else {
             return destination;
+        }
+    }
+    
+    class func setValueAttribute<T>(ref:AXUIElementRef, property: String, type: AXValueType, inout source: T) -> Bool {
+        if let axValue = ValueToAXValue(type, source: &source) {
+            return setAttribute(ref, property: property, value: axValue)
+        } else {
+            return false
         }
     }
     
@@ -67,8 +81,17 @@ class AWAccessibilityAPI {
     Generic function for converting a AXValue to its real type.
     The destination can be one of CGSize, CGRect, CGRange, CGPoint.
     */
-    class func convertValue<T>(value: AXValue, type: AXValueType, inout destination: T) -> T {
+    class func AXValueToValue<T>(value: AXValue, type: AXValueType, inout destination: T) -> T {
         AXValueGetValue(value, type, &destination)
         return destination
     }
+    
+    class func ValueToAXValue<T>(type: AXValueType, inout source: T) -> AXValue? {
+        if let value = AXValueCreate(type, &source) {
+            return value.takeRetainedValue()
+        }
+        return nil
+    }
+    
+    
 }

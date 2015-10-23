@@ -39,8 +39,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-        //context = AWJSContext()
-        manager = AWManager()
+        context = AWJSContext()
+//        manager = AWManager()
         /*hkm = AWHotKeyManager()
         id1 = hkm!.addHotKey("e", withModifiers: ["cmd", "opt", "ctrl", "shift"], forCallback: {(down:Bool, key:String!, modifiers:[AnyObject]!) in
             println("got hotkey event callback")

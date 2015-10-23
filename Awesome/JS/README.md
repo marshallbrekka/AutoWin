@@ -53,6 +53,7 @@ The initial API is documented below.
 - aw.window.focusedWindow()
 - aw.window.becomeMain(window)
 - aw.window.setFrame(window,frame)
+- aw.window.getFrame(pid, windowId)
 - aw.window.setMinimized(window,boolean)
 
 ## Mouse functions

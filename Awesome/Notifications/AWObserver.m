@@ -35,8 +35,11 @@ void watcher_observer_callback(AXObserverRef observer, AXUIElementRef element, C
     AXObserverAddNotification(self.observer, element, notifo, (__bridge void *) self);
 }
 
--(void) removeNotification: (AXUIElementRef) element notification:(CFStringRef) notifo {
-    AXObserverRemoveNotification(self.observer, element, notifo);
+-(void) stop {
+    CFRunLoopRemoveSource(CFRunLoopGetCurrent(),
+                          AXObserverGetRunLoopSource(self.observer),
+                          kCFRunLoopDefaultMode);
+    CFRelease(self.observer);
 }
 
 @end

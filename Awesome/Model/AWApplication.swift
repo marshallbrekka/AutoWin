@@ -38,6 +38,7 @@ class AWApplication {
         }
     }
     
+    
     class func isSupportedApplication(app: AWApplication) -> Bool {
         print("getting application role", NSDate().timeIntervalSince1970)
         let role = AWAccessibilityAPI.getAttribute(app.ref, property: NSAccessibilityRoleAttribute) as String?

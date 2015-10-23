@@ -56,7 +56,7 @@ class AWManagerInternal {
         if windowRefs != nil {
             windowRefs?.map({
                 if AWWindow.isWindow($0) {
-                    windowObjects.append(AWWindow(ref: $0))
+                    windowObjects.append(AWWindow(ref: $0, pid: app.pid))
                 }
             }) as [Void]!
         }
@@ -96,9 +96,7 @@ class AWManagerInternal {
         let meta = apps.objectForKey(key) as? AWManager.AppMeta
         if (meta != nil) {
             apps.removeObjectForKey(key)
-            for notification in windowNotifications {
-                meta!.observer.removeNotification(meta!.app.ref, notification: notification)
-            }
+            meta!.observer.stop()
             return meta!
         } else {
             return nil
@@ -120,7 +118,7 @@ class AWManagerInternal {
     
     class func createAndTrackWindow(apps: NSMutableDictionary, ref: AXUIElementRef) -> AWWindow {
         let appMeta = AWManagerInternal.elementRefToAppMeta(apps, ref: ref)
-        let window = AWWindow(ref: ref)
+        let window = AWWindow(ref: ref, pid: appMeta!.app.pid)
         if (appMeta != nil) {
             trackWindow(appMeta!.windows, window: window)
         }

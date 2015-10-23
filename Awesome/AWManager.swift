@@ -158,4 +158,51 @@ class AWManager {
         }
         
     }
+    
+    func getApplication(pid: pid_t) -> AWApplication? {
+        return AWManagerInternal.pidToApplication(apps, pid: pid)
+    }
+    
+    func applications() -> [AWApplication] {
+        var appObjects: [AWApplication] = []
+        let enumerator = apps.objectEnumerator()
+        while let appMeta = enumerator.nextObject() as? AppMeta {
+            appObjects.append(appMeta.app);
+        }
+        return appObjects
+    }
+    
+    func getWindow(pid: pid_t, windowId: uint) -> AWWindow? {
+        if let appMeta = apps.objectForKey(NSNumber(int: pid)) as? AppMeta {
+            return appMeta.windows.objectForKey(NSNumber(unsignedInt: windowId)) as? AWWindow
+        } else {
+            return nil
+        }
+    }
+    
+    func windows() -> [AWWindow] {
+        var windowObjects: [AWWindow] = []
+        let enumerator = apps.objectEnumerator()
+        while let appMeta = enumerator.nextObject() as? AppMeta {
+            let windowEnumerator = appMeta.windows.objectEnumerator()
+            while let window = windowEnumerator.nextObject() as? AWWindow {
+                windowObjects.append(window)
+            }
+        }
+        return windowObjects
+    }
+    
+    func focusedWindow() -> AWWindow? {
+        let system = AXUIElementCreateSystemWide().takeRetainedValue()
+        let app = AWAccessibilityAPI.getAttribute(system, property: kAXFocusedApplicationAttribute) as AXUIElementRef?
+        if app != nil {
+            if let window:AXUIElementRef = AWAccessibilityAPI.getAttribute(app!, property: NSAccessibilityFocusedWindowAttribute) as AXUIElementRef? {
+                return AWWindow(ref: window, pid: AWAccessibilityAPI.getPid(app!))
+            } else {
+                return nil
+            }
+        } else {
+            return nil
+        }
+    }
 }

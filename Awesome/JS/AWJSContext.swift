@@ -1,11 +1,16 @@
-//
-//  AWJSContext.swift
-//  Awesome
-//
-//  Created by Marshall Brekka on 4/20/15.
-//  Copyright (c) 2015 Marshall Brekka. All rights reserved.
-//
+/**
+Entry point for the javascript environment that supports the 
+aw.* apis.
 
+The Class model is like so:
+AWManager()
+AWJSEvent()
+AWJSManager(AWManager, AWJSEvent)
+AWJSWindow(AWJSManager)
+AWJSApplication(AWJSManager)
+AWJSHotKey()
+AWJSMonitors(AWJSEvent)
+*/
 import Foundation
 import JavaScriptCore
 
@@ -26,17 +31,18 @@ class AWJSContext {
         }
         context.setObject(AWJSConsole.self, forKeyedSubscript: "console")
         events      = AWJSEvent(context: context)
-        application = AWJSApplication(events: events)
-        window      = AWJSWindow(events: events)
+        manager     = AWManager()
+        application = AWJSApplication(manager: manager, events: events)
+        window      = AWJSWindow(manager: manager, events: events)
         hotkeys     = AWJSHotKey()
         // this should be removed, only leaving to get it to compile
-        manager     = AWManager()
         monitors    = AWJSMonitors(events: events)
         
 
         // initialize api objects here
         api = [
             "application": application,
+            "window": window,
             "events": events,
             "hotkey": hotkeys,
             "monitors": monitors
@@ -49,9 +55,11 @@ class AWJSContext {
         context.evaluateScript("aw.events.addEventListener('hi', myThing)")
         context.evaluateScript("aw.events.addEventListener('hi', myThing)")
         context.evaluateScript("aw.events.addEventListener('hi', function(){})")
-        context.evaluateScript("function hotkey(){console.log('hotkey called'); aw.hotkey.removeHotkey('y', ['cmd'])}; aw.hotkey.addHotkeyListener('y', ['cmd'], hotkey);")
+        context.evaluateScript("function hotkey(){console.log('hotkey called'); var w = aw.window.focusedWindow(); if (w) {aw.window.close(w.pid, w.id);}}; aw.hotkey.addHotkeyListener('y', ['cmd'], hotkey);")
+        context.evaluateScript("function size(){console.log('size called'); var w = aw.window.focusedWindow(); if (w) {aw.window.setFrame(w.pid, w.id, {x:50, y:50, width: 200, height: 200}); aw.window.getFrame(w.pid, w.id);}}; aw.hotkey.addHotkeyListener('j', ['cmd'], size);")
         context.evaluateScript("var m = aw.monitors.monitors(); console.log(m[0].id); console.log(m[0].frame.width); console.log(m[0].frame.height);")
         context.evaluateScript("console.log(m[0].frame.x); console.log(m[0].frame.y);")
+        context.evaluateScript("var windows = aw.window.windows(); console.log(windows[0].id); console.log(windows[0].pid)")
     }
 
 }

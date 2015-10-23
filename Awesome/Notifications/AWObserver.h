@@ -18,6 +18,6 @@ AXObserverRef makeObserver(pid_t pid);
 
 - (id) init: (pid_t) pid callback:(Callback) fn;
 - (void) addNotification: (AXUIElementRef)input notification:(CFStringRef) notifo;
-- (void) removeNotification: (AXUIElementRef)input notification:(CFStringRef) notifo;
+- (void) stop;
 @end
 
