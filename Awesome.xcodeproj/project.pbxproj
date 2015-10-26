@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D13A5D71BDC2AAF00639FB1 /* AWStatusItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D13A5D61BDC2AAF00639FB1 /* AWStatusItem.swift */; settings = {ASSET_TAGS = (); }; };
+		3D13A5D91BDC31B300639FB1 /* AWStatusTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D13A5D81BDC31B300639FB1 /* AWStatusTarget.swift */; settings = {ASSET_TAGS = (); }; };
+		3D13A5DC1BDC415A00639FB1 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D13A5DA1BDC415A00639FB1 /* MainMenu.xib */; settings = {ASSET_TAGS = (); }; };
+		3D13A5DE1BDC54DA00639FB1 /* AWPreferencesWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D13A5DD1BDC54DA00639FB1 /* AWPreferencesWindow.swift */; settings = {ASSET_TAGS = (); }; };
+		3D13A5E01BDC5A4800639FB1 /* AWPreferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D13A5DF1BDC5A4800639FB1 /* AWPreferences.xib */; settings = {ASSET_TAGS = (); }; };
+		3D13A5E21BDC75E000639FB1 /* AWOpenAtLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D13A5E11BDC75E000639FB1 /* AWOpenAtLogin.swift */; settings = {ASSET_TAGS = (); }; };
+		3D13A5EA1BDCA0C700639FB1 /* AWPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D13A5E91BDCA0C700639FB1 /* AWPreferences.swift */; settings = {ASSET_TAGS = (); }; };
+		3D13A5EF1BDDD39200639FB1 /* status.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 3D13A5EE1BDDD39200639FB1 /* status.pdf */; settings = {ASSET_TAGS = (); }; };
 		3D1C3DD21AE83BE200EEE08A /* AWJSHotKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1C3DD11AE83BE200EEE08A /* AWJSHotKey.swift */; };
 		3D1C3DD51AE8680D00EEE08A /* AWKeyCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1C3DD41AE8680D00EEE08A /* AWKeyCodes.swift */; };
 		3D1C3DD81AE8955200EEE08A /* AWHotKeyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D1C3DD71AE8955200EEE08A /* AWHotKeyManager.m */; };
@@ -25,7 +33,6 @@
 		3DAA7B541B1B7498004C2BFB /* AWJSWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAA7B531B1B7498004C2BFB /* AWJSWindow.swift */; };
 		AB576D8A1AC61AD500AABBF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB576D891AC61AD500AABBF5 /* AppDelegate.swift */; };
 		AB576D8C1AC61AD500AABBF5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB576D8B1AC61AD500AABBF5 /* Images.xcassets */; };
-		AB576D8F1AC61AD500AABBF5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB576D8D1AC61AD500AABBF5 /* MainMenu.xib */; };
 		AB576D9B1AC61AD500AABBF5 /* AwesomeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB576D9A1AC61AD500AABBF5 /* AwesomeTests.swift */; };
 		AB576DA51AC6231100AABBF5 /* AWApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB576DA41AC6231100AABBF5 /* AWApplication.swift */; };
 		AB576DA71AC633AB00AABBF5 /* AWWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB576DA61AC633AB00AABBF5 /* AWWindow.swift */; };
@@ -43,6 +50,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3D13A5D61BDC2AAF00639FB1 /* AWStatusItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWStatusItem.swift; path = UI/AWStatusItem.swift; sourceTree = "<group>"; };
+		3D13A5D81BDC31B300639FB1 /* AWStatusTarget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWStatusTarget.swift; sourceTree = "<group>"; };
+		3D13A5DB1BDC415A00639FB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Awesome/Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		3D13A5DD1BDC54DA00639FB1 /* AWPreferencesWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWPreferencesWindow.swift; path = UI/AWPreferencesWindow.swift; sourceTree = "<group>"; };
+		3D13A5DF1BDC5A4800639FB1 /* AWPreferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AWPreferences.xib; path = UI/AWPreferences.xib; sourceTree = "<group>"; };
+		3D13A5E11BDC75E000639FB1 /* AWOpenAtLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWOpenAtLogin.swift; path = Util/AWOpenAtLogin.swift; sourceTree = "<group>"; };
+		3D13A5E91BDCA0C700639FB1 /* AWPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWPreferences.swift; sourceTree = "<group>"; };
+		3D13A5EE1BDDD39200639FB1 /* status.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = status.pdf; path = Awesome/Icons/status.pdf; sourceTree = "<group>"; };
 		3D1C3DD11AE83BE200EEE08A /* AWJSHotKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWJSHotKey.swift; path = JS/AWJSHotKey.swift; sourceTree = "<group>"; };
 		3D1C3DD41AE8680D00EEE08A /* AWKeyCodes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWKeyCodes.swift; path = Util/AWKeyCodes.swift; sourceTree = "<group>"; };
 		3D1C3DD61AE8955200EEE08A /* AWHotKeyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AWHotKeyManager.h; path = Util/AWHotKeyManager.h; sourceTree = "<group>"; };
@@ -66,7 +81,6 @@
 		AB576D881AC61AD500AABBF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB576D891AC61AD500AABBF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB576D8B1AC61AD500AABBF5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		AB576D8E1AC61AD500AABBF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		AB576D941AC61AD500AABBF5 /* AwesomeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AwesomeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB576D991AC61AD500AABBF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB576D9A1AC61AD500AABBF5 /* AwesomeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwesomeTests.swift; sourceTree = "<group>"; };
@@ -93,6 +107,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3D13A5D51BDC2A9400639FB1 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				3D13A5D61BDC2AAF00639FB1 /* AWStatusItem.swift */,
+				3D13A5D81BDC31B300639FB1 /* AWStatusTarget.swift */,
+				3D13A5DD1BDC54DA00639FB1 /* AWPreferencesWindow.swift */,
+				3D13A5DF1BDC5A4800639FB1 /* AWPreferences.xib */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		3D13A5ED1BDDD38400639FB1 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				3D13A5EE1BDDD39200639FB1 /* status.pdf */,
+			);
+			name = Icons;
+			sourceTree = "<group>";
+		};
 		3D1C3DD31AE867FE00EEE08A /* Util */ = {
 			isa = PBXGroup;
 			children = (
@@ -100,6 +133,7 @@
 				3D1C3DD41AE8680D00EEE08A /* AWKeyCodes.swift */,
 				3D1C3DD61AE8955200EEE08A /* AWHotKeyManager.h */,
 				3D1C3DD71AE8955200EEE08A /* AWHotKeyManager.m */,
+				3D13A5E11BDC75E000639FB1 /* AWOpenAtLogin.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -127,6 +161,7 @@
 				3D5DF6261BC42B140043179C /* internal */,
 				AB576DA41AC6231100AABBF5 /* AWApplication.swift */,
 				AB576DA61AC633AB00AABBF5 /* AWWindow.swift */,
+				3D13A5E91BDCA0C700639FB1 /* AWPreferences.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -152,6 +187,7 @@
 		AB576D7B1AC61AD400AABBF5 = {
 			isa = PBXGroup;
 			children = (
+				3D13A5ED1BDDD38400639FB1 /* Icons */,
 				AB576D861AC61AD500AABBF5 /* Awesome */,
 				AB576D971AC61AD500AABBF5 /* AwesomeTests */,
 				AB576D851AC61AD500AABBF5 /* Products */,
@@ -170,15 +206,16 @@
 		AB576D861AC61AD500AABBF5 /* Awesome */ = {
 			isa = PBXGroup;
 			children = (
+				3D13A5D51BDC2A9400639FB1 /* UI */,
 				3D57E9631AEAA749002F50A2 /* Notificatons */,
 				3D57E9621AEAA71A002F50A2 /* Model */,
 				3D1C3DD31AE867FE00EEE08A /* Util */,
 				3D2FD4B21AE61780002641E0 /* JS */,
 				AB576D891AC61AD500AABBF5 /* AppDelegate.swift */,
 				AB576D8B1AC61AD500AABBF5 /* Images.xcassets */,
-				AB576D8D1AC61AD500AABBF5 /* MainMenu.xib */,
 				AB576D871AC61AD500AABBF5 /* Supporting Files */,
 				3DAA27A41AD44A6C008DDFC1 /* Awesome-Bridging-Header.h */,
+				3D13A5DA1BDC415A00639FB1 /* MainMenu.xib */,
 				3D5DF6221BC0434F0043179C /* README.md */,
 			);
 			path = Awesome;
@@ -292,7 +329,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB576D8C1AC61AD500AABBF5 /* Images.xcassets in Resources */,
-				AB576D8F1AC61AD500AABBF5 /* MainMenu.xib in Resources */,
+				3D13A5E01BDC5A4800639FB1 /* AWPreferences.xib in Resources */,
+				3D13A5EF1BDDD39200639FB1 /* status.pdf in Resources */,
+				3D13A5DC1BDC415A00639FB1 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,14 +358,19 @@
 				3DAA7B541B1B7498004C2BFB /* AWJSWindow.swift in Sources */,
 				AB576DA51AC6231100AABBF5 /* AWApplication.swift in Sources */,
 				3D2FD4B41AE617A2002641E0 /* AWJSEvent.swift in Sources */,
+				3D13A5D71BDC2AAF00639FB1 /* AWStatusItem.swift in Sources */,
 				3D1F0F6C1AF9B40700437F97 /* README.md in Sources */,
+				3D13A5EA1BDCA0C700639FB1 /* AWPreferences.swift in Sources */,
 				3D2FD4B11AE5FFB7002641E0 /* AWJSContext.swift in Sources */,
+				3D13A5DE1BDC54DA00639FB1 /* AWPreferencesWindow.swift in Sources */,
 				3D1C3DD51AE8680D00EEE08A /* AWKeyCodes.swift in Sources */,
+				3D13A5E21BDC75E000639FB1 /* AWOpenAtLogin.swift in Sources */,
 				3D2FD4A81AE05DE5002641E0 /* AWObserver.m in Sources */,
 				3D1C3DD81AE8955200EEE08A /* AWHotKeyManager.m in Sources */,
 				AB576D8A1AC61AD500AABBF5 /* AppDelegate.swift in Sources */,
 				AB576DA71AC633AB00AABBF5 /* AWWindow.swift in Sources */,
 				3D6AE0851AF08A8C00FC0B2D /* AWJSMonitors.swift in Sources */,
+				3D13A5D91BDC31B300639FB1 /* AWStatusTarget.swift in Sources */,
 				3D50BB901AF1455E00C1E583 /* AWNotification.swift in Sources */,
 				AB576DA91AC8CA8C00AABBF5 /* AWAccessibilityAPI.swift in Sources */,
 				3D2D8BF01AF0A749009406B8 /* JSType.swift in Sources */,
@@ -352,12 +396,13 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		AB576D8D1AC61AD500AABBF5 /* MainMenu.xib */ = {
+		3D13A5DA1BDC415A00639FB1 /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				AB576D8E1AC61AD500AABBF5 /* Base */,
+				3D13A5DB1BDC415A00639FB1 /* Base */,
 			);
 			name = MainMenu.xib;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

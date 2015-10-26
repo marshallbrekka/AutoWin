@@ -12,6 +12,15 @@ class AWAccessibilityAPI {
         return pid
     }
     
+    class func isProcessTrusted() ->Bool {
+        return AXIsProcessTrustedWithOptions(nil)
+    }
+    
+    class func promptToTrustProcess() -> Bool {
+        let dict = [kAXTrustedCheckOptionPrompt.takeRetainedValue() as String :kCFBooleanTrue]
+        return AXIsProcessTrustedWithOptions(dict)
+    }
+    
     class func performAction(ref: AXUIElementRef, action: String) -> Bool {
         let status:AXError = AXUIElementPerformAction(ref, action)
         return status == AXError.Success

@@ -13,9 +13,11 @@ AWJSMonitors(AWJSEvent)
 */
 import Foundation
 import JavaScriptCore
+import WebKit
 
-class AWJSContext {
-    let context:     JSContext = JSContext()
+class AWJSContext:NSObject, WebFrameLoadDelegate {
+    var webView:     WebView?
+    var context:     JSContext
     let manager:     AWManager
     let events:      AWJSEvent
     let application: AWJSApplication
@@ -24,14 +26,25 @@ class AWJSContext {
     let monitors:    AWJSMonitors
     
     let api:         NSDictionary
+    
+    func webView(sender: WebView, didCreateJavaScriptContext: JSContext, forFrame:WebFrame){
+       print("got js context")
+           }
 
-    init() {
+    init(manager:AWManager, customContent:String) {
+//        context = JSContext()
+        
+        webView = WebView()
+        print("context", webView?.mainFrame.globalContext)
+        context = JSContext(JSGlobalContextRef: (webView?.mainFrame.globalContext)!)
         context.exceptionHandler = { context, exception in
             print("JS Error: \(exception)")
         }
         context.setObject(AWJSConsole.self, forKeyedSubscript: "console")
+        
+        self.manager = manager
+        
         events      = AWJSEvent(context: context)
-        manager     = AWManager()
         application = AWJSApplication(manager: manager, events: events)
         window      = AWJSWindow(manager: manager, events: events)
         hotkeys     = AWJSHotKey()
@@ -49,7 +62,9 @@ class AWJSContext {
         ]
 
         context.setObject(api, forKeyedSubscript: "aw")
-        context.evaluateScript("function myThing(){}")
+        context.evaluateScript(customContent)
+
+       /* context.evaluateScript("function myThing(){}")
         context.evaluateScript("console.log('fuck this shit'); console.log(123); console.log({a: 1});")
         context.evaluateScript("aw.events.addEventListener('aw.application.launched', function(event, app) {console.log(app.pid)});")
         context.evaluateScript("aw.events.addEventListener('hi', myThing)")
@@ -59,7 +74,7 @@ class AWJSContext {
         context.evaluateScript("function size(){console.log('size called'); var w = aw.window.focusedWindow(); if (w) {aw.window.setFrame(w.pid, w.id, {x:50, y:50, width: 200, height: 200}); aw.window.getFrame(w.pid, w.id);}}; aw.hotkey.addHotkeyListener('j', ['cmd'], size);")
         context.evaluateScript("var m = aw.monitors.monitors(); console.log(m[0].id); console.log(m[0].frame.width); console.log(m[0].frame.height);")
         context.evaluateScript("console.log(m[0].frame.x); console.log(m[0].frame.y);")
-        context.evaluateScript("var windows = aw.window.windows(); console.log(windows[0].id); console.log(windows[0].pid)")
+        context.evaluateScript("var windows = aw.window.windows(); console.log(windows[0].id); console.log(windows[0].pid)")*/
     }
 
 }

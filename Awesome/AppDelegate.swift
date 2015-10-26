@@ -35,12 +35,27 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var manager: AWManager?
     var hkm: AWHotKeyManager?
     var id1:UInt32?
+    var menuItem:AWStatusItem?
+    var menuTarget:AWStatusTarget?
     //var notifo:ApplicationNotification?
 
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-        context = AWJSContext()
-//        manager = AWManager()
+        menuTarget = AWStatusTarget()
+        menuItem = AWStatusItem(target:menuTarget!)
+        manager = AWManager()
+        if let filePath = AWPreferences.getString(AWPreferences.JSFilePath) {
+            do {
+                let contents = try String(contentsOfFile: filePath, encoding: NSUTF8StringEncoding)
+                context = AWJSContext(manager: manager!, customContent: contents)
+                
+            } catch _ {
+                print("ERROR", filePath)
+            }
+        }
+        //context = AWJSContext()
+        
+//
         /*hkm = AWHotKeyManager()
         id1 = hkm!.addHotKey("e", withModifiers: ["cmd", "opt", "ctrl", "shift"], forCallback: {(down:Bool, key:String!, modifiers:[AnyObject]!) in
             println("got hotkey event callback")

@@ -28,6 +28,10 @@
 	<string>Copyright © 2015 Marshall Brekka. All rights reserved.</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
+	<key>LSUIElement</key>
+	<true/>
+	<key>LSBackgroundOnly</key>
+	<false/>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 </dict>

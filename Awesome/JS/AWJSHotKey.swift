@@ -29,7 +29,7 @@ import JavaScriptCore
         var watcher:NSMutableDictionary? = modListeners.objectForKey(modKey) as! NSMutableDictionary?
         let casted:[AnyObject] = modifiers as [AnyObject]
         if (watcher == nil) {
-            print("add listener")
+            print("add listener", key, modifiers)
             watcher = NSMutableDictionary()
             modListeners.setObject(watcher!, forKey: modKey)
             watcher?.setObject(callback, forKey: "callback")
