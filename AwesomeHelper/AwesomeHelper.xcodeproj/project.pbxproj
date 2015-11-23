@@ -1,0 +1,390 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3DDC01D11BEBB43A00789740 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDC01D01BEBB43A00789740 /* AppDelegate.swift */; };
+		3DDC01D31BEBB43A00789740 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DDC01D21BEBB43A00789740 /* Assets.xcassets */; };
+		3DDC01D61BEBB43A00789740 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DDC01D41BEBB43A00789740 /* MainMenu.xib */; };
+		3DDC01E11BEBB43A00789740 /* AwesomeHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDC01E01BEBB43A00789740 /* AwesomeHelperTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3DDC01DD1BEBB43A00789740 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3DDC01C51BEBB43A00789740 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3DDC01CC1BEBB43A00789740;
+			remoteInfo = AwesomeHelper;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3DDC01CD1BEBB43A00789740 /* AwesomeHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AwesomeHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3DDC01D01BEBB43A00789740 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3DDC01D21BEBB43A00789740 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3DDC01D51BEBB43A00789740 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		3DDC01D71BEBB43A00789740 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3DDC01DC1BEBB43A00789740 /* AwesomeHelperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AwesomeHelperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3DDC01E01BEBB43A00789740 /* AwesomeHelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwesomeHelperTests.swift; sourceTree = "<group>"; };
+		3DDC01E21BEBB43A00789740 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3DDC01CA1BEBB43A00789740 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3DDC01D91BEBB43A00789740 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3DDC01C41BEBB43A00789740 = {
+			isa = PBXGroup;
+			children = (
+				3DDC01CF1BEBB43A00789740 /* AwesomeHelper */,
+				3DDC01DF1BEBB43A00789740 /* AwesomeHelperTests */,
+				3DDC01CE1BEBB43A00789740 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3DDC01CE1BEBB43A00789740 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3DDC01CD1BEBB43A00789740 /* AwesomeHelper.app */,
+				3DDC01DC1BEBB43A00789740 /* AwesomeHelperTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3DDC01CF1BEBB43A00789740 /* AwesomeHelper */ = {
+			isa = PBXGroup;
+			children = (
+				3DDC01D01BEBB43A00789740 /* AppDelegate.swift */,
+				3DDC01D21BEBB43A00789740 /* Assets.xcassets */,
+				3DDC01D41BEBB43A00789740 /* MainMenu.xib */,
+				3DDC01D71BEBB43A00789740 /* Info.plist */,
+			);
+			path = AwesomeHelper;
+			sourceTree = "<group>";
+		};
+		3DDC01DF1BEBB43A00789740 /* AwesomeHelperTests */ = {
+			isa = PBXGroup;
+			children = (
+				3DDC01E01BEBB43A00789740 /* AwesomeHelperTests.swift */,
+				3DDC01E21BEBB43A00789740 /* Info.plist */,
+			);
+			path = AwesomeHelperTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3DDC01CC1BEBB43A00789740 /* AwesomeHelper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3DDC01E51BEBB43A00789740 /* Build configuration list for PBXNativeTarget "AwesomeHelper" */;
+			buildPhases = (
+				3DDC01C91BEBB43A00789740 /* Sources */,
+				3DDC01CA1BEBB43A00789740 /* Frameworks */,
+				3DDC01CB1BEBB43A00789740 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AwesomeHelper;
+			productName = AwesomeHelper;
+			productReference = 3DDC01CD1BEBB43A00789740 /* AwesomeHelper.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3DDC01DB1BEBB43A00789740 /* AwesomeHelperTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3DDC01E81BEBB43A00789740 /* Build configuration list for PBXNativeTarget "AwesomeHelperTests" */;
+			buildPhases = (
+				3DDC01D81BEBB43A00789740 /* Sources */,
+				3DDC01D91BEBB43A00789740 /* Frameworks */,
+				3DDC01DA1BEBB43A00789740 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3DDC01DE1BEBB43A00789740 /* PBXTargetDependency */,
+			);
+			name = AwesomeHelperTests;
+			productName = AwesomeHelperTests;
+			productReference = 3DDC01DC1BEBB43A00789740 /* AwesomeHelperTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3DDC01C51BEBB43A00789740 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0710;
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = "Marshall Brekka";
+				TargetAttributes = {
+					3DDC01CC1BEBB43A00789740 = {
+						CreatedOnToolsVersion = 7.1;
+					};
+					3DDC01DB1BEBB43A00789740 = {
+						CreatedOnToolsVersion = 7.1;
+						TestTargetID = 3DDC01CC1BEBB43A00789740;
+					};
+				};
+			};
+			buildConfigurationList = 3DDC01C81BEBB43A00789740 /* Build configuration list for PBXProject "AwesomeHelper" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3DDC01C41BEBB43A00789740;
+			productRefGroup = 3DDC01CE1BEBB43A00789740 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3DDC01CC1BEBB43A00789740 /* AwesomeHelper */,
+				3DDC01DB1BEBB43A00789740 /* AwesomeHelperTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3DDC01CB1BEBB43A00789740 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3DDC01D31BEBB43A00789740 /* Assets.xcassets in Resources */,
+				3DDC01D61BEBB43A00789740 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3DDC01DA1BEBB43A00789740 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3DDC01C91BEBB43A00789740 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3DDC01D11BEBB43A00789740 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3DDC01D81BEBB43A00789740 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3DDC01E11BEBB43A00789740 /* AwesomeHelperTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3DDC01DE1BEBB43A00789740 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3DDC01CC1BEBB43A00789740 /* AwesomeHelper */;
+			targetProxy = 3DDC01DD1BEBB43A00789740 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3DDC01D41BEBB43A00789740 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3DDC01D51BEBB43A00789740 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3DDC01E31BEBB43A00789740 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		3DDC01E41BEBB43A00789740 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		3DDC01E61BEBB43A00789740 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = AwesomeHelper/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.marshallbrekka.Awesome.AwesomeHelper;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		3DDC01E71BEBB43A00789740 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = AwesomeHelper/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.marshallbrekka.Awesome.AwesomeHelper;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		3DDC01E91BEBB43A00789740 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = AwesomeHelperTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.marshallbrekka.Awesome.AwesomeHelperTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AwesomeHelper.app/Contents/MacOS/AwesomeHelper";
+			};
+			name = Debug;
+		};
+		3DDC01EA1BEBB43A00789740 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = AwesomeHelperTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.marshallbrekka.Awesome.AwesomeHelperTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AwesomeHelper.app/Contents/MacOS/AwesomeHelper";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3DDC01C81BEBB43A00789740 /* Build configuration list for PBXProject "AwesomeHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3DDC01E31BEBB43A00789740 /* Debug */,
+				3DDC01E41BEBB43A00789740 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3DDC01E51BEBB43A00789740 /* Build configuration list for PBXNativeTarget "AwesomeHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3DDC01E61BEBB43A00789740 /* Debug */,
+				3DDC01E71BEBB43A00789740 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		3DDC01E81BEBB43A00789740 /* Build configuration list for PBXNativeTarget "AwesomeHelperTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3DDC01E91BEBB43A00789740 /* Debug */,
+				3DDC01EA1BEBB43A00789740 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3DDC01C51BEBB43A00789740 /* Project object */;
+}
