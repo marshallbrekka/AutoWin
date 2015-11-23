@@ -15,23 +15,38 @@ class AWPreferencesWindow:NSWindowController {
     @IBOutlet weak var openAtLoginButton:NSButton?
     @IBOutlet weak var enableAccessibilityButton:NSButton?
     @IBOutlet weak var accessibilityStatus:NSTextField?
+    private var context = 0
+    private var accessibilityEnabled:AWAccessibilityEnabled?
     
+    override init(window:NSWindow!) {
+        super.init(window: window)
+    }
+    
+    required init(coder:NSCoder) {
+        super.init(coder: coder)!
+    }
+    
+    convenience init (accessibility:AWAccessibilityEnabled) {
+        self.init(window: nil)
+        NSBundle.mainBundle().loadNibNamed("AWPreferences", owner: self, topLevelObjects: nil)
+        accessibilityEnabled = accessibility
+        accessibility.addObserver(self, forKeyPath: "enabled", options: .New, context: &context)
+    }
+    
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+        if context == &self.context {
+            updateAccessibilityEnabled()
+        }
+    }
+
     override func windowDidLoad() {
         print("window did load")
-        NSDistributedNotificationCenter.defaultCenter().addObserverForName(
-            "com.apple.accessibility.api",
-            object: nil, queue: nil, usingBlock: {(notifo:NSNotification) -> Void in
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(0.15 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
-                    self.updateAccessibilityEnabled()
-                })
-            })
         jsFilePathLabel?.stringValue = "Really Long Label"
     }
     
     func updateAccessibilityEnabled() {
-        let enabled = AWAccessibilityAPI.isProcessTrusted()
-        accessibilityStatus?.stringValue = enabled ? "Enabled" : "Disabled"
-        enableAccessibilityButton?.enabled = !enabled
+        accessibilityStatus?.stringValue = accessibilityEnabled!.enabled ? "Enabled" : "Disabled"
+        enableAccessibilityButton?.enabled = !accessibilityEnabled!.enabled
     }
     
     @IBAction override func showWindow(sender: AnyObject?) {
@@ -42,6 +57,8 @@ class AWPreferencesWindow:NSWindowController {
         } else {
             jsFilePathLabel?.stringValue = "No File Specified"
         }
+        
+        openAtLoginButton!.state = AWPreferences.getBool(AWPreferences.OpenAtLogin) ? NSOnState : NSOffState
         
         updateAccessibilityEnabled()
         super.showWindow(sender)
@@ -69,6 +86,7 @@ class AWPreferencesWindow:NSWindowController {
     
     @IBAction func setOpenAtLogin(sender:NSButton) {
         print("set open at login")
+        AWOpenAtLogin.setOpenAtLogin(sender.state == NSOnState)
     }
     
     @IBAction func enableAccessibility(sender:NSButton) {

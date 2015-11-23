@@ -24,6 +24,7 @@ class AWStatusItem {
         }
         
 //        item.button!.title = "AW"
+        print("item widht", NSSquareStatusItemLength)
 
         item.button!.image = NSImage(named: "status")
         item.menu = menu

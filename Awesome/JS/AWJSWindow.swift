@@ -37,7 +37,7 @@ import Cocoa
 /*
 Class that provides the javascript interface for aw.window.
 */
-@objc class AWJSWindow : NSObject, AWJSWindowInterface {
+@objc class AWJSWindow : NSObject, AWJSWindowInterface, AWManagerWindowEvent {
     let manager:AWManager
     let events:AWJSEvent
     
@@ -54,7 +54,12 @@ Class that provides the javascript interface for aw.window.
         self.manager = manager
         self.events = events
         super.init()
-        manager.windowEventCallback = triggerEvent
+        manager.windowEvent = self
+    }
+    
+    
+    deinit {
+        print("deinit awjswindow")
     }
     
     // JS window api
@@ -122,7 +127,7 @@ Class that provides the javascript interface for aw.window.
     created, destroyed, focused, mainWindow, moved, resized, titleChanged,
     minimized, unminimized.
     */
-    func triggerEvent(eventName: String, window: AWWindow) {
+    func windowEventCallback(eventName: String, window: AWWindow) {
         print("triggering js window event: " + eventName)
         events.triggerEvent(
             "aw.window." + windowEvents[eventName]!,

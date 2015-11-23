@@ -23,6 +23,10 @@ class AWApplication {
         ref = AXUIElementCreateApplication(pid).takeRetainedValue()
     }
     
+    deinit {
+        print("deinit awapplication")
+    }
+    
     func activate() -> Bool {
         return AWAccessibilityAPI.setAttribute(
             ref,
@@ -40,9 +44,9 @@ class AWApplication {
     
     
     class func isSupportedApplication(app: AWApplication) -> Bool {
-        print("getting application role", NSDate().timeIntervalSince1970)
+        print("getting application role", NSDate().timeIntervalSince1970, app.pid)
         let role = AWAccessibilityAPI.getAttribute(app.ref, property: NSAccessibilityRoleAttribute) as String?
-        print("got application role", NSDate().timeIntervalSince1970)
+        print("got application role", NSDate().timeIntervalSince1970, app.pid, role)
         if role != nil {
             return role! == NSAccessibilityApplicationRole
         } else {

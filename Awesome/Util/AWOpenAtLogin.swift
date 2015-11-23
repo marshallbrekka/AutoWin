@@ -7,9 +7,23 @@
 //
 
 import Foundation
+import ServiceManagement
 
 class AWOpenAtLogin {
-    static func sharedFileList() -> LSSharedFileListRef {
-        return LSSharedFileListCreate(nil, kLSSharedFileListSessionLoginItems.takeRetainedValue(), nil).takeRetainedValue()
+    class func setOpenAtLogin(enabled: Bool) {
+        AWPreferences.setBool(AWPreferences.OpenAtLogin, value:enabled)
+        let helperAppUrl = NSBundle.mainBundle().bundleURL.URLByAppendingPathComponent("Contents/Library/LoginItems/AwesomeHelper.app", isDirectory: true)
+        
+        let reverse = helperAppUrl.URLByDeletingLastPathComponent?.URLByDeletingLastPathComponent?.URLByDeletingLastPathComponent?.URLByDeletingLastPathComponent
+        print("reverse",reverse, helperAppUrl)
+        
+        let status = LSRegisterURL(helperAppUrl, enabled)
+        if status != noErr {
+            NSLog("Failed to LSRegisterURL '%@': %jd", helperAppUrl, status)
+        }
+        
+        if SMLoginItemSetEnabled("com.marshallbrekka.Awesome.AwesomeHelper", enabled) {
+            NSLog("SMLoginItemSetEnabled change to %i worked!", enabled)
+        }
     }
 }

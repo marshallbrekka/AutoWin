@@ -10,56 +10,65 @@ import Foundation
 import JavaScriptCore
 
 @objc protocol AWJSEventInterface: JSExport {
-    func addEvent(eventName:String, listener:JSValue)
-    func removeEvent(eventName:String, listener:JSValue)
+    func addEvent(eventName:String, _ listener:JSValue)
+    func removeEvent(eventName:String, _ listener:JSValue)
 }
 
 @objc class AWJSEvent: NSObject, AWJSEventInterface {
-    let context: JSContext
     let eventListeners: NSMutableDictionary;
 
-    init(context:JSContext) {
-        self.context = context
+    override init() {
         self.eventListeners = NSMutableDictionary()
     }
+    
+    deinit {
+        print("deinit awjsevent")
+    }
 
-    func addEvent(eventName: String, listener:JSValue) {
+    func addEvent(eventName: String, _ listener:JSValue) {
         print("adding event listener: " + eventName)
-        var listeners:[JSValue]? = eventListeners.objectForKey(eventName) as! [JSValue]?
+        let wrapped = JSManagedValue(value: listener)
+        listener.context.virtualMachine.addManagedReference(wrapped, withOwner: self)
+        var listeners:[JSManagedValue]? = eventListeners.objectForKey(eventName) as! [JSManagedValue]?
         if (listeners == nil) {
-            listeners = [listener];
+            listeners = [wrapped];
         } else {
             // Exit early if the listener is already present
             for existingListener in listeners! {
-                if (listener.isEqual(existingListener)) {
+                if (wrapped.isEqual(existingListener)) {
                     return;
                 }
             }
-            listeners!.append(listener)
+            listeners!.append(wrapped)
         }
         eventListeners.setObject(listeners!, forKey: eventName)
     }
     
-    func removeEvent(eventName: String, listener:JSValue) {
+    func removeEvent(eventName: String, _ listener:JSValue) {
         print("removing event listener: " + eventName)
-        var listeners:[JSValue]? = eventListeners.objectForKey(eventName) as! [JSValue]?
+        var listeners:[JSManagedValue]? = eventListeners.objectForKey(eventName) as! [JSManagedValue]?
         if (listeners != nil) {
-            listeners = listeners!.filter( {(existingListener: JSValue) -> Bool in
-                return listener.isNotEqualTo(existingListener)
+            listeners = listeners!.filter( {(existingListener: JSManagedValue) -> Bool in
+                if (listener.isNotEqualTo(existingListener.value)) {
+                    return true
+                } else {
+                    existingListener.value.context.virtualMachine.removeManagedReference(existingListener, withOwner: self)
+                    return false
+                }
             })
             eventListeners.setObject(listeners!, forKey: eventName)
         }
     }
     
     func triggerEvent(eventName: String, eventData: NSDictionary?) {
-        let listeners: [JSValue]? = eventListeners.objectForKey(eventName) as! [JSValue]?
+        let listeners: [JSManagedValue]? = eventListeners.objectForKey(eventName) as! [JSManagedValue]?
         if (listeners != nil) {
             print("triggering listeners for: " + eventName)
             for listener in listeners! {
                 if eventData == nil {
-                    listener.callWithArguments([eventName])
+                    listener.value.callWithArguments([eventName])
                 } else {
-                    listener.callWithArguments([eventName, eventData!])
+                    listener.value.callWithArguments([eventName, eventData!])
                 }
             }
         } else {

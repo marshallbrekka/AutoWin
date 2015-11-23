@@ -17,4 +17,8 @@ import JavaScriptCore
     class func log(item: JSValue) {
         print("JS Log: " + item.toString())
     }
+    
+    deinit {
+        print("deinit awjsconsole")
+    }
 }

@@ -25,7 +25,7 @@ import Cocoa
 /*
 Class that provides the javascript interface for aw.application.
 */
-@objc class AWJSApplication : NSObject, AWJSApplicationInterface {
+@objc class AWJSApplication : NSObject, AWJSApplicationInterface, AWManagerAppEvent {
     let appEvents = [
         NSWorkspaceDidLaunchApplicationNotification:"launched",
         NSWorkspaceDidTerminateApplicationNotification:"terminated",
@@ -42,7 +42,11 @@ Class that provides the javascript interface for aw.application.
         self.manager = manager
         self.events = events
         super.init()
-        self.manager.appEventCallback = triggerEvent
+        self.manager.appEvent = self
+    }
+    
+    deinit {
+        print("deinit awjsapp")
     }
     
     // JS application api
@@ -63,7 +67,7 @@ Class that provides the javascript interface for aw.application.
     Valid events are:
     launched, terminated, activated, deactivated, hidden, unhidden.
     */
-    func triggerEvent(eventName: String, app: AWApplication) {
+    func appEventCallback(eventName: String, app: AWApplication) {
         print("triggering js app event: " + eventName)
         events.triggerEvent(
             "aw.application." + appEvents[eventName]!,

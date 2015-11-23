@@ -6,20 +6,16 @@ Currently this is used for application and window level events.
 import Foundation
 import Cocoa
 
-protocol AWNotificationProto {
-    
+protocol AWNotificationTarget:class {
+    func receiveNotification(notifo: NSNotification)
 }
 
-class AWNotificationStub : AWNotificationProto {
-
-}
-
-class AWNotification : AWNotificationProto {
+class AWNotification {
     let center:NSNotificationCenter
     var observers:[NSObjectProtocol] = []
-    let target:(NSNotification) -> Void
+    weak var target:AWNotificationTarget?
     
-    init (center: NSNotificationCenter, target:(NSNotification) -> Void, notifications:[String]) {
+    init (center: NSNotificationCenter, target:AWNotificationTarget, notifications:[String]) {
         self.target = target
         
         self.center = center
@@ -28,20 +24,28 @@ class AWNotification : AWNotificationProto {
                 notification,
                 object: nil,
                 queue: nil,
-                usingBlock: reciever);
+                usingBlock: receiver);
             observers.append(observer)
         }
     }
     
-    deinit {
+    func stop() {
+        print("calling stop")
         // Unregister the notifications
         for observer in observers {
             center.removeObserver(observer)
         }
+        observers = []
     }
     
-    func reciever(notification:NSNotification!) {
+    deinit {
+        print("killing notifier")
+    }
+    
+    func receiver(notification:NSNotification!) {
         print("got notification: " + notification.name)
-        target(notification)
+        if target != nil {
+            target!.receiveNotification(notification)
+        }
     }
 }

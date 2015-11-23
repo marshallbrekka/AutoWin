@@ -7,30 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3D13A5D71BDC2AAF00639FB1 /* AWStatusItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D13A5D61BDC2AAF00639FB1 /* AWStatusItem.swift */; settings = {ASSET_TAGS = (); }; };
-		3D13A5D91BDC31B300639FB1 /* AWStatusTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D13A5D81BDC31B300639FB1 /* AWStatusTarget.swift */; settings = {ASSET_TAGS = (); }; };
-		3D13A5DC1BDC415A00639FB1 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D13A5DA1BDC415A00639FB1 /* MainMenu.xib */; settings = {ASSET_TAGS = (); }; };
-		3D13A5DE1BDC54DA00639FB1 /* AWPreferencesWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D13A5DD1BDC54DA00639FB1 /* AWPreferencesWindow.swift */; settings = {ASSET_TAGS = (); }; };
-		3D13A5E01BDC5A4800639FB1 /* AWPreferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D13A5DF1BDC5A4800639FB1 /* AWPreferences.xib */; settings = {ASSET_TAGS = (); }; };
-		3D13A5E21BDC75E000639FB1 /* AWOpenAtLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D13A5E11BDC75E000639FB1 /* AWOpenAtLogin.swift */; settings = {ASSET_TAGS = (); }; };
-		3D13A5EA1BDCA0C700639FB1 /* AWPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D13A5E91BDCA0C700639FB1 /* AWPreferences.swift */; settings = {ASSET_TAGS = (); }; };
-		3D13A5EF1BDDD39200639FB1 /* status.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 3D13A5EE1BDDD39200639FB1 /* status.pdf */; settings = {ASSET_TAGS = (); }; };
+		3D13A5D71BDC2AAF00639FB1 /* AWStatusItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D13A5D61BDC2AAF00639FB1 /* AWStatusItem.swift */; };
+		3D13A5D91BDC31B300639FB1 /* AWStatusTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D13A5D81BDC31B300639FB1 /* AWStatusTarget.swift */; };
+		3D13A5DC1BDC415A00639FB1 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D13A5DA1BDC415A00639FB1 /* MainMenu.xib */; };
+		3D13A5DE1BDC54DA00639FB1 /* AWPreferencesWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D13A5DD1BDC54DA00639FB1 /* AWPreferencesWindow.swift */; };
+		3D13A5E01BDC5A4800639FB1 /* AWPreferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D13A5DF1BDC5A4800639FB1 /* AWPreferences.xib */; };
+		3D13A5E21BDC75E000639FB1 /* AWOpenAtLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D13A5E11BDC75E000639FB1 /* AWOpenAtLogin.swift */; };
+		3D13A5EA1BDCA0C700639FB1 /* AWPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D13A5E91BDCA0C700639FB1 /* AWPreferences.swift */; };
+		3D13A5EF1BDDD39200639FB1 /* status.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 3D13A5EE1BDDD39200639FB1 /* status.pdf */; };
 		3D1C3DD21AE83BE200EEE08A /* AWJSHotKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1C3DD11AE83BE200EEE08A /* AWJSHotKey.swift */; };
 		3D1C3DD51AE8680D00EEE08A /* AWKeyCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1C3DD41AE8680D00EEE08A /* AWKeyCodes.swift */; };
-		3D1C3DD81AE8955200EEE08A /* AWHotKeyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D1C3DD71AE8955200EEE08A /* AWHotKeyManager.m */; };
 		3D1F0F6C1AF9B40700437F97 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 3D1F0F6B1AF9B40700437F97 /* README.md */; };
 		3D2D8BF01AF0A749009406B8 /* JSType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2D8BEF1AF0A749009406B8 /* JSType.swift */; };
-		3D2FD4A81AE05DE5002641E0 /* AWObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2FD4A71AE05DE5002641E0 /* AWObserver.m */; };
 		3D2FD4AF1AE5EE7A002641E0 /* AWJSApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2FD4AE1AE5EE7A002641E0 /* AWJSApplication.swift */; };
 		3D2FD4B11AE5FFB7002641E0 /* AWJSContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2FD4B01AE5FFB7002641E0 /* AWJSContext.swift */; };
 		3D2FD4B41AE617A2002641E0 /* AWJSEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2FD4B31AE617A2002641E0 /* AWJSEvent.swift */; };
 		3D2FD4B61AE69744002641E0 /* AWJSConsole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2FD4B51AE69744002641E0 /* AWJSConsole.swift */; };
 		3D2FD4B81AE6A365002641E0 /* AWManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2FD4B71AE6A365002641E0 /* AWManager.swift */; };
+		3D2FE1581BE911E100F3F2D6 /* AWMouse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2FE1571BE911E100F3F2D6 /* AWMouse.swift */; };
+		3D3EACDF1C036C840062A525 /* AWObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3EACDE1C036C840062A525 /* AWObserver.swift */; };
+		3D4148431BFCCD540087417F /* AWHotKeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4148421BFCCD540087417F /* AWHotKeyManager.swift */; };
 		3D50BB901AF1455E00C1E583 /* AWNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D50BB8F1AF1455E00C1E583 /* AWNotification.swift */; };
-		3D5DF6231BC0434F0043179C /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 3D5DF6221BC0434F0043179C /* README.md */; settings = {ASSET_TAGS = (); }; };
-		3D5DF6251BC42AFA0043179C /* AWManagerInternal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5DF6241BC42AFA0043179C /* AWManagerInternal.swift */; settings = {ASSET_TAGS = (); }; };
+		3D5DF6231BC0434F0043179C /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 3D5DF6221BC0434F0043179C /* README.md */; };
+		3D5DF6251BC42AFA0043179C /* AWManagerInternal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5DF6241BC42AFA0043179C /* AWManagerInternal.swift */; };
 		3D6AE0851AF08A8C00FC0B2D /* AWJSMonitors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6AE0841AF08A8C00FC0B2D /* AWJSMonitors.swift */; };
 		3DAA7B541B1B7498004C2BFB /* AWJSWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAA7B531B1B7498004C2BFB /* AWJSWindow.swift */; };
+		3DDC02581BEBB60D00789740 /* AwesomeHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3DDC01F11BEBB43A00789740 /* AwesomeHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		3DDC025B1BF0F16300789740 /* AWAccessibilityEnabled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDC025A1BF0F16300789740 /* AWAccessibilityEnabled.swift */; };
 		AB576D8A1AC61AD500AABBF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB576D891AC61AD500AABBF5 /* AppDelegate.swift */; };
 		AB576D8C1AC61AD500AABBF5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB576D8B1AC61AD500AABBF5 /* Images.xcassets */; };
 		AB576D9B1AC61AD500AABBF5 /* AwesomeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB576D9A1AC61AD500AABBF5 /* AwesomeTests.swift */; };
@@ -40,6 +43,34 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		3DDC01F01BEBB43A00789740 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3DDC01EB1BEBB43A00789740 /* AwesomeHelper.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3DDC01CD1BEBB43A00789740;
+			remoteInfo = AwesomeHelper;
+		};
+		3DDC01F21BEBB43A00789740 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3DDC01EB1BEBB43A00789740 /* AwesomeHelper.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3DDC01DC1BEBB43A00789740;
+			remoteInfo = AwesomeHelperTests;
+		};
+		3DDC01F51BEBB44900789740 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3DDC01EB1BEBB43A00789740 /* AwesomeHelper.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 3DDC01CC1BEBB43A00789740;
+			remoteInfo = AwesomeHelper;
+		};
+		3DDC01F81BEBB45500789740 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3DDC01EB1BEBB43A00789740 /* AwesomeHelper.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 3DDC01CC1BEBB43A00789740;
+			remoteInfo = AwesomeHelper;
+		};
 		AB576D951AC61AD500AABBF5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = AB576D7C1AC61AD400AABBF5 /* Project object */;
@@ -48,6 +79,19 @@
 			remoteInfo = Awesome;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3DDC02571BEBB5F200789740 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/LoginItems;
+			dstSubfolderSpec = 1;
+			files = (
+				3DDC02581BEBB60D00789740 /* AwesomeHelper.app in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		3D13A5D61BDC2AAF00639FB1 /* AWStatusItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWStatusItem.swift; path = UI/AWStatusItem.swift; sourceTree = "<group>"; };
@@ -60,23 +104,24 @@
 		3D13A5EE1BDDD39200639FB1 /* status.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = status.pdf; path = Awesome/Icons/status.pdf; sourceTree = "<group>"; };
 		3D1C3DD11AE83BE200EEE08A /* AWJSHotKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWJSHotKey.swift; path = JS/AWJSHotKey.swift; sourceTree = "<group>"; };
 		3D1C3DD41AE8680D00EEE08A /* AWKeyCodes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWKeyCodes.swift; path = Util/AWKeyCodes.swift; sourceTree = "<group>"; };
-		3D1C3DD61AE8955200EEE08A /* AWHotKeyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AWHotKeyManager.h; path = Util/AWHotKeyManager.h; sourceTree = "<group>"; };
-		3D1C3DD71AE8955200EEE08A /* AWHotKeyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AWHotKeyManager.m; path = Util/AWHotKeyManager.m; sourceTree = "<group>"; };
 		3D1F0F6B1AF9B40700437F97 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = JS/README.md; sourceTree = "<group>"; };
 		3D2D8BEF1AF0A749009406B8 /* JSType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSType.swift; path = JS/JSType.swift; sourceTree = "<group>"; };
-		3D2FD4A61AE05DE5002641E0 /* AWObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AWObserver.h; path = Notifications/AWObserver.h; sourceTree = "<group>"; };
-		3D2FD4A71AE05DE5002641E0 /* AWObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AWObserver.m; path = Notifications/AWObserver.m; sourceTree = "<group>"; };
 		3D2FD4AE1AE5EE7A002641E0 /* AWJSApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWJSApplication.swift; path = JS/AWJSApplication.swift; sourceTree = "<group>"; };
 		3D2FD4B01AE5FFB7002641E0 /* AWJSContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWJSContext.swift; path = JS/AWJSContext.swift; sourceTree = "<group>"; };
 		3D2FD4B31AE617A2002641E0 /* AWJSEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWJSEvent.swift; path = JS/AWJSEvent.swift; sourceTree = "<group>"; };
 		3D2FD4B51AE69744002641E0 /* AWJSConsole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWJSConsole.swift; path = JS/AWJSConsole.swift; sourceTree = "<group>"; };
 		3D2FD4B71AE6A365002641E0 /* AWManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWManager.swift; sourceTree = "<group>"; };
+		3D2FE1571BE911E100F3F2D6 /* AWMouse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWMouse.swift; path = Model/AWMouse.swift; sourceTree = "<group>"; };
+		3D3EACDE1C036C840062A525 /* AWObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWObserver.swift; path = Notifications/AWObserver.swift; sourceTree = "<group>"; };
+		3D4148421BFCCD540087417F /* AWHotKeyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWHotKeyManager.swift; path = Util/AWHotKeyManager.swift; sourceTree = "<group>"; };
 		3D50BB8F1AF1455E00C1E583 /* AWNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWNotification.swift; sourceTree = "<group>"; };
 		3D5DF6221BC0434F0043179C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		3D5DF6241BC42AFA0043179C /* AWManagerInternal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWManagerInternal.swift; path = Model/internal/AWManagerInternal.swift; sourceTree = "<group>"; };
 		3D6AE0841AF08A8C00FC0B2D /* AWJSMonitors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWJSMonitors.swift; path = JS/AWJSMonitors.swift; sourceTree = "<group>"; };
 		3DAA27A41AD44A6C008DDFC1 /* Awesome-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Awesome-Bridging-Header.h"; sourceTree = "<group>"; };
 		3DAA7B531B1B7498004C2BFB /* AWJSWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWJSWindow.swift; path = JS/AWJSWindow.swift; sourceTree = "<group>"; };
+		3DDC01EB1BEBB43A00789740 /* AwesomeHelper.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AwesomeHelper.xcodeproj; path = AwesomeHelper/AwesomeHelper.xcodeproj; sourceTree = "<group>"; };
+		3DDC025A1BF0F16300789740 /* AWAccessibilityEnabled.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWAccessibilityEnabled.swift; path = Model/AWAccessibilityEnabled.swift; sourceTree = "<group>"; };
 		AB576D841AC61AD500AABBF5 /* Awesome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Awesome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB576D881AC61AD500AABBF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB576D891AC61AD500AABBF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -131,9 +176,8 @@
 			children = (
 				AB576DA81AC8CA8C00AABBF5 /* AWAccessibilityAPI.swift */,
 				3D1C3DD41AE8680D00EEE08A /* AWKeyCodes.swift */,
-				3D1C3DD61AE8955200EEE08A /* AWHotKeyManager.h */,
-				3D1C3DD71AE8955200EEE08A /* AWHotKeyManager.m */,
 				3D13A5E11BDC75E000639FB1 /* AWOpenAtLogin.swift */,
+				3D4148421BFCCD540087417F /* AWHotKeyManager.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -157,11 +201,13 @@
 		3D57E9621AEAA71A002F50A2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				3D2FD4B71AE6A365002641E0 /* AWManager.swift */,
 				3D5DF6261BC42B140043179C /* internal */,
+				3D2FD4B71AE6A365002641E0 /* AWManager.swift */,
 				AB576DA41AC6231100AABBF5 /* AWApplication.swift */,
 				AB576DA61AC633AB00AABBF5 /* AWWindow.swift */,
 				3D13A5E91BDCA0C700639FB1 /* AWPreferences.swift */,
+				3D2FE1571BE911E100F3F2D6 /* AWMouse.swift */,
+				3DDC025A1BF0F16300789740 /* AWAccessibilityEnabled.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -169,9 +215,8 @@
 		3D57E9631AEAA749002F50A2 /* Notificatons */ = {
 			isa = PBXGroup;
 			children = (
-				3D2FD4A61AE05DE5002641E0 /* AWObserver.h */,
-				3D2FD4A71AE05DE5002641E0 /* AWObserver.m */,
 				3D50BB8F1AF1455E00C1E583 /* AWNotification.swift */,
+				3D3EACDE1C036C840062A525 /* AWObserver.swift */,
 			);
 			name = Notificatons;
 			sourceTree = "<group>";
@@ -184,9 +229,19 @@
 			name = internal;
 			sourceTree = "<group>";
 		};
+		3DDC01EC1BEBB43A00789740 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3DDC01F11BEBB43A00789740 /* AwesomeHelper.app */,
+				3DDC01F31BEBB43A00789740 /* AwesomeHelperTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		AB576D7B1AC61AD400AABBF5 = {
 			isa = PBXGroup;
 			children = (
+				3DDC01EB1BEBB43A00789740 /* AwesomeHelper.xcodeproj */,
 				3D13A5ED1BDDD38400639FB1 /* Icons */,
 				AB576D861AC61AD500AABBF5 /* Awesome */,
 				AB576D971AC61AD500AABBF5 /* AwesomeTests */,
@@ -256,10 +311,13 @@
 				AB576D801AC61AD500AABBF5 /* Sources */,
 				AB576D811AC61AD500AABBF5 /* Frameworks */,
 				AB576D821AC61AD500AABBF5 /* Resources */,
+				3DDC02571BEBB5F200789740 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				3DDC01F61BEBB44900789740 /* PBXTargetDependency */,
+				3DDC01F91BEBB45500789740 /* PBXTargetDependency */,
 			);
 			name = Awesome;
 			productName = Awesome;
@@ -315,6 +373,12 @@
 			mainGroup = AB576D7B1AC61AD400AABBF5;
 			productRefGroup = AB576D851AC61AD500AABBF5 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 3DDC01EC1BEBB43A00789740 /* Products */;
+					ProjectRef = 3DDC01EB1BEBB43A00789740 /* AwesomeHelper.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				AB576D831AC61AD500AABBF5 /* Awesome */,
@@ -322,6 +386,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		3DDC01F11BEBB43A00789740 /* AwesomeHelper.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = AwesomeHelper.app;
+			remoteRef = 3DDC01F01BEBB43A00789740 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3DDC01F31BEBB43A00789740 /* AwesomeHelperTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = AwesomeHelperTests.xctest;
+			remoteRef = 3DDC01F21BEBB43A00789740 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		AB576D821AC61AD500AABBF5 /* Resources */ = {
@@ -360,13 +441,15 @@
 				3D2FD4B41AE617A2002641E0 /* AWJSEvent.swift in Sources */,
 				3D13A5D71BDC2AAF00639FB1 /* AWStatusItem.swift in Sources */,
 				3D1F0F6C1AF9B40700437F97 /* README.md in Sources */,
+				3D3EACDF1C036C840062A525 /* AWObserver.swift in Sources */,
+				3D4148431BFCCD540087417F /* AWHotKeyManager.swift in Sources */,
+				3D2FE1581BE911E100F3F2D6 /* AWMouse.swift in Sources */,
 				3D13A5EA1BDCA0C700639FB1 /* AWPreferences.swift in Sources */,
 				3D2FD4B11AE5FFB7002641E0 /* AWJSContext.swift in Sources */,
 				3D13A5DE1BDC54DA00639FB1 /* AWPreferencesWindow.swift in Sources */,
 				3D1C3DD51AE8680D00EEE08A /* AWKeyCodes.swift in Sources */,
 				3D13A5E21BDC75E000639FB1 /* AWOpenAtLogin.swift in Sources */,
-				3D2FD4A81AE05DE5002641E0 /* AWObserver.m in Sources */,
-				3D1C3DD81AE8955200EEE08A /* AWHotKeyManager.m in Sources */,
+				3DDC025B1BF0F16300789740 /* AWAccessibilityEnabled.swift in Sources */,
 				AB576D8A1AC61AD500AABBF5 /* AppDelegate.swift in Sources */,
 				AB576DA71AC633AB00AABBF5 /* AWWindow.swift in Sources */,
 				3D6AE0851AF08A8C00FC0B2D /* AWJSMonitors.swift in Sources */,
@@ -388,6 +471,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		3DDC01F61BEBB44900789740 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = AwesomeHelper;
+			targetProxy = 3DDC01F51BEBB44900789740 /* PBXContainerItemProxy */;
+		};
+		3DDC01F91BEBB45500789740 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = AwesomeHelper;
+			targetProxy = 3DDC01F81BEBB45500789740 /* PBXContainerItemProxy */;
+		};
 		AB576D961AC61AD500AABBF5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = AB576D831AC61AD500AABBF5 /* Awesome */;

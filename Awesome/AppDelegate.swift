@@ -7,62 +7,92 @@
 //
 
 import Cocoa
-import JavaScriptCore
+import Carbon
 
-
-/*
-let thing = JSContext()
-//let x = thing.evaluateScript("var x = function (arg) {return 'hello'; return typeof arg}")
-var other = thing.evaluateScript("var triple = function(value) { return value * 3 }")
-//var fn = thing.objectForKeyedSubscript("x")
-//var point = JSValue(point: , inContext: thing)
-//var result = fn.callWithArguments([["x":1]])
-
-let tripleFunction = thing.objectForKeyedSubscript("triple")
-let result2 = tripleFunction.callWithArguments([5])
-*/
-
-
+func OnHotKeyDown(handler: EventHandlerCallRef, event: EventRef, managerPtr: UnsafeMutablePointer<Void>) -> OSStatus {
+    print("got called", handler, event)
+    return noErr
+}
 
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    @IBOutlet weak var window: NSWindow!
+//    @IBOutlet weak var window: NSWindow!
     
-    var iapps:[AWApplication]?
     var context: AWJSContext?
     var manager: AWManager?
-    var hkm: AWHotKeyManager?
-    var id1:UInt32?
     var menuItem:AWStatusItem?
     var menuTarget:AWStatusTarget?
-    //var notifo:ApplicationNotification?
+    var hk:AWHotKeyManager?
+    var ms:AWMouse?
+    var accessibilityEnabled:AWAccessibilityEnabled?
+    var ref:EventHotKeyRef = nil
+    private var observerContext = 0
+    //var HKM2:AWHotKeyManager?
 
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-        menuTarget = AWStatusTarget()
+        AWAccessibilityAPI.promptToTrustProcess()
+        accessibilityEnabled = AWAccessibilityEnabled()
+        menuTarget = AWStatusTarget(accessibility: accessibilityEnabled!)
         menuItem = AWStatusItem(target:menuTarget!)
+        hk = AWHotKeyManager()
+        if accessibilityEnabled!.enabled {
+            startApp()
+        }
+        
+        hk!.addHotKey("r", modifiers: ["ctrl", "opt", "cmd"], callback: {(down: Bool, key:String, modifiers:[String]) in
+            if !down {
+                self.reloadJS()
+            }
+        })
+        accessibilityEnabled?.addObserver(self, forKeyPath: "enabled", options: .New, context: &context)
+    }
+    
+    func startApp() {
+        NSLog("staring app")
         manager = AWManager()
+        loadJSEnvironment()
+    }
+    
+    func stopApp() {
+        NSLog("stopping app")
+        manager = nil
+        context = nil
+    }
+    
+    func reloadJS() {
+        NSLog("reloading js")
+        if (manager != nil) {
+            context = nil
+            loadJSEnvironment()
+        }
+    }
+    
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+        if context == &self.context {
+            if accessibilityEnabled!.enabled {
+                startApp()
+            } else {
+                stopApp()
+                AWAccessibilityAPI.promptToTrustProcess()
+            }
+        }
+    }
+    
+    
+    
+    func loadJSEnvironment() {
         if let filePath = AWPreferences.getString(AWPreferences.JSFilePath) {
             do {
                 let contents = try String(contentsOfFile: filePath, encoding: NSUTF8StringEncoding)
-                context = AWJSContext(manager: manager!, customContent: contents)
+                context = AWJSContext(manager: manager!, hotKeys: hk!, customContent: contents)
                 
             } catch _ {
                 print("ERROR", filePath)
             }
         }
-        //context = AWJSContext()
-        
-//
-        /*hkm = AWHotKeyManager()
-        id1 = hkm!.addHotKey("e", withModifiers: ["cmd", "opt", "ctrl", "shift"], forCallback: {(down:Bool, key:String!, modifiers:[AnyObject]!) in
-            println("got hotkey event callback")
-            if (!down) {
-                self.hkm!.removeHotKey(self.id1!);
-            }
-        })*/
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {

@@ -20,6 +20,10 @@ class AWWindow {
         self.pid = pid
     }
     
+    deinit {
+        print("deinit awwindow")
+    }
+    
     func title() -> String? {
         return AWAccessibilityAPI.getAttribute(self.ref, property: NSAccessibilityTitleAttribute) as String?
     }
@@ -114,8 +118,10 @@ class AWWindow {
             return (subrole == nil ||
                     subrole! == NSAccessibilityStandardWindowSubrole)
         } else {
-            print("window doesn't have standard role")
-            return AWAccessibilityAPI.getAttribute(ref, property: NSAccessibilityMinimizedAttribute) as String? != nil
+            let minimizedAttr = AWAccessibilityAPI.getAttribute(ref, property: NSAccessibilityMinimizedAttribute) as Bool?
+            print("window doesn't have standard role", minimizedAttr)
+            return minimizedAttr != nil
+            
         }
     }
 }

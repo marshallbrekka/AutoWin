@@ -10,6 +10,7 @@ import Foundation
 
 class AWPreferences {
     static let JSFilePath = "AWPreferencesJSFilePath"
+    static let OpenAtLogin = "AWPreferencesOpenAtLogin"
     
     class func getBool(key: String) -> Bool {
         return NSUserDefaults.standardUserDefaults().boolForKey(key)

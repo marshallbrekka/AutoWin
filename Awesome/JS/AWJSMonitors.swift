@@ -14,16 +14,16 @@ import JavaScriptCore
     func monitors() -> [NSDictionary]
 }
 
-class AWJSMonitorsEvent {
+class AWJSMonitorsEvent: AWNotificationTarget {
     let events: AWJSEvent
     var notifier:AWNotification!
     
     init(events: AWJSEvent) {
         self.events = events
-        self.notifier = AWNotification(center: NSNotificationCenter.defaultCenter(), target: self.recieveNotification, notifications: [NSApplicationDidChangeScreenParametersNotification])
+        self.notifier = AWNotification(center: NSNotificationCenter.defaultCenter(), target: self, notifications: [NSApplicationDidChangeScreenParametersNotification])
     }
     
-    func recieveNotification(notification: NSNotification) {
+    func receiveNotification(notification: NSNotification) {
         print("monitors changed")
         events.triggerEvent(
             "aw.monitors.layoutChange",
@@ -32,11 +32,16 @@ class AWJSMonitorsEvent {
 }
 
 @objc class AWJSMonitors: NSObject, AWJSMonitorsInterface {
-    let events: AWJSMonitorsEvent
+    //let events: AWJSMonitorsEvent
     
     init(events:AWJSEvent) {
-        self.events = AWJSMonitorsEvent(events: events);
+        //self.events = AWJSMonitorsEvent(events: events);
     }
+    
+    deinit {
+        print("deinit awjsmonitors")
+    }
+
     
     /*
       each monitor includes the keys id and frame

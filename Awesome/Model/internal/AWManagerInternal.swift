@@ -25,7 +25,7 @@ class AWManagerInternal {
     // window already exists in our tracking for each of these events
     // and if it doesnt we will track it and trigger a window creation
     // event (if the original event was not a window creation event).
-    static let windowCreateNotifications:Set = [
+    static let windowCreateNotifications = [
         NSAccessibilityWindowCreatedNotification,
         NSAccessibilityFocusedWindowChangedNotification,
         NSAccessibilityMainWindowChangedNotification
@@ -40,7 +40,8 @@ class AWManagerInternal {
         pid:pid_t,
         appRef:AXUIElementRef,
         callback:(AXObserverRef!, AXUIElementRef!, CFStringRef!) -> Void) -> AWObserver {
-        let observer = AWObserver(pid, callback: callback);
+        let observer = AWObserver(pid: pid, callback: callback);
+            
         for notification in windowNotifications {
             observer.addNotification(appRef, notification: notification)
         }
@@ -96,7 +97,6 @@ class AWManagerInternal {
         let meta = apps.objectForKey(key) as? AWManager.AppMeta
         if (meta != nil) {
             apps.removeObjectForKey(key)
-            meta!.observer.stop()
             return meta!
         } else {
             return nil
@@ -108,11 +108,11 @@ class AWManagerInternal {
         return apps.objectForKey(key) as! AWManager.AppMeta?
     }
     
-    class func createApplicationListener(callback: (NSNotification) -> Void) -> AWNotification {
+    class func createApplicationListener(target:AWNotificationTarget) -> AWNotification {
         // All notifications to listen for
         return AWNotification(
             center: NSWorkspace.sharedWorkspace().notificationCenter,
-            target: callback,
+            target: target,
             notifications: appNotifications)
     }
     

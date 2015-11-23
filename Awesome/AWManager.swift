@@ -16,7 +16,15 @@ to an instance of a AWWindow.
 import Foundation
 import Cocoa
 
-class AWManager {
+protocol AWManagerAppEvent:class {
+    func appEventCallback(notifo:String, app:AWApplication) -> Void
+}
+
+protocol AWManagerWindowEvent:class {
+    func windowEventCallback(notifo:String, window:AWWindow) -> Void
+}
+
+class AWManager:AWNotificationTarget {
     
     class AppMeta {
         var app: AWApplication
@@ -35,8 +43,8 @@ class AWManager {
     // A map of pid (NSNumber) to application (AWApplication)
     let apps:NSMutableDictionary = NSMutableDictionary()
     var notifier:AWNotification? = nil
-    var appEventCallback:((String, app:AWApplication) -> Void)?
-    var windowEventCallback:((String, window:AWWindow) -> Void)?
+    weak var appEvent:AWManagerAppEvent?
+    weak var windowEvent:AWManagerWindowEvent?
     
     init() {
         // get all applications and watch for new ones.
@@ -44,20 +52,24 @@ class AWManager {
         for app in apps {
             initApp(app)
         }
-        notifier = AWManagerInternal.createApplicationListener(appNotificationHandler)
+        notifier = AWManagerInternal.createApplicationListener(self)
+    }
+    
+    deinit {
+        print("killing manager")
     }
     
     func triggerWindowNotification(notifo: String, window: AWWindow) {
         print("trigger notifo", notifo, window.id, AWAccessibilityAPI.getAttribute(window.ref, property: NSAccessibilitySubroleAttribute) as String?)
-        if windowEventCallback != nil {
-            windowEventCallback!(notifo, window: window)
+        if windowEvent != nil {
+            windowEvent!.windowEventCallback(notifo, window: window)
         }
     }
     
     func triggerAppNotification(notifo: String, app: AWApplication) {
         print("trigger app notifo", notifo, app.pid)
-        if appEventCallback != nil {
-            appEventCallback!(notifo, app: app)
+        if appEvent != nil {
+            appEvent!.appEventCallback(notifo, app: app)
         }
     }
     
@@ -80,7 +92,7 @@ class AWManager {
         triggerAppNotification(NSWorkspaceDidTerminateApplicationNotification, app: meta.app)
     }
     
-    func appNotificationHandler(notification: NSNotification) {
+    func receiveNotification(notification: NSNotification) {
         let app = notification.userInfo![NSWorkspaceApplicationKey] as! NSRunningApplication
         print("app event:", notification.name, app.processIdentifier)
         switch notification.name {
@@ -102,9 +114,7 @@ class AWManager {
     }
     
     func observerHandler(observer: AXObserverRef!, element: AXUIElementRef!, notification: CFString!) {
-        
         print("window event:", notification, CFHash(element), kAXWindowCreatedNotification, NSAccessibilityWindowCreatedNotification)
-        
         
         let appMeta = AWManagerInternal.elementRefToAppMeta(apps, ref: element)
         if appMeta != nil {
@@ -112,7 +122,8 @@ class AWManager {
             // If the notification is one that can occur on window create,
             // and if the window doesn't yet exist, create the window and
             // trigger a window create event.
-            if AWManagerInternal.windowCreateNotifications.contains(notifo) {
+            let contains = AWManagerInternal.windowCreateNotifications.contains(notifo)
+            if contains {
                 var window = AWManagerInternal.elementRefToWindow(apps, ref: element)
                 if window == nil && AWWindow.isWindow(element) {
                     window = AWManagerInternal.createAndTrackWindow(apps, ref: element)
@@ -144,7 +155,10 @@ class AWManager {
             let observer = AWManagerInternal.createAWObserver(
                 awApp.pid,
                 appRef: awApp.ref,
-                callback: observerHandler)
+                callback: {
+                    [unowned self] (observer: AXObserverRef!, element: AXUIElementRef!, notification: CFString!) -> Void in
+                    self.observerHandler(observer, element: element, notification: notification)
+                })
             let meta = AppMeta(
                 app: awApp,
                 windows: AWManagerInternal.createWindowDictonary(awApp),
