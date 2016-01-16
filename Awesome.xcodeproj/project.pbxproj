@@ -18,7 +18,7 @@
 		3D1C3DD21AE83BE200EEE08A /* AWJSHotKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1C3DD11AE83BE200EEE08A /* AWJSHotKey.swift */; };
 		3D1C3DD51AE8680D00EEE08A /* AWKeyCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1C3DD41AE8680D00EEE08A /* AWKeyCodes.swift */; };
 		3D1F0F6C1AF9B40700437F97 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 3D1F0F6B1AF9B40700437F97 /* README.md */; };
-		3D2D8BF01AF0A749009406B8 /* JSType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2D8BEF1AF0A749009406B8 /* JSType.swift */; };
+		3D2D8BF01AF0A749009406B8 /* AWJSType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2D8BEF1AF0A749009406B8 /* AWJSType.swift */; };
 		3D2FD4AF1AE5EE7A002641E0 /* AWJSApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2FD4AE1AE5EE7A002641E0 /* AWJSApplication.swift */; };
 		3D2FD4B11AE5FFB7002641E0 /* AWJSContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2FD4B01AE5FFB7002641E0 /* AWJSContext.swift */; };
 		3D2FD4B41AE617A2002641E0 /* AWJSEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2FD4B31AE617A2002641E0 /* AWJSEvent.swift */; };
@@ -31,7 +31,9 @@
 		3D5DF6231BC0434F0043179C /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 3D5DF6221BC0434F0043179C /* README.md */; };
 		3D5DF6251BC42AFA0043179C /* AWManagerInternal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5DF6241BC42AFA0043179C /* AWManagerInternal.swift */; };
 		3D6AE0851AF08A8C00FC0B2D /* AWJSMonitors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D6AE0841AF08A8C00FC0B2D /* AWJSMonitors.swift */; };
+		3D8914521C0CAFC2009DF1C2 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8914511C0CAFC2009DF1C2 /* main.swift */; };
 		3DAA7B541B1B7498004C2BFB /* AWJSWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAA7B531B1B7498004C2BFB /* AWJSWindow.swift */; };
+		3DAF21C91C0EABFF00265958 /* demo.js in Resources */ = {isa = PBXBuildFile; fileRef = 3DAF21C81C0EABFF00265958 /* demo.js */; };
 		3DDC02581BEBB60D00789740 /* AwesomeHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3DDC01F11BEBB43A00789740 /* AwesomeHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3DDC025B1BF0F16300789740 /* AWAccessibilityEnabled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDC025A1BF0F16300789740 /* AWAccessibilityEnabled.swift */; };
 		AB576D8A1AC61AD500AABBF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB576D891AC61AD500AABBF5 /* AppDelegate.swift */; };
@@ -105,7 +107,7 @@
 		3D1C3DD11AE83BE200EEE08A /* AWJSHotKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWJSHotKey.swift; path = JS/AWJSHotKey.swift; sourceTree = "<group>"; };
 		3D1C3DD41AE8680D00EEE08A /* AWKeyCodes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWKeyCodes.swift; path = Util/AWKeyCodes.swift; sourceTree = "<group>"; };
 		3D1F0F6B1AF9B40700437F97 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = JS/README.md; sourceTree = "<group>"; };
-		3D2D8BEF1AF0A749009406B8 /* JSType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSType.swift; path = JS/JSType.swift; sourceTree = "<group>"; };
+		3D2D8BEF1AF0A749009406B8 /* AWJSType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWJSType.swift; path = JS/AWJSType.swift; sourceTree = "<group>"; };
 		3D2FD4AE1AE5EE7A002641E0 /* AWJSApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWJSApplication.swift; path = JS/AWJSApplication.swift; sourceTree = "<group>"; };
 		3D2FD4B01AE5FFB7002641E0 /* AWJSContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWJSContext.swift; path = JS/AWJSContext.swift; sourceTree = "<group>"; };
 		3D2FD4B31AE617A2002641E0 /* AWJSEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWJSEvent.swift; path = JS/AWJSEvent.swift; sourceTree = "<group>"; };
@@ -118,8 +120,10 @@
 		3D5DF6221BC0434F0043179C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		3D5DF6241BC42AFA0043179C /* AWManagerInternal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWManagerInternal.swift; path = Model/internal/AWManagerInternal.swift; sourceTree = "<group>"; };
 		3D6AE0841AF08A8C00FC0B2D /* AWJSMonitors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWJSMonitors.swift; path = JS/AWJSMonitors.swift; sourceTree = "<group>"; };
+		3D8914511C0CAFC2009DF1C2 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		3DAA27A41AD44A6C008DDFC1 /* Awesome-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Awesome-Bridging-Header.h"; sourceTree = "<group>"; };
 		3DAA7B531B1B7498004C2BFB /* AWJSWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWJSWindow.swift; path = JS/AWJSWindow.swift; sourceTree = "<group>"; };
+		3DAF21C81C0EABFF00265958 /* demo.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = demo.js; sourceTree = "<group>"; };
 		3DDC01EB1BEBB43A00789740 /* AwesomeHelper.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AwesomeHelper.xcodeproj; path = AwesomeHelper/AwesomeHelper.xcodeproj; sourceTree = "<group>"; };
 		3DDC025A1BF0F16300789740 /* AWAccessibilityEnabled.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWAccessibilityEnabled.swift; path = Model/AWAccessibilityEnabled.swift; sourceTree = "<group>"; };
 		AB576D841AC61AD500AABBF5 /* Awesome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Awesome.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -186,7 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				3D1F0F6B1AF9B40700437F97 /* README.md */,
-				3D2D8BEF1AF0A749009406B8 /* JSType.swift */,
+				3D2D8BEF1AF0A749009406B8 /* AWJSType.swift */,
 				3D2FD4AE1AE5EE7A002641E0 /* AWJSApplication.swift */,
 				3D2FD4B01AE5FFB7002641E0 /* AWJSContext.swift */,
 				3D2FD4B31AE617A2002641E0 /* AWJSEvent.swift */,
@@ -272,6 +276,8 @@
 				3DAA27A41AD44A6C008DDFC1 /* Awesome-Bridging-Header.h */,
 				3D13A5DA1BDC415A00639FB1 /* MainMenu.xib */,
 				3D5DF6221BC0434F0043179C /* README.md */,
+				3D8914511C0CAFC2009DF1C2 /* main.swift */,
+				3DAF21C81C0EABFF00265958 /* demo.js */,
 			);
 			path = Awesome;
 			sourceTree = "<group>";
@@ -409,6 +415,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DAF21C91C0EABFF00265958 /* demo.js in Resources */,
 				AB576D8C1AC61AD500AABBF5 /* Images.xcassets in Resources */,
 				3D13A5E01BDC5A4800639FB1 /* AWPreferences.xib in Resources */,
 				3D13A5EF1BDDD39200639FB1 /* status.pdf in Resources */,
@@ -452,11 +459,12 @@
 				3DDC025B1BF0F16300789740 /* AWAccessibilityEnabled.swift in Sources */,
 				AB576D8A1AC61AD500AABBF5 /* AppDelegate.swift in Sources */,
 				AB576DA71AC633AB00AABBF5 /* AWWindow.swift in Sources */,
+				3D8914521C0CAFC2009DF1C2 /* main.swift in Sources */,
 				3D6AE0851AF08A8C00FC0B2D /* AWJSMonitors.swift in Sources */,
 				3D13A5D91BDC31B300639FB1 /* AWStatusTarget.swift in Sources */,
 				3D50BB901AF1455E00C1E583 /* AWNotification.swift in Sources */,
 				AB576DA91AC8CA8C00AABBF5 /* AWAccessibilityAPI.swift in Sources */,
-				3D2D8BF01AF0A749009406B8 /* JSType.swift in Sources */,
+				3D2D8BF01AF0A749009406B8 /* AWJSType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

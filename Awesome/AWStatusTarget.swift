@@ -13,8 +13,8 @@ class AWStatusTarget:NSObject {
     var prefWindow:AWPreferencesWindow
     var controller:NSWindowController?
     
-    init(accessibility:AWAccessibilityEnabled) {
-        prefWindow = AWPreferencesWindow(accessibility: accessibility)
+    init(accessibility:AWAccessibilityEnabled, reloadJS:() -> Void) {
+        prefWindow = AWPreferencesWindow(accessibility: accessibility, reloadJS: reloadJS)
     }
     
     func showPreferences(sender: AnyObject) {

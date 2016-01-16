@@ -12,11 +12,13 @@ import Cocoa
 class AWPreferencesWindow:NSWindowController {
     @IBOutlet weak var filePickerButton:NSButton?
     @IBOutlet weak var jsFilePathLabel:NSTextField?
+    @IBOutlet weak var reloadJSButton:NSButton?
     @IBOutlet weak var openAtLoginButton:NSButton?
     @IBOutlet weak var enableAccessibilityButton:NSButton?
     @IBOutlet weak var accessibilityStatus:NSTextField?
     private var context = 0
     private var accessibilityEnabled:AWAccessibilityEnabled?
+    private var reloadJS:(() -> Void)?
     
     override init(window:NSWindow!) {
         super.init(window: window)
@@ -26,10 +28,11 @@ class AWPreferencesWindow:NSWindowController {
         super.init(coder: coder)!
     }
     
-    convenience init (accessibility:AWAccessibilityEnabled) {
+    convenience init (accessibility:AWAccessibilityEnabled, reloadJS: () -> Void) {
         self.init(window: nil)
         NSBundle.mainBundle().loadNibNamed("AWPreferences", owner: self, topLevelObjects: nil)
         accessibilityEnabled = accessibility
+        self.reloadJS = reloadJS
         accessibility.addObserver(self, forKeyPath: "enabled", options: .New, context: &context)
     }
     
@@ -92,6 +95,11 @@ class AWPreferencesWindow:NSWindowController {
     @IBAction func enableAccessibility(sender:NSButton) {
         print("enable accessibility")
         AWAccessibilityAPI.promptToTrustProcess()
+    }
+    
+    @IBAction func reloadJS(sender:NSButton) {
+        print("reloading js")
+        reloadJS!()
     }
     
 }

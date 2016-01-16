@@ -7,7 +7,7 @@
 import Foundation
 import JavaScriptCore
 
-class JSType {
+class AWJSType {
     
     class func toJSValue(value: CGSize, context: JSContext) -> JSValue {
         return JSValue(size: value, inContext: context)
@@ -23,5 +23,9 @@ class JSType {
     
     class func toJSValue(value: CFRange, context: JSContext) -> JSValue {
         return JSValue(object: ["location": value.location, "length": value.length], inContext: context)
+    }
+    
+    class func isEmpty(value:JSValue) -> Bool {
+        return value.isNull || value.isUndefined
     }
 }

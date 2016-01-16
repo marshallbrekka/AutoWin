@@ -12,9 +12,9 @@ import JavaScriptCore
 
 @objc protocol AWJSHotKeyInterface :JSExport {
     // Use hacky param names so that we get addHotkeyListener as the js method
-    func add(key:String, hotkey modifiers:[String], listener callback: JSValue)
+    func add(key:String, _ modifiers:[String], _ callback: JSValue)
     // Use hacky param names so that we get removeHotkey as the js method
-    func remove(key:String, hotkey modifiers:[String])
+    func remove(key:String, _ modifiers:[String])
 }
 
 @objc class AWJSHotKey : NSObject, AWJSHotKeyInterface {
@@ -55,7 +55,7 @@ import JavaScriptCore
         }
     }
     
-    func add(key: String, hotkey modifiers: [String], listener callback: JSValue) {
+    func add(key: String, _ modifiers: [String], _ callback: JSValue) {
         let code = AWHotKeyManager.keyAndModifiersToCode(key, modifiers: modifiers)
         let wrapped = JSManagedValue(value: callback)
         callback.context.virtualMachine.addManagedReference(wrapped, withOwner: self)
@@ -69,7 +69,7 @@ import JavaScriptCore
         }
     }
     
-    func remove(key: String, hotkey modifiers: [String]) {
+    func remove(key: String, _ modifiers: [String]) {
         let code = AWHotKeyManager.keyAndModifiersToCode(key, modifiers: modifiers)
         if let instance = listeners[code] {
             let virtualMachine = instance.callback.value.context.virtualMachine

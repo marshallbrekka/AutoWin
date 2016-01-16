@@ -118,7 +118,7 @@ class AWWindow {
             return (subrole == nil ||
                     subrole! == NSAccessibilityStandardWindowSubrole)
         } else {
-            let minimizedAttr = AWAccessibilityAPI.getAttribute(ref, property: NSAccessibilityMinimizedAttribute) as Bool?
+            let minimizedAttr = AWAccessibilityAPI.getAttribute(ref, property: NSAccessibilityMinimizeButtonAttribute) as AnyObject?
             print("window doesn't have standard role", minimizedAttr)
             return minimizedAttr != nil
             

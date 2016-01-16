@@ -8,6 +8,7 @@
 
 import Cocoa
 import Carbon
+import JavaScriptCore
 
 func OnHotKeyDown(handler: EventHandlerCallRef, event: EventRef, managerPtr: UnsafeMutablePointer<Void>) -> OSStatus {
     print("got called", handler, event)
@@ -15,7 +16,7 @@ func OnHotKeyDown(handler: EventHandlerCallRef, event: EventRef, managerPtr: Uns
 }
 
 
-@NSApplicationMain
+//@NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
 //    @IBOutlet weak var window: NSWindow!
@@ -29,13 +30,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var accessibilityEnabled:AWAccessibilityEnabled?
     var ref:EventHotKeyRef = nil
     private var observerContext = 0
+    var cc:JSContext?
     //var HKM2:AWHotKeyManager?
 
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
+        
+        cc = JSContext()
         AWAccessibilityAPI.promptToTrustProcess()
         accessibilityEnabled = AWAccessibilityEnabled()
-        menuTarget = AWStatusTarget(accessibility: accessibilityEnabled!)
+        menuTarget = AWStatusTarget(accessibility: accessibilityEnabled!, reloadJS: reloadJS)
         menuItem = AWStatusItem(target:menuTarget!)
         hk = AWHotKeyManager()
         if accessibilityEnabled!.enabled {
@@ -84,14 +88,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     
     func loadJSEnvironment() {
-        if let filePath = AWPreferences.getString(AWPreferences.JSFilePath) {
-            do {
-                let contents = try String(contentsOfFile: filePath, encoding: NSUTF8StringEncoding)
-                context = AWJSContext(manager: manager!, hotKeys: hk!, customContent: contents)
+        var savedFilePath = AWPreferences.getString(AWPreferences.JSFilePath)
+        if savedFilePath == nil {
+            savedFilePath = NSBundle.mainBundle().pathForResource("demo", ofType: "js")
+        }
+  
+        do {
+            let contents = try String(contentsOfFile: savedFilePath!, encoding:NSUTF8StringEncoding)
+            context = AWJSContext(manager: manager!, hotKeys: hk!, customContent: contents)
                 
-            } catch _ {
-                print("ERROR", filePath)
-            }
+        } catch _ {
+            print("ERROR", savedFilePath)
         }
     }
 

@@ -29,6 +29,9 @@ class AWJSContext:NSObject {
     
     init(manager:AWManager, hotKeys:AWHotKeyManager, customContent:String) {
         webView = WebView()
+//        WKWebView
+//        webView!.mainFrameURL = "https://www.google.com"
+//        webView.configuration.preferences.setValue(true, forKey: "developerExtrasEnabled")
         print("context", webView?.mainFrame.globalContext)
         context = JSContext(JSGlobalContextRef: (webView?.mainFrame.globalContext)!)
         context.exceptionHandler = { context, exception in
@@ -54,6 +57,7 @@ class AWJSContext:NSObject {
         ]
 
         context.setObject(api, forKeyedSubscript: "aw")
+//        context.setObject(AWJSApplicationObjectClass.self, forKeyedSubscript: "AWApplication")
         context.evaluateScript(customContent)
     }
     
