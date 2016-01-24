@@ -51,14 +51,18 @@ class AWJSMonitorsEvent: AWNotificationTarget {
         let monitors:[NSScreen] = (NSScreen.screens() as [NSScreen]?)!
         var monitorDictionarys:[NSDictionary] = []
         for monitor in monitors {
-            monitorDictionarys.append(AWJSMonitors.monitorToDictionary(monitor))
+            monitorDictionarys.append(AWJSMonitors.monitorToDictionary(monitors[0], monitor: monitor))
         }
         return monitorDictionarys
     }
     
-    class func monitorToDictionary(monitor:NSScreen) -> NSDictionary {
-        let frame = monitor.visibleFrame
-        let objFrame = ["width": frame.size.width, "height": frame.size.height, "x": frame.origin.x, "y": frame.origin.y]
+    class func monitorToDictionary(main: NSScreen, monitor:NSScreen) -> NSDictionary {
+        let frame = monitor.frame
+        let objFrame = ["width": frame.size.width,
+                        "height": frame.size.height,
+                        "x": frame.origin.x,
+                        // screen frame is in cartisian coord system, flip it to match windows.
+                        "y": main.frame.size.height - frame.size.height - frame.origin.y]
         let info:NSDictionary = monitor.deviceDescription as NSDictionary
         let result:NSDictionary = [
             "frame": objFrame,
