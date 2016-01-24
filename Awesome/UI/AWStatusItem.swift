@@ -12,6 +12,7 @@ import Cocoa
 class AWStatusItem {
     let item:NSStatusItem
     let items = [["Preferences", "showPreferences:"],
+                 ["Reload JS", "reload:"],
                  ["Quit","quit:"]]
     
     init(target:AWStatusTarget) {
@@ -23,9 +24,6 @@ class AWStatusItem {
             menu.addItem(newItem)
         }
         
-//        item.button!.title = "AW"
-        print("item widht", NSSquareStatusItemLength)
-
         item.button!.image = NSImage(named: "status")
         item.menu = menu
     }
