@@ -10,7 +10,7 @@
 		3DDC01D11BEBB43A00789740 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDC01D01BEBB43A00789740 /* AppDelegate.swift */; };
 		3DDC01D31BEBB43A00789740 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DDC01D21BEBB43A00789740 /* Assets.xcassets */; };
 		3DDC01D61BEBB43A00789740 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DDC01D41BEBB43A00789740 /* MainMenu.xib */; };
-		3DDC01E11BEBB43A00789740 /* AwesomeHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDC01E01BEBB43A00789740 /* AwesomeHelperTests.swift */; };
+		3DDC01E11BEBB43A00789740 /* AutoWinHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDC01E01BEBB43A00789740 /* AutoWinHelperTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -24,13 +24,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3DDC01CD1BEBB43A00789740 /* AwesomeHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AwesomeHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3DDC01CD1BEBB43A00789740 /* AutoWinHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutoWinHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DDC01D01BEBB43A00789740 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3DDC01D21BEBB43A00789740 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3DDC01D51BEBB43A00789740 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		3DDC01D71BEBB43A00789740 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3DDC01DC1BEBB43A00789740 /* AwesomeHelperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AwesomeHelperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3DDC01E01BEBB43A00789740 /* AwesomeHelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwesomeHelperTests.swift; sourceTree = "<group>"; };
+		3DDC01DC1BEBB43A00789740 /* AutoWinHelperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AutoWinHelperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3DDC01E01BEBB43A00789740 /* AutoWinHelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoWinHelperTests.swift; sourceTree = "<group>"; };
 		3DDC01E21BEBB43A00789740 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -55,8 +55,8 @@
 		3DDC01C41BEBB43A00789740 = {
 			isa = PBXGroup;
 			children = (
-				3DDC01CF1BEBB43A00789740 /* AwesomeHelper */,
-				3DDC01DF1BEBB43A00789740 /* AwesomeHelperTests */,
+				3DDC01CF1BEBB43A00789740 /* AutoWinHelper */,
+				3DDC01DF1BEBB43A00789740 /* AutoWinHelperTests */,
 				3DDC01CE1BEBB43A00789740 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -64,13 +64,13 @@
 		3DDC01CE1BEBB43A00789740 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3DDC01CD1BEBB43A00789740 /* AwesomeHelper.app */,
-				3DDC01DC1BEBB43A00789740 /* AwesomeHelperTests.xctest */,
+				3DDC01CD1BEBB43A00789740 /* AutoWinHelper.app */,
+				3DDC01DC1BEBB43A00789740 /* AutoWinHelperTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3DDC01CF1BEBB43A00789740 /* AwesomeHelper */ = {
+		3DDC01CF1BEBB43A00789740 /* AutoWinHelper */ = {
 			isa = PBXGroup;
 			children = (
 				3DDC01D01BEBB43A00789740 /* AppDelegate.swift */,
@@ -78,24 +78,24 @@
 				3DDC01D41BEBB43A00789740 /* MainMenu.xib */,
 				3DDC01D71BEBB43A00789740 /* Info.plist */,
 			);
-			path = AwesomeHelper;
+			path = AutoWinHelper;
 			sourceTree = "<group>";
 		};
-		3DDC01DF1BEBB43A00789740 /* AwesomeHelperTests */ = {
+		3DDC01DF1BEBB43A00789740 /* AutoWinHelperTests */ = {
 			isa = PBXGroup;
 			children = (
-				3DDC01E01BEBB43A00789740 /* AwesomeHelperTests.swift */,
+				3DDC01E01BEBB43A00789740 /* AutoWinHelperTests.swift */,
 				3DDC01E21BEBB43A00789740 /* Info.plist */,
 			);
-			path = AwesomeHelperTests;
+			path = AutoWinHelperTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3DDC01CC1BEBB43A00789740 /* AwesomeHelper */ = {
+		3DDC01CC1BEBB43A00789740 /* AutoWinHelper */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3DDC01E51BEBB43A00789740 /* Build configuration list for PBXNativeTarget "AwesomeHelper" */;
+			buildConfigurationList = 3DDC01E51BEBB43A00789740 /* Build configuration list for PBXNativeTarget "AutoWinHelper" */;
 			buildPhases = (
 				3DDC01C91BEBB43A00789740 /* Sources */,
 				3DDC01CA1BEBB43A00789740 /* Frameworks */,
@@ -105,14 +105,14 @@
 			);
 			dependencies = (
 			);
-			name = AwesomeHelper;
+			name = AutoWinHelper;
 			productName = AwesomeHelper;
-			productReference = 3DDC01CD1BEBB43A00789740 /* AwesomeHelper.app */;
+			productReference = 3DDC01CD1BEBB43A00789740 /* AutoWinHelper.app */;
 			productType = "com.apple.product-type.application";
 		};
-		3DDC01DB1BEBB43A00789740 /* AwesomeHelperTests */ = {
+		3DDC01DB1BEBB43A00789740 /* AutoWinHelperTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3DDC01E81BEBB43A00789740 /* Build configuration list for PBXNativeTarget "AwesomeHelperTests" */;
+			buildConfigurationList = 3DDC01E81BEBB43A00789740 /* Build configuration list for PBXNativeTarget "AutoWinHelperTests" */;
 			buildPhases = (
 				3DDC01D81BEBB43A00789740 /* Sources */,
 				3DDC01D91BEBB43A00789740 /* Frameworks */,
@@ -123,9 +123,9 @@
 			dependencies = (
 				3DDC01DE1BEBB43A00789740 /* PBXTargetDependency */,
 			);
-			name = AwesomeHelperTests;
+			name = AutoWinHelperTests;
 			productName = AwesomeHelperTests;
-			productReference = 3DDC01DC1BEBB43A00789740 /* AwesomeHelperTests.xctest */;
+			productReference = 3DDC01DC1BEBB43A00789740 /* AutoWinHelperTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -147,7 +147,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3DDC01C81BEBB43A00789740 /* Build configuration list for PBXProject "AwesomeHelper" */;
+			buildConfigurationList = 3DDC01C81BEBB43A00789740 /* Build configuration list for PBXProject "AutoWinHelper" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -160,8 +160,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3DDC01CC1BEBB43A00789740 /* AwesomeHelper */,
-				3DDC01DB1BEBB43A00789740 /* AwesomeHelperTests */,
+				3DDC01CC1BEBB43A00789740 /* AutoWinHelper */,
+				3DDC01DB1BEBB43A00789740 /* AutoWinHelperTests */,
 			);
 		};
 /* End PBXProject section */
@@ -198,7 +198,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3DDC01E11BEBB43A00789740 /* AwesomeHelperTests.swift in Sources */,
+				3DDC01E11BEBB43A00789740 /* AutoWinHelperTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,7 +207,7 @@
 /* Begin PBXTargetDependency section */
 		3DDC01DE1BEBB43A00789740 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 3DDC01CC1BEBB43A00789740 /* AwesomeHelper */;
+			target = 3DDC01CC1BEBB43A00789740 /* AutoWinHelper */;
 			targetProxy = 3DDC01DD1BEBB43A00789740 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -309,10 +309,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = AwesomeHelper/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/AutoWinHelper/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.marshallbrekka.Awesome.AwesomeHelper;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.marshallbrekka.AutoWin.AutoWinHelper;
+				PRODUCT_NAME = AutoWinHelper;
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -322,10 +322,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = AwesomeHelper/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/AutoWinHelper/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.marshallbrekka.Awesome.AwesomeHelper;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.marshallbrekka.AutoWin.AutoWinHelper;
+				PRODUCT_NAME = AutoWinHelper;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -338,7 +338,7 @@
 				INFOPLIST_FILE = AwesomeHelperTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.marshallbrekka.Awesome.AwesomeHelperTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = AutoWinHelperTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AwesomeHelper.app/Contents/MacOS/AwesomeHelper";
 			};
 			name = Debug;
@@ -351,7 +351,7 @@
 				INFOPLIST_FILE = AwesomeHelperTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.marshallbrekka.Awesome.AwesomeHelperTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = AutoWinHelperTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AwesomeHelper.app/Contents/MacOS/AwesomeHelper";
 			};
 			name = Release;
@@ -359,7 +359,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3DDC01C81BEBB43A00789740 /* Build configuration list for PBXProject "AwesomeHelper" */ = {
+		3DDC01C81BEBB43A00789740 /* Build configuration list for PBXProject "AutoWinHelper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3DDC01E31BEBB43A00789740 /* Debug */,
@@ -368,21 +368,23 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3DDC01E51BEBB43A00789740 /* Build configuration list for PBXNativeTarget "AwesomeHelper" */ = {
+		3DDC01E51BEBB43A00789740 /* Build configuration list for PBXNativeTarget "AutoWinHelper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3DDC01E61BEBB43A00789740 /* Debug */,
 				3DDC01E71BEBB43A00789740 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
-		3DDC01E81BEBB43A00789740 /* Build configuration list for PBXNativeTarget "AwesomeHelperTests" */ = {
+		3DDC01E81BEBB43A00789740 /* Build configuration list for PBXNativeTarget "AutoWinHelperTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3DDC01E91BEBB43A00789740 /* Debug */,
 				3DDC01EA1BEBB43A00789740 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

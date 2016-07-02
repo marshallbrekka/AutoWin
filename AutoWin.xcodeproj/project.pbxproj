@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		3D13A5D71BDC2AAF00639FB1 /* AWStatusItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D13A5D61BDC2AAF00639FB1 /* AWStatusItem.swift */; };
 		3D13A5D91BDC31B300639FB1 /* AWStatusTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D13A5D81BDC31B300639FB1 /* AWStatusTarget.swift */; };
-		3D13A5DC1BDC415A00639FB1 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D13A5DA1BDC415A00639FB1 /* MainMenu.xib */; };
 		3D13A5DE1BDC54DA00639FB1 /* AWPreferencesWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D13A5DD1BDC54DA00639FB1 /* AWPreferencesWindow.swift */; };
 		3D13A5E01BDC5A4800639FB1 /* AWPreferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D13A5DF1BDC5A4800639FB1 /* AWPreferences.xib */; };
 		3D13A5E21BDC75E000639FB1 /* AWOpenAtLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D13A5E11BDC75E000639FB1 /* AWOpenAtLogin.swift */; };
@@ -34,44 +33,31 @@
 		3D8914521C0CAFC2009DF1C2 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8914511C0CAFC2009DF1C2 /* main.swift */; };
 		3DAA7B541B1B7498004C2BFB /* AWJSWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAA7B531B1B7498004C2BFB /* AWJSWindow.swift */; };
 		3DAF21C91C0EABFF00265958 /* demo.js in Resources */ = {isa = PBXBuildFile; fileRef = 3DAF21C81C0EABFF00265958 /* demo.js */; };
-		3DDC02581BEBB60D00789740 /* AwesomeHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3DDC01F11BEBB43A00789740 /* AwesomeHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3DDC025B1BF0F16300789740 /* AWAccessibilityEnabled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDC025A1BF0F16300789740 /* AWAccessibilityEnabled.swift */; };
+		AB0F93FC1D27647000FCD8C7 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB0F93FA1D27647000FCD8C7 /* MainMenu.xib */; };
 		AB576D8A1AC61AD500AABBF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB576D891AC61AD500AABBF5 /* AppDelegate.swift */; };
 		AB576D8C1AC61AD500AABBF5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB576D8B1AC61AD500AABBF5 /* Images.xcassets */; };
-		AB576D9B1AC61AD500AABBF5 /* AwesomeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB576D9A1AC61AD500AABBF5 /* AwesomeTests.swift */; };
+		AB576D9B1AC61AD500AABBF5 /* AutoWinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB576D9A1AC61AD500AABBF5 /* AutoWinTests.swift */; };
 		AB576DA51AC6231100AABBF5 /* AWApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB576DA41AC6231100AABBF5 /* AWApplication.swift */; };
 		AB576DA71AC633AB00AABBF5 /* AWWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB576DA61AC633AB00AABBF5 /* AWWindow.swift */; };
 		AB576DA91AC8CA8C00AABBF5 /* AWAccessibilityAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB576DA81AC8CA8C00AABBF5 /* AWAccessibilityAPI.swift */; };
+		AB8BBC3F1D276E3E00D130A3 /* AutoWinHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = AB1979911D27630F005F0656 /* AutoWinHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		3DDC01F01BEBB43A00789740 /* PBXContainerItemProxy */ = {
+		AB1979901D27630F005F0656 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 3DDC01EB1BEBB43A00789740 /* AwesomeHelper.xcodeproj */;
+			containerPortal = 3DDC01EB1BEBB43A00789740 /* AutoWinHelper.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 3DDC01CD1BEBB43A00789740;
-			remoteInfo = AwesomeHelper;
+			remoteInfo = AutoWinHelper;
 		};
-		3DDC01F21BEBB43A00789740 /* PBXContainerItemProxy */ = {
+		AB1979921D27630F005F0656 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 3DDC01EB1BEBB43A00789740 /* AwesomeHelper.xcodeproj */;
+			containerPortal = 3DDC01EB1BEBB43A00789740 /* AutoWinHelper.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 3DDC01DC1BEBB43A00789740;
-			remoteInfo = AwesomeHelperTests;
-		};
-		3DDC01F51BEBB44900789740 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3DDC01EB1BEBB43A00789740 /* AwesomeHelper.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 3DDC01CC1BEBB43A00789740;
-			remoteInfo = AwesomeHelper;
-		};
-		3DDC01F81BEBB45500789740 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3DDC01EB1BEBB43A00789740 /* AwesomeHelper.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 3DDC01CC1BEBB43A00789740;
-			remoteInfo = AwesomeHelper;
+			remoteInfo = AutoWinHelperTests;
 		};
 		AB576D951AC61AD500AABBF5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -89,7 +75,7 @@
 			dstPath = Contents/Library/LoginItems;
 			dstSubfolderSpec = 1;
 			files = (
-				3DDC02581BEBB60D00789740 /* AwesomeHelper.app in CopyFiles */,
+				AB8BBC3F1D276E3E00D130A3 /* AutoWinHelper.app in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,12 +84,11 @@
 /* Begin PBXFileReference section */
 		3D13A5D61BDC2AAF00639FB1 /* AWStatusItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWStatusItem.swift; path = UI/AWStatusItem.swift; sourceTree = "<group>"; };
 		3D13A5D81BDC31B300639FB1 /* AWStatusTarget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWStatusTarget.swift; sourceTree = "<group>"; };
-		3D13A5DB1BDC415A00639FB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Awesome/Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		3D13A5DD1BDC54DA00639FB1 /* AWPreferencesWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWPreferencesWindow.swift; path = UI/AWPreferencesWindow.swift; sourceTree = "<group>"; };
 		3D13A5DF1BDC5A4800639FB1 /* AWPreferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AWPreferences.xib; path = UI/AWPreferences.xib; sourceTree = "<group>"; };
 		3D13A5E11BDC75E000639FB1 /* AWOpenAtLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWOpenAtLogin.swift; path = Util/AWOpenAtLogin.swift; sourceTree = "<group>"; };
 		3D13A5E91BDCA0C700639FB1 /* AWPreferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWPreferences.swift; sourceTree = "<group>"; };
-		3D13A5EE1BDDD39200639FB1 /* status.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = status.pdf; path = Awesome/Icons/status.pdf; sourceTree = "<group>"; };
+		3D13A5EE1BDDD39200639FB1 /* status.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = status.pdf; sourceTree = "<group>"; };
 		3D1C3DD11AE83BE200EEE08A /* AWJSHotKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWJSHotKey.swift; path = JS/AWJSHotKey.swift; sourceTree = "<group>"; };
 		3D1C3DD41AE8680D00EEE08A /* AWKeyCodes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWKeyCodes.swift; path = Util/AWKeyCodes.swift; sourceTree = "<group>"; };
 		3D1F0F6B1AF9B40700437F97 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = JS/README.md; sourceTree = "<group>"; };
@@ -121,21 +106,23 @@
 		3D5DF6241BC42AFA0043179C /* AWManagerInternal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWManagerInternal.swift; path = Model/internal/AWManagerInternal.swift; sourceTree = "<group>"; };
 		3D6AE0841AF08A8C00FC0B2D /* AWJSMonitors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWJSMonitors.swift; path = JS/AWJSMonitors.swift; sourceTree = "<group>"; };
 		3D8914511C0CAFC2009DF1C2 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		3DAA27A41AD44A6C008DDFC1 /* Awesome-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Awesome-Bridging-Header.h"; sourceTree = "<group>"; };
+		3DAA27A41AD44A6C008DDFC1 /* AutoWin-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AutoWin-Bridging-Header.h"; sourceTree = "<group>"; };
 		3DAA7B531B1B7498004C2BFB /* AWJSWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWJSWindow.swift; path = JS/AWJSWindow.swift; sourceTree = "<group>"; };
 		3DAF21C81C0EABFF00265958 /* demo.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = demo.js; sourceTree = "<group>"; };
-		3DDC01EB1BEBB43A00789740 /* AwesomeHelper.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AwesomeHelper.xcodeproj; path = AwesomeHelper/AwesomeHelper.xcodeproj; sourceTree = "<group>"; };
+		3DDC01EB1BEBB43A00789740 /* AutoWinHelper.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AutoWinHelper.xcodeproj; path = AutoWinHelper/AutoWinHelper.xcodeproj; sourceTree = "<group>"; };
 		3DDC025A1BF0F16300789740 /* AWAccessibilityEnabled.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWAccessibilityEnabled.swift; path = Model/AWAccessibilityEnabled.swift; sourceTree = "<group>"; };
-		AB576D841AC61AD500AABBF5 /* Awesome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Awesome.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB0F93FB1D27647000FCD8C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		AB576D841AC61AD500AABBF5 /* AutoWin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutoWin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB576D881AC61AD500AABBF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB576D891AC61AD500AABBF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB576D8B1AC61AD500AABBF5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		AB576D941AC61AD500AABBF5 /* AwesomeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AwesomeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB576D941AC61AD500AABBF5 /* AutoWinTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AutoWinTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB576D991AC61AD500AABBF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AB576D9A1AC61AD500AABBF5 /* AwesomeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwesomeTests.swift; sourceTree = "<group>"; };
+		AB576D9A1AC61AD500AABBF5 /* AutoWinTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoWinTests.swift; sourceTree = "<group>"; };
 		AB576DA41AC6231100AABBF5 /* AWApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWApplication.swift; path = Model/AWApplication.swift; sourceTree = "<group>"; };
 		AB576DA61AC633AB00AABBF5 /* AWWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWWindow.swift; path = Model/AWWindow.swift; sourceTree = "<group>"; };
 		AB576DA81AC8CA8C00AABBF5 /* AWAccessibilityAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWAccessibilityAPI.swift; path = Util/AWAccessibilityAPI.swift; sourceTree = "<group>"; };
+		ABCA9A2A1D2755EF0078A30C /* Awesome copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Awesome copy-Info.plist"; path = "/Users/Marshall/src/awesome/Awesome/Awesome copy-Info.plist"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +160,7 @@
 				3D13A5EE1BDDD39200639FB1 /* status.pdf */,
 			);
 			name = Icons;
+			path = AutoWin/Icons;
 			sourceTree = "<group>";
 		};
 		3D1C3DD31AE867FE00EEE08A /* Util */ = {
@@ -233,11 +221,11 @@
 			name = internal;
 			sourceTree = "<group>";
 		};
-		3DDC01EC1BEBB43A00789740 /* Products */ = {
+		AB19798C1D27630F005F0656 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3DDC01F11BEBB43A00789740 /* AwesomeHelper.app */,
-				3DDC01F31BEBB43A00789740 /* AwesomeHelperTests.xctest */,
+				AB1979911D27630F005F0656 /* AutoWinHelper.app */,
+				AB1979931D27630F005F0656 /* AutoWinHelperTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -245,24 +233,25 @@
 		AB576D7B1AC61AD400AABBF5 = {
 			isa = PBXGroup;
 			children = (
-				3DDC01EB1BEBB43A00789740 /* AwesomeHelper.xcodeproj */,
+				3DDC01EB1BEBB43A00789740 /* AutoWinHelper.xcodeproj */,
 				3D13A5ED1BDDD38400639FB1 /* Icons */,
-				AB576D861AC61AD500AABBF5 /* Awesome */,
-				AB576D971AC61AD500AABBF5 /* AwesomeTests */,
+				AB576D861AC61AD500AABBF5 /* AutoWin */,
+				AB576D971AC61AD500AABBF5 /* AutoWinTests */,
 				AB576D851AC61AD500AABBF5 /* Products */,
+				ABCA9A2A1D2755EF0078A30C /* Awesome copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
 		AB576D851AC61AD500AABBF5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AB576D841AC61AD500AABBF5 /* Awesome.app */,
-				AB576D941AC61AD500AABBF5 /* AwesomeTests.xctest */,
+				AB576D841AC61AD500AABBF5 /* AutoWin.app */,
+				AB576D941AC61AD500AABBF5 /* AutoWinTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		AB576D861AC61AD500AABBF5 /* Awesome */ = {
+		AB576D861AC61AD500AABBF5 /* AutoWin */ = {
 			isa = PBXGroup;
 			children = (
 				3D13A5D51BDC2A9400639FB1 /* UI */,
@@ -273,13 +262,13 @@
 				AB576D891AC61AD500AABBF5 /* AppDelegate.swift */,
 				AB576D8B1AC61AD500AABBF5 /* Images.xcassets */,
 				AB576D871AC61AD500AABBF5 /* Supporting Files */,
-				3DAA27A41AD44A6C008DDFC1 /* Awesome-Bridging-Header.h */,
-				3D13A5DA1BDC415A00639FB1 /* MainMenu.xib */,
+				3DAA27A41AD44A6C008DDFC1 /* AutoWin-Bridging-Header.h */,
 				3D5DF6221BC0434F0043179C /* README.md */,
 				3D8914511C0CAFC2009DF1C2 /* main.swift */,
 				3DAF21C81C0EABFF00265958 /* demo.js */,
+				AB0F93FA1D27647000FCD8C7 /* MainMenu.xib */,
 			);
-			path = Awesome;
+			path = AutoWin;
 			sourceTree = "<group>";
 		};
 		AB576D871AC61AD500AABBF5 /* Supporting Files */ = {
@@ -290,13 +279,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		AB576D971AC61AD500AABBF5 /* AwesomeTests */ = {
+		AB576D971AC61AD500AABBF5 /* AutoWinTests */ = {
 			isa = PBXGroup;
 			children = (
-				AB576D9A1AC61AD500AABBF5 /* AwesomeTests.swift */,
+				AB576D9A1AC61AD500AABBF5 /* AutoWinTests.swift */,
 				AB576D981AC61AD500AABBF5 /* Supporting Files */,
 			);
-			path = AwesomeTests;
+			path = AutoWinTests;
 			sourceTree = "<group>";
 		};
 		AB576D981AC61AD500AABBF5 /* Supporting Files */ = {
@@ -310,9 +299,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		AB576D831AC61AD500AABBF5 /* Awesome */ = {
+		AB576D831AC61AD500AABBF5 /* AutoWin */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AB576D9E1AC61AD500AABBF5 /* Build configuration list for PBXNativeTarget "Awesome" */;
+			buildConfigurationList = AB576D9E1AC61AD500AABBF5 /* Build configuration list for PBXNativeTarget "AutoWin" */;
 			buildPhases = (
 				AB576D801AC61AD500AABBF5 /* Sources */,
 				AB576D811AC61AD500AABBF5 /* Frameworks */,
@@ -322,17 +311,15 @@
 			buildRules = (
 			);
 			dependencies = (
-				3DDC01F61BEBB44900789740 /* PBXTargetDependency */,
-				3DDC01F91BEBB45500789740 /* PBXTargetDependency */,
 			);
-			name = Awesome;
+			name = AutoWin;
 			productName = Awesome;
-			productReference = AB576D841AC61AD500AABBF5 /* Awesome.app */;
+			productReference = AB576D841AC61AD500AABBF5 /* AutoWin.app */;
 			productType = "com.apple.product-type.application";
 		};
-		AB576D931AC61AD500AABBF5 /* AwesomeTests */ = {
+		AB576D931AC61AD500AABBF5 /* AutoWinTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AB576DA11AC61AD500AABBF5 /* Build configuration list for PBXNativeTarget "AwesomeTests" */;
+			buildConfigurationList = AB576DA11AC61AD500AABBF5 /* Build configuration list for PBXNativeTarget "AutoWinTests" */;
 			buildPhases = (
 				AB576D901AC61AD500AABBF5 /* Sources */,
 				AB576D911AC61AD500AABBF5 /* Frameworks */,
@@ -343,9 +330,9 @@
 			dependencies = (
 				AB576D961AC61AD500AABBF5 /* PBXTargetDependency */,
 			);
-			name = AwesomeTests;
+			name = AutoWinTests;
 			productName = AwesomeTests;
-			productReference = AB576D941AC61AD500AABBF5 /* AwesomeTests.xctest */;
+			productReference = AB576D941AC61AD500AABBF5 /* AutoWinTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -368,7 +355,7 @@
 					};
 				};
 			};
-			buildConfigurationList = AB576D7F1AC61AD400AABBF5 /* Build configuration list for PBXProject "Awesome" */;
+			buildConfigurationList = AB576D7F1AC61AD400AABBF5 /* Build configuration list for PBXProject "AutoWin" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -381,31 +368,31 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 3DDC01EC1BEBB43A00789740 /* Products */;
-					ProjectRef = 3DDC01EB1BEBB43A00789740 /* AwesomeHelper.xcodeproj */;
+					ProductGroup = AB19798C1D27630F005F0656 /* Products */;
+					ProjectRef = 3DDC01EB1BEBB43A00789740 /* AutoWinHelper.xcodeproj */;
 				},
 			);
 			projectRoot = "";
 			targets = (
-				AB576D831AC61AD500AABBF5 /* Awesome */,
-				AB576D931AC61AD500AABBF5 /* AwesomeTests */,
+				AB576D831AC61AD500AABBF5 /* AutoWin */,
+				AB576D931AC61AD500AABBF5 /* AutoWinTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		3DDC01F11BEBB43A00789740 /* AwesomeHelper.app */ = {
+		AB1979911D27630F005F0656 /* AutoWinHelper.app */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.application;
-			path = AwesomeHelper.app;
-			remoteRef = 3DDC01F01BEBB43A00789740 /* PBXContainerItemProxy */;
+			path = AutoWinHelper.app;
+			remoteRef = AB1979901D27630F005F0656 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		3DDC01F31BEBB43A00789740 /* AwesomeHelperTests.xctest */ = {
+		AB1979931D27630F005F0656 /* AutoWinHelperTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = AwesomeHelperTests.xctest;
-			remoteRef = 3DDC01F21BEBB43A00789740 /* PBXContainerItemProxy */;
+			path = AutoWinHelperTests.xctest;
+			remoteRef = AB1979921D27630F005F0656 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -416,10 +403,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3DAF21C91C0EABFF00265958 /* demo.js in Resources */,
+				AB0F93FC1D27647000FCD8C7 /* MainMenu.xib in Resources */,
 				AB576D8C1AC61AD500AABBF5 /* Images.xcassets in Resources */,
 				3D13A5E01BDC5A4800639FB1 /* AWPreferences.xib in Resources */,
 				3D13A5EF1BDDD39200639FB1 /* status.pdf in Resources */,
-				3D13A5DC1BDC415A00639FB1 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,38 +459,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB576D9B1AC61AD500AABBF5 /* AwesomeTests.swift in Sources */,
+				AB576D9B1AC61AD500AABBF5 /* AutoWinTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		3DDC01F61BEBB44900789740 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = AwesomeHelper;
-			targetProxy = 3DDC01F51BEBB44900789740 /* PBXContainerItemProxy */;
-		};
-		3DDC01F91BEBB45500789740 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = AwesomeHelper;
-			targetProxy = 3DDC01F81BEBB45500789740 /* PBXContainerItemProxy */;
-		};
 		AB576D961AC61AD500AABBF5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = AB576D831AC61AD500AABBF5 /* Awesome */;
+			target = AB576D831AC61AD500AABBF5 /* AutoWin */;
 			targetProxy = AB576D951AC61AD500AABBF5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		3D13A5DA1BDC415A00639FB1 /* MainMenu.xib */ = {
+		AB0F93FA1D27647000FCD8C7 /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				3D13A5DB1BDC415A00639FB1 /* Base */,
+				AB0F93FB1D27647000FCD8C7 /* Base */,
 			);
 			name = MainMenu.xib;
-			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -594,11 +570,11 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
-				INFOPLIST_FILE = Awesome/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/AutoWin/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Awesome/Awesome-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "AutoWin/AutoWin-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -611,11 +587,11 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
-				INFOPLIST_FILE = Awesome/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/AutoWin/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Awesome/Awesome-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "AutoWin/AutoWin-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -658,7 +634,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		AB576D7F1AC61AD400AABBF5 /* Build configuration list for PBXProject "Awesome" */ = {
+		AB576D7F1AC61AD400AABBF5 /* Build configuration list for PBXProject "AutoWin" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AB576D9C1AC61AD500AABBF5 /* Debug */,
@@ -667,7 +643,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AB576D9E1AC61AD500AABBF5 /* Build configuration list for PBXNativeTarget "Awesome" */ = {
+		AB576D9E1AC61AD500AABBF5 /* Build configuration list for PBXNativeTarget "AutoWin" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AB576D9F1AC61AD500AABBF5 /* Debug */,
@@ -676,7 +652,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AB576DA11AC61AD500AABBF5 /* Build configuration list for PBXNativeTarget "AwesomeTests" */ = {
+		AB576DA11AC61AD500AABBF5 /* Build configuration list for PBXNativeTarget "AutoWinTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AB576DA21AC61AD500AABBF5 /* Debug */,

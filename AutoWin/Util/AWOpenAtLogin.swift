@@ -12,7 +12,7 @@ import ServiceManagement
 class AWOpenAtLogin {
     class func setOpenAtLogin(enabled: Bool) {
         AWPreferences.setBool(AWPreferences.OpenAtLogin, value:enabled)
-        let helperAppUrl = NSBundle.mainBundle().bundleURL.URLByAppendingPathComponent("Contents/Library/LoginItems/AwesomeHelper.app", isDirectory: true)
+        let helperAppUrl = NSBundle.mainBundle().bundleURL.URLByAppendingPathComponent("Contents/Library/LoginItems/AutoWinHelper.app", isDirectory: true)
         
         let reverse = helperAppUrl.URLByDeletingLastPathComponent?.URLByDeletingLastPathComponent?.URLByDeletingLastPathComponent?.URLByDeletingLastPathComponent
         print("reverse",reverse, helperAppUrl)
@@ -22,7 +22,7 @@ class AWOpenAtLogin {
             NSLog("Failed to LSRegisterURL '%@': %jd", helperAppUrl, status)
         }
         
-        if SMLoginItemSetEnabled("com.marshallbrekka.Awesome.AwesomeHelper", enabled) {
+        if SMLoginItemSetEnabled("com.marshallbrekka.AutoWin.AutoWinHelper", enabled) {
             NSLog("SMLoginItemSetEnabled change to %i worked!", enabled)
         }
     }
