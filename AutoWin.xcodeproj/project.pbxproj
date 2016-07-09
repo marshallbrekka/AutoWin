@@ -35,6 +35,7 @@
 		3DAF21C91C0EABFF00265958 /* demo.js in Resources */ = {isa = PBXBuildFile; fileRef = 3DAF21C81C0EABFF00265958 /* demo.js */; };
 		3DDC025B1BF0F16300789740 /* AWAccessibilityEnabled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDC025A1BF0F16300789740 /* AWAccessibilityEnabled.swift */; };
 		AB0F93FC1D27647000FCD8C7 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB0F93FA1D27647000FCD8C7 /* MainMenu.xib */; };
+		AB38C18F1D31B8CF00D9A769 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = AB38C18E1D31B8CF00D9A769 /* README.md */; };
 		AB576D8A1AC61AD500AABBF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB576D891AC61AD500AABBF5 /* AppDelegate.swift */; };
 		AB576D8C1AC61AD500AABBF5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB576D8B1AC61AD500AABBF5 /* Images.xcassets */; };
 		AB576D9B1AC61AD500AABBF5 /* AutoWinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB576D9A1AC61AD500AABBF5 /* AutoWinTests.swift */; };
@@ -111,6 +112,7 @@
 		3DDC01EB1BEBB43A00789740 /* AutoWinHelper.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AutoWinHelper.xcodeproj; path = AutoWinHelper/AutoWinHelper.xcodeproj; sourceTree = "<group>"; };
 		3DDC025A1BF0F16300789740 /* AWAccessibilityEnabled.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWAccessibilityEnabled.swift; path = Model/AWAccessibilityEnabled.swift; sourceTree = "<group>"; };
 		AB0F93FB1D27647000FCD8C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		AB38C18E1D31B8CF00D9A769 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		AB576D841AC61AD500AABBF5 /* AutoWin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutoWin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB576D881AC61AD500AABBF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB576D891AC61AD500AABBF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 				AB576D861AC61AD500AABBF5 /* AutoWin */,
 				AB576D971AC61AD500AABBF5 /* AutoWinTests */,
 				AB576D851AC61AD500AABBF5 /* Products */,
+				AB38C18E1D31B8CF00D9A769 /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -433,6 +436,7 @@
 				3D1F0F6C1AF9B40700437F97 /* README.md in Sources */,
 				3D3EACDF1C036C840062A525 /* AWObserver.swift in Sources */,
 				3D4148431BFCCD540087417F /* AWHotKeyManager.swift in Sources */,
+				AB38C18F1D31B8CF00D9A769 /* README.md in Sources */,
 				3D2FE1581BE911E100F3F2D6 /* AWMouse.swift in Sources */,
 				3D13A5EA1BDCA0C700639FB1 /* AWPreferences.swift in Sources */,
 				3D2FD4B11AE5FFB7002641E0 /* AWJSContext.swift in Sources */,

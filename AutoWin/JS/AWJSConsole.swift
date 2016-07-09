@@ -7,7 +7,7 @@ import JavaScriptCore
 
 @objc class AWJSConsole: NSObject, AWJSConsoleInterface {
     class func log(item: JSValue) {
-        print("JS Log: " + item.toString())
+        NSLog("JS Log: " + item.toString())
     }
     
     deinit {
