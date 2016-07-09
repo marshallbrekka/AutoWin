@@ -57,7 +57,6 @@ Class that provides the javascript interface for aw.window.
         manager.windowEvent = self
     }
     
-    
     deinit {
         print("deinit awjswindow")
     }
@@ -113,8 +112,8 @@ Class that provides the javascript interface for aw.window.
     
     func setMinimized(pid: pid_t, _ windowId: uint, _ minimized: Bool) -> Bool {
         if let window = manager.getWindow(pid, windowId: windowId) {
-            // TODO defer
-            //return window.setMinimized(minimized))
+            // DEFER
+            //return window.setMinimized(minimized)
             return false
         } else {
             return false

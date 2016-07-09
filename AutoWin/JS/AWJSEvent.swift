@@ -1,11 +1,3 @@
-//
-//  AWJSEvent.swift
-//  Awesome
-//
-//  Created by Marshall Brekka on 4/20/15.
-//  Copyright (c) 2015 Marshall Brekka. All rights reserved.
-//
-
 import Foundation
 import JavaScriptCore
 

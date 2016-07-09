@@ -1,16 +1,6 @@
-//
-//  Application.swift
-//  Awesome
-//
-//  Created by Marshall Brekka on 3/27/15.
-//  Copyright (c) 2015 Marshall Brekka. All rights reserved.
-//
-
 import Foundation
 import Cocoa
 import Carbon
-
-
 
 class AWApplication {
     let app:NSRunningApplication
@@ -41,8 +31,7 @@ class AWApplication {
             return app.localizedName!
         }
     }
-    
-    
+
     class func isSupportedApplication(app: AWApplication) -> Bool {
         print("getting application role", NSDate().timeIntervalSince1970, app.pid)
         let role = AWAccessibilityAPI.getAttribute(app.ref, property: NSAccessibilityRoleAttribute) as String?

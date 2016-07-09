@@ -1,11 +1,3 @@
-//
-//  Window.swift
-//  Awesome
-//
-//  Created by Marshall Brekka on 3/27/15.
-//  Copyright (c) 2015 Marshall Brekka. All rights reserved.
-//
-
 import Foundation
 import Cocoa
 
@@ -13,21 +5,21 @@ class AWWindow {
     let ref:AXUIElementRef
     let id: UInt
     let pid: pid_t
-    
+
     init(ref:AXUIElementRef, pid: pid_t) {
         self.ref = ref
         id = CFHash(ref)
         self.pid = pid
     }
-    
+
     deinit {
         print("deinit awwindow")
     }
-    
+
     func title() -> String? {
         return AWAccessibilityAPI.getAttribute(self.ref, property: NSAccessibilityTitleAttribute) as String?
     }
-    
+
     func getSize() -> CGSize {
         var size = CGSize()
         return AWAccessibilityAPI.getValueAttribute(self.ref,
@@ -35,7 +27,7 @@ class AWWindow {
             type: AXValueType.CGSize,
             destination:&size)
     }
-    
+
     func getPosition() -> CGPoint {
         var point = CGPoint()
         return AWAccessibilityAPI.getValueAttribute(self.ref,
@@ -43,7 +35,7 @@ class AWWindow {
             type: AXValueType.CGPoint,
             destination:&point)
     }
-    
+
     func getFrame() -> NSDictionary {
         let size = getSize()
         let position = getPosition()
@@ -52,14 +44,14 @@ class AWWindow {
                 "width": size.width,
                 "height": size.height]
     }
-    
+
     func becomeMain() -> Bool {
         return AWAccessibilityAPI.setAttribute(
             ref,
             property: NSAccessibilityMainAttribute,
             value: kCFBooleanTrue)
     }
-    
+
     func setFrame(frame: NSDictionary) -> Bool {
         let x = frame.objectForKey("x") as? Int
         let y = frame.objectForKey("y") as? Int
@@ -89,20 +81,18 @@ class AWWindow {
             }
         }
     }
-    
+
     func close() -> Bool {
         let closeButton = AWAccessibilityAPI.getAttribute(
             ref,
             property: NSAccessibilityCloseButtonAttribute) as AXUIElementRef?
-                
         if closeButton != nil {
             return AWAccessibilityAPI.performAction(closeButton!, action: kAXPressAction)
         } else {
             return false
         }
     }
-   
-    
+
     class func isWindow(ref:AXUIElementRef) -> Bool {
         print("IS WINDOW")
         let role:String? = AWAccessibilityAPI.getAttribute(ref, property: NSAccessibilityRoleAttribute) as String?
@@ -121,7 +111,6 @@ class AWWindow {
             let minimizedAttr = AWAccessibilityAPI.getAttribute(ref, property: NSAccessibilityMinimizeButtonAttribute) as AnyObject?
             print("window doesn't have standard role", minimizedAttr)
             return minimizedAttr != nil
-            
         }
     }
 }

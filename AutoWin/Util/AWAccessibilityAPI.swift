@@ -1,7 +1,3 @@
-//
-//  AccessibilityAPI.swift
-//  Awesome
-
 import Foundation
 
 class AWAccessibilityAPI {
@@ -101,6 +97,4 @@ class AWAccessibilityAPI {
         }
         return nil
     }
-    
-    
 }

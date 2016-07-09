@@ -72,7 +72,6 @@ Class that provides the javascript interface for aw.application.
         events.triggerEvent(
             "aw.application." + appEvents[eventName]!,
             eventData: AWJSApplication.applicationToDictionary(app))
-        
     }
     
     class func applicationToDictionary(app: AWApplication) -> NSDictionary {

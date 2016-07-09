@@ -1,11 +1,4 @@
-//
-//  AWMouse.swift
-//  Awesome
-//
-//  Created by Marshall Brekka on 11/3/15.
-//  Copyright © 2015 Marshall Brekka. All rights reserved.
 //  http://stackoverflow.com/questions/31891002/how-do-you-use-cgeventtapcreate-in-swift
-
 import Foundation
 import CoreGraphics
 
@@ -14,20 +7,19 @@ func callback(proxy:CGEventTapProxy, type:CGEventType, event:CGEventRef, refcon:
     return Unmanaged.passRetained(event)
 }
 
-
 class AWMouse {
     class func getPosition() -> CGPoint {
         let event = CGEventCreate(nil)
         let location = CGEventGetLocation(event)
         return location;
     }
-    
+
     class func setPosition(point:CGPoint) {
         CGWarpMouseCursorPosition(point)
     }
-    
+
     let etap:CFMachPort?
-    
+
     init() {
         print("creating mask!")
         let mask = (1 << CGEventType.MouseMoved.rawValue)
@@ -37,7 +29,7 @@ class AWMouse {
             CGEventMask(mask),
             callback,
             nil);
-        
+
         let runLoopSource = CFMachPortCreateRunLoopSource(kCFAllocatorDefault, etap, 0)
         CFRunLoopAddSource(CFRunLoopGetCurrent(), runLoopSource, kCFRunLoopCommonModes)
         CGEventTapEnable(etap!, true)

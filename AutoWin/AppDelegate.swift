@@ -1,26 +1,8 @@
-//
-//  AppDelegate.swift
-//  Awesome
-//
-//  Created by Marshall Brekka on 3/27/15.
-//  Copyright (c) 2015 Marshall Brekka. All rights reserved.
-//
-
 import Cocoa
 import Carbon
 import JavaScriptCore
 
-func OnHotKeyDown(handler: EventHandlerCallRef, event: EventRef, managerPtr: UnsafeMutablePointer<Void>) -> OSStatus {
-    print("got called", handler, event)
-    return noErr
-}
-
-
-//@NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-
-//    @IBOutlet weak var window: NSWindow!
-    
     var context: AWJSContext?
     var manager: AWManager?
     var menuItem:AWStatusItem?
@@ -31,11 +13,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var ref:EventHotKeyRef = nil
     private var observerContext = 0
     var cc:JSContext?
-    //var HKM2:AWHotKeyManager?
-
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-        
+        AWOpenAtLogin.setAppBundle()
         cc = JSContext()
         AWAccessibilityAPI.promptToTrustProcess()
         accessibilityEnabled = AWAccessibilityEnabled()
@@ -85,8 +65,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
-    
-    
     func loadJSEnvironment() {
         var savedFilePath = AWPreferences.getString(AWPreferences.JSFilePath)
         if savedFilePath == nil {
@@ -105,9 +83,5 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationWillTerminate(aNotification: NSNotification) {
         // Insert code here to tear down your application
         print("terminating")
-        
     }
-
-
 }
-

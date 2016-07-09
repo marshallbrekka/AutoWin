@@ -29,13 +29,12 @@ class AWJSContext:NSObject {
     
     init(manager:AWManager, hotKeys:AWHotKeyManager, customContent:String) {
         webView = WebView()
-//        WKWebView
-//        webView!.mainFrameURL = "https://www.google.com"
-//        webView.configuration.preferences.setValue(true, forKey: "developerExtrasEnabled")
-        print("context", webView?.mainFrame.globalContext)
+        // WKWebView
+        // webView!.mainFrameURL = "https://www.google.com"
+        // webView.configuration.preferences.setValue(true, forKey: "developerExtrasEnabled")
         context = JSContext(JSGlobalContextRef: (webView?.mainFrame.globalContext)!)
         context.exceptionHandler = { context, exception in
-            print("JS Error: \(exception)")
+            NSLog("JS Error: \(exception)")
         }
         context.setObject(AWJSConsole.self, forKeyedSubscript: "console")
         
@@ -45,7 +44,7 @@ class AWJSContext:NSObject {
         application = AWJSApplication(manager: manager, events: events)
         window      = AWJSWindow(manager: manager, events: events)
         hotkeys     = AWJSHotKey(manager: hotKeys)
-        monitors    = AWJSMonitors(events: events)
+        monitors    = AWJSMonitors()
 
         // initialize api objects here
         api = [
@@ -57,7 +56,6 @@ class AWJSContext:NSObject {
         ]
 
         context.setObject(api, forKeyedSubscript: "aw")
-//        context.setObject(AWJSApplicationObjectClass.self, forKeyedSubscript: "AWApplication")
         context.evaluateScript(customContent)
     }
     
@@ -67,5 +65,4 @@ class AWJSContext:NSObject {
         context.setObject(nil, forKeyedSubscript: "console")
         context.setObject(nil, forKeyedSubscript: "aw")
     }
-
 }

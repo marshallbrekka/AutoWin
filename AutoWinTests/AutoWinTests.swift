@@ -1,11 +1,3 @@
-//
-//  AwesomeTests.swift
-//  AwesomeTests
-//
-//  Created by Marshall Brekka on 3/27/15.
-//  Copyright (c) 2015 Marshall Brekka. All rights reserved.
-//
-
 import Cocoa
 import XCTest
 

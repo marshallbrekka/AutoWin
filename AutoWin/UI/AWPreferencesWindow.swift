@@ -1,11 +1,3 @@
-//
-//  AWPreferencesWindow.swift
-//  Awesome
-//
-//  Created by Marshall Brekka on 10/24/15.
-//  Copyright © 2015 Marshall Brekka. All rights reserved.
-//
-
 import Foundation
 import Cocoa
 
@@ -60,13 +52,10 @@ class AWPreferencesWindow:NSWindowController {
         } else {
             jsFilePathLabel?.stringValue = "No File Specified"
         }
-        
         openAtLoginButton!.state = AWPreferences.getBool(AWPreferences.OpenAtLogin) ? NSOnState : NSOffState
-        
         updateAccessibilityEnabled()
         super.showWindow(sender)
     }
-
     
     @IBAction func showFilePicker(sender:NSButton) {
         let openPanel = NSOpenPanel()
@@ -101,5 +90,4 @@ class AWPreferencesWindow:NSWindowController {
         print("reloading js")
         reloadJS!()
     }
-    
 }

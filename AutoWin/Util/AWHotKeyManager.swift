@@ -1,11 +1,3 @@
-//
-//  AWHotKeyManager.swift
-//  Awesome
-//
-//  Created by Marshall Brekka on 11/18/15.
-//  Copyright © 2015 Marshall Brekka. All rights reserved.
-//
-
 import Foundation
 import Carbon
 

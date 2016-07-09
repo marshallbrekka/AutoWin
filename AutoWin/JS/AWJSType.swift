@@ -1,9 +1,3 @@
-//
-//  JSType.swift
-//  Awesome
-//
-//  Class for converting CG/CF types to a JSValue
-
 import Foundation
 import JavaScriptCore
 

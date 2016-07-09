@@ -106,7 +106,6 @@
 		3D5DF6241BC42AFA0043179C /* AWManagerInternal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWManagerInternal.swift; path = Model/internal/AWManagerInternal.swift; sourceTree = "<group>"; };
 		3D6AE0841AF08A8C00FC0B2D /* AWJSMonitors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWJSMonitors.swift; path = JS/AWJSMonitors.swift; sourceTree = "<group>"; };
 		3D8914511C0CAFC2009DF1C2 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		3DAA27A41AD44A6C008DDFC1 /* AutoWin-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AutoWin-Bridging-Header.h"; sourceTree = "<group>"; };
 		3DAA7B531B1B7498004C2BFB /* AWJSWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWJSWindow.swift; path = JS/AWJSWindow.swift; sourceTree = "<group>"; };
 		3DAF21C81C0EABFF00265958 /* demo.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = demo.js; sourceTree = "<group>"; };
 		3DDC01EB1BEBB43A00789740 /* AutoWinHelper.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AutoWinHelper.xcodeproj; path = AutoWinHelper/AutoWinHelper.xcodeproj; sourceTree = "<group>"; };
@@ -122,7 +121,6 @@
 		AB576DA41AC6231100AABBF5 /* AWApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWApplication.swift; path = Model/AWApplication.swift; sourceTree = "<group>"; };
 		AB576DA61AC633AB00AABBF5 /* AWWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWWindow.swift; path = Model/AWWindow.swift; sourceTree = "<group>"; };
 		AB576DA81AC8CA8C00AABBF5 /* AWAccessibilityAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWAccessibilityAPI.swift; path = Util/AWAccessibilityAPI.swift; sourceTree = "<group>"; };
-		ABCA9A2A1D2755EF0078A30C /* Awesome copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Awesome copy-Info.plist"; path = "/Users/Marshall/src/awesome/Awesome/Awesome copy-Info.plist"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,7 +236,6 @@
 				AB576D861AC61AD500AABBF5 /* AutoWin */,
 				AB576D971AC61AD500AABBF5 /* AutoWinTests */,
 				AB576D851AC61AD500AABBF5 /* Products */,
-				ABCA9A2A1D2755EF0078A30C /* Awesome copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -262,7 +259,6 @@
 				AB576D891AC61AD500AABBF5 /* AppDelegate.swift */,
 				AB576D8B1AC61AD500AABBF5 /* Images.xcassets */,
 				AB576D871AC61AD500AABBF5 /* Supporting Files */,
-				3DAA27A41AD44A6C008DDFC1 /* AutoWin-Bridging-Header.h */,
 				3D5DF6221BC0434F0043179C /* README.md */,
 				3D8914511C0CAFC2009DF1C2 /* main.swift */,
 				3DAF21C81C0EABFF00265958 /* demo.js */,
@@ -574,7 +570,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "AutoWin/AutoWin-Bridging-Header.h";
+				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -591,7 +587,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "AutoWin/AutoWin-Bridging-Header.h";
+				SWIFT_INSTALL_OBJC_HEADER = NO;
 			};
 			name = Release;
 		};

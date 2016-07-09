@@ -1,11 +1,3 @@
-//
-//  AWStatusItem.swift
-//  Awesome
-//
-//  Created by Marshall Brekka on 10/24/15.
-//  Copyright © 2015 Marshall Brekka. All rights reserved.
-//
-
 import Foundation
 import Cocoa
 

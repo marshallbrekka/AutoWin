@@ -2,7 +2,6 @@
 Class for listening to notifications that come from an NSNotificationCenter object.
 Currently this is used for application and window level events.
 */
-
 import Foundation
 import Cocoa
 

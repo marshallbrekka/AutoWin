@@ -1,16 +1,8 @@
-//
-//  AWAccessibilityEnabled.swift
-//  Awesome
-//
-//  Created by Marshall Brekka on 11/9/15.
-//  Copyright © 2015 Marshall Brekka. All rights reserved.
-//
-
 import Foundation
 
 class AWAccessibilityEnabled:NSObject {
     dynamic var enabled = false
-    
+
     override init() {
         enabled = AWAccessibilityAPI.isProcessTrusted()
         super.init()

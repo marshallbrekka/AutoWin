@@ -1,11 +1,3 @@
-//
-//  AWJSMonitors.swift
-//  Awesome
-//
-//  Created by Marshall Brekka on 4/28/15.
-//  Copyright (c) 2015 Marshall Brekka. All rights reserved.
-//
-
 import Foundation
 import Cocoa
 import JavaScriptCore
@@ -32,16 +24,9 @@ class AWJSMonitorsEvent: AWNotificationTarget {
 }
 
 @objc class AWJSMonitors: NSObject, AWJSMonitorsInterface {
-    //let events: AWJSMonitorsEvent
-    
-    init(events:AWJSEvent) {
-        //self.events = AWJSMonitorsEvent(events: events);
-    }
-    
     deinit {
         print("deinit awjsmonitors")
     }
-
     
     /*
       each monitor includes the keys id and frame
@@ -70,6 +55,4 @@ class AWJSMonitorsEvent: AWNotificationTarget {
         ]
         return result
     }
-    
 }
-

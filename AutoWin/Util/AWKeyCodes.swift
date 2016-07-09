@@ -1,15 +1,6 @@
-//
-//  KeyCodes.swift
-//  Awesome
-//
-//  Created by Marshall Brekka on 4/22/15.
-//  Copyright (c) 2015 Marshall Brekka. All rights reserved.
-//
-
 import Foundation
 import Carbon
 import Cocoa
-
 
 let AWCharToModCode:NSDictionary = [
     "cmd"  : cmdKey,

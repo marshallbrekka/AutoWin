@@ -1,11 +1,3 @@
-//
-//  AWObserver.swift
-//  Awesome
-//
-//  Created by Marshall Brekka on 11/23/15.
-//  Copyright © 2015 Marshall Brekka. All rights reserved.
-//
-
 import Foundation
 
 typealias Callback = (ob:AXObserverRef, el:AXUIElementRef, notification:CFStringRef) -> Void
