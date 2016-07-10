@@ -135,7 +135,7 @@ Makes the application the active application.
 
 Monitors are represented by an object with keys `id` and frame `frame` (the same structure as a window frame).
 
-#### aw.monitors.get()
+#### aw.monitors.monitors()
 **Returns**
 Returns a list of monitor objects.
 
