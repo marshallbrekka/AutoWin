@@ -7,7 +7,7 @@ A platform for building window managers on OSX using JavaScript.
 AutoWin provides a JavaScript API for getting and manipulating the layout of windows, and monitoring the state of windows and monitors using event listeners.
 By design, it does not provide any built in window management features, only the tools to build a window manager on top of it.
 
-By default it comes with a minimal script which binds the hotkey `cmd` + `opt` + `ctrl` + `f` to a function that fullscreens the currently focused window on the "main" monitor. You can replace this script with your own through the preferences window, accessible through the status bar icon.
+By default it comes with a minimal [demo script](AutoWin/demo.js) which binds the hotkey `cmd` + `opt` + `ctrl` + `f` to a function that fullscreens the currently focused window on the "main" monitor. You can replace this script with your own through the preferences window, accessible through the status bar icon.
 
 This is Alpha software, so expect to encounter bugs and the occasional crash.
 
