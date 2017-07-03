@@ -2,11 +2,11 @@ import Foundation
 import Cocoa
 
 class AWWindow {
-    let ref:AXUIElementRef
+    let ref:AXUIElement
     let id: UInt
     let pid: pid_t
 
-    init(ref:AXUIElementRef, pid: pid_t) {
+    init(ref:AXUIElement, pid: pid_t) {
         self.ref = ref
         id = CFHash(ref)
         self.pid = pid
@@ -24,7 +24,7 @@ class AWWindow {
         var size = CGSize()
         return AWAccessibilityAPI.getValueAttribute(self.ref,
             property: NSAccessibilitySizeAttribute,
-            type: AXValueType.CGSize,
+            type: AXValueType.cgSize,
             destination:&size)
     }
 
@@ -32,7 +32,7 @@ class AWWindow {
         var point = CGPoint()
         return AWAccessibilityAPI.getValueAttribute(self.ref,
             property: NSAccessibilityPositionAttribute,
-            type: AXValueType.CGPoint,
+            type: AXValueType.cgPoint,
             destination:&point)
     }
 
@@ -52,11 +52,11 @@ class AWWindow {
             value: kCFBooleanTrue)
     }
 
-    func setFrame(frame: NSDictionary) -> Bool {
-        let x = frame.objectForKey("x") as? Int
-        let y = frame.objectForKey("y") as? Int
-        let width = frame.objectForKey("width") as? Int
-        let height = frame.objectForKey("height") as? Int
+    func setFrame(_ frame: NSDictionary) -> Bool {
+        let x = frame.object(forKey: "x") as? Int
+        let y = frame.object(forKey: "y") as? Int
+        let width = frame.object(forKey: "width") as? Int
+        let height = frame.object(forKey: "height") as? Int
         if (x == nil || y == nil || width == nil || height == nil) {
             return false
         } else {
@@ -65,14 +65,14 @@ class AWWindow {
             let positionResult = AWAccessibilityAPI.setValueAttribute(
                     ref,
                     property: NSAccessibilityPositionAttribute,
-                    type: AXValueType.CGPoint,
+                    type: AXValueType.cgPoint,
                     source: &position)
             print("POSITIONED!", positionResult)
             if positionResult {
                 let sizeResult = AWAccessibilityAPI.setValueAttribute(
                     ref,
                     property: NSAccessibilitySizeAttribute,
-                    type: AXValueType.CGSize,
+                    type: AXValueType.cgSize,
                     source: &size)
                 print("SIZE RESULT", sizeResult, size)
                 return sizeResult
@@ -85,7 +85,7 @@ class AWWindow {
     func close() -> Bool {
         let closeButton = AWAccessibilityAPI.getAttribute(
             ref,
-            property: NSAccessibilityCloseButtonAttribute) as AXUIElementRef?
+            property: NSAccessibilityCloseButtonAttribute) as AXUIElement?
         if closeButton != nil {
             return AWAccessibilityAPI.performAction(closeButton!, action: kAXPressAction)
         } else {
@@ -93,7 +93,7 @@ class AWWindow {
         }
     }
 
-    class func isWindow(ref:AXUIElementRef) -> Bool {
+    class func isWindow(_ ref:AXUIElement) -> Bool {
         print("IS WINDOW")
         let role:String? = AWAccessibilityAPI.getAttribute(ref, property: NSAccessibilityRoleAttribute) as String?
         print("IS WINDOW", role)

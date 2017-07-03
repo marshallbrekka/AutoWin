@@ -4,19 +4,19 @@ import AppKit
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     
-    func applicationDidFinishLaunching(aNotification: NSNotification) {
-        NSLog("starting helper: %s", NSBundle.mainBundle().bundleURL.absoluteString)
-        let parentUrl = NSBundle.mainBundle().bundleURL.URLByDeletingLastPathComponent?.URLByDeletingLastPathComponent?.URLByDeletingLastPathComponent?.URLByDeletingLastPathComponent
+    func applicationDidFinishLaunching(_ aNotification: Notification) {
+        NSLog("starting helper: %s", Bundle.main.bundleURL.absoluteString)
+        let parentUrl = (((Bundle.main.bundleURL as NSURL).deletingLastPathComponent as NSURL?)?.deletingLastPathComponent as NSURL?)?.deletingLastPathComponent?.deletingLastPathComponent()
         let config:[String:AnyObject] = NSDictionary() as! [String : AnyObject]
         do {
-            try NSWorkspace.sharedWorkspace().launchApplicationAtURL(parentUrl!, options: NSWorkspaceLaunchOptions.Default, configuration: config)
+            try NSWorkspace.shared().launchApplication(at: parentUrl!, options: NSWorkspaceLaunchOptions.default, configuration: config)
         } catch {
              NSLog("failed to launch", parentUrl!.absoluteString)
         }
-        NSApplication.sharedApplication().terminate(self)
+        NSApplication.shared().terminate(self)
     }
     
-    func applicationWillTerminate(aNotification: NSNotification) {
+    func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
 }

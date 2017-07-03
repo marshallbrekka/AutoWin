@@ -6,24 +6,24 @@ class AWStatusTarget:NSObject {
     var controller:NSWindowController?
     var reloadJS: () -> Void
     
-    init(accessibility:AWAccessibilityEnabled, reloadJS:() -> Void) {
+    init(accessibility:AWAccessibilityEnabled, reloadJS:@escaping () -> Void) {
         self.reloadJS = reloadJS;
         prefWindow = AWPreferencesWindow(accessibility: accessibility, reloadJS: reloadJS)
     }
     
-    func showPreferences(sender: AnyObject) {
+    func showPreferences(_ sender: AnyObject) {
         print("showing preferences")
-        NSApplication.sharedApplication().activateIgnoringOtherApps(true)
+        NSApplication.shared().activate(ignoringOtherApps: true)
         prefWindow.showWindow(nil)
     }
     
-    func reload(sender: AnyObject) {
+    func reload(_ sender: AnyObject) {
         print("reloading js")
         reloadJS()
     }
     
-    func quit(sender: AnyObject) {
+    func quit(_ sender: AnyObject) {
         print("quiting")
-        NSApplication.sharedApplication().terminate(sender)
+        NSApplication.shared().terminate(sender)
     }
 }

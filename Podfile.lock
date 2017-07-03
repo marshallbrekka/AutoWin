@@ -1,0 +1,16 @@
+PODS:
+  - AXSwift (0.0.1)
+
+DEPENDENCIES:
+  - AXSwift (from `AXSwift.podspec`)
+
+EXTERNAL SOURCES:
+  AXSwift:
+    :podspec: AXSwift.podspec
+
+SPEC CHECKSUMS:
+  AXSwift: 9d0ff1f27f3272d770305f166c7d6f1606043c71
+
+PODFILE CHECKSUM: ad776906363e53cd52c37f51ca6bafea371a57c6
+
+COCOAPODS: 1.2.1

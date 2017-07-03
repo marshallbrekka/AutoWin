@@ -19,7 +19,7 @@ import Cocoa
 
 @objc protocol AWJSApplicationInterface : JSExport {
     func applications() -> [NSDictionary]
-    func activate(pid:pid_t) -> Bool
+    func activate(_ pid:pid_t) -> Bool
 }
 
 /*
@@ -27,12 +27,12 @@ Class that provides the javascript interface for aw.application.
 */
 @objc class AWJSApplication : NSObject, AWJSApplicationInterface, AWManagerAppEvent {
     let appEvents = [
-        NSWorkspaceDidLaunchApplicationNotification:"launched",
-        NSWorkspaceDidTerminateApplicationNotification:"terminated",
-        NSWorkspaceDidHideApplicationNotification:"hidden",
-        NSWorkspaceDidUnhideApplicationNotification:"unhidden",
-        NSWorkspaceDidActivateApplicationNotification:"activated",
-        NSWorkspaceDidDeactivateApplicationNotification:"deactivated"
+        NSNotification.Name.NSWorkspaceDidLaunchApplication:"launched",
+        NSNotification.Name.NSWorkspaceDidTerminateApplication:"terminated",
+        NSNotification.Name.NSWorkspaceDidHideApplication:"hidden",
+        NSNotification.Name.NSWorkspaceDidUnhideApplication:"unhidden",
+        NSNotification.Name.NSWorkspaceDidActivateApplication:"activated",
+        NSNotification.Name.NSWorkspaceDidDeactivateApplication:"deactivated"
     ]
 
     let manager:AWManager
@@ -54,7 +54,7 @@ Class that provides the javascript interface for aw.application.
         return manager.applications().map(AWJSApplication.applicationToDictionary)
     }
     
-    func activate(pid:pid_t) -> Bool {
+    func activate(_ pid:pid_t) -> Bool {
         if let app = manager.getApplication(pid) {
             return app.activate()
         } else {
@@ -67,15 +67,15 @@ Class that provides the javascript interface for aw.application.
     Valid events are:
     launched, terminated, activated, deactivated, hidden, unhidden.
     */
-    func appEventCallback(eventName: String, app: AWApplication) {
-        print("triggering js app event: " + eventName)
+    func appEventCallback(_ eventName: NSNotification.Name, app: AWApplication) {
+        print("triggering js app event: " + eventName.rawValue)
         events.triggerEvent(
-            "aw.application." + appEvents[eventName]!,
+            "aw.application." + ((appEvents as NSDictionary)[eventName]! as! String),
             eventData: AWJSApplication.applicationToDictionary(app))
     }
     
-    class func applicationToDictionary(app: AWApplication) -> NSDictionary {
-        let pid: NSNumber = NSNumber(int: app.pid)
+    class func applicationToDictionary(_ app: AWApplication) -> NSDictionary {
+        let pid: NSNumber = NSNumber(value: app.pid as Int32)
         return ["pid": pid]
     }
 }

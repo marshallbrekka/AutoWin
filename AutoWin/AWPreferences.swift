@@ -4,19 +4,19 @@ class AWPreferences {
     static let JSFilePath = "AWPreferencesJSFilePath"
     static let OpenAtLogin = "AWPreferencesOpenAtLogin"
 
-    class func getBool(key: String) -> Bool {
-        return NSUserDefaults.standardUserDefaults().boolForKey(key)
+    class func getBool(_ key: String) -> Bool {
+        return UserDefaults.standard.bool(forKey: key)
     }
 
-    class func getString(key:String) -> String? {
-        return NSUserDefaults.standardUserDefaults().stringForKey(key)
+    class func getString(_ key:String) -> String? {
+        return UserDefaults.standard.string(forKey: key)
     }
 
-    class func setBool(key: String, value: Bool) {
-        NSUserDefaults.standardUserDefaults().setBool(value, forKey: key)
+    class func setBool(_ key: String, value: Bool) {
+        UserDefaults.standard.set(value, forKey: key)
     }
 
-    class func setString(key: String, value: String) {
-        NSUserDefaults.standardUserDefaults().setObject(value, forKey: key)
+    class func setString(_ key: String, value: String) {
+        UserDefaults.standard.set(value, forKey: key)
     }
 }

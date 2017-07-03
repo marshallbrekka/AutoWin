@@ -114,16 +114,16 @@ let AWCharToKeyCode:NSDictionary = [
     ]
 
 @objc class AWKeyCodes:NSObject {
-    class func charToKeyCode(key:String) -> UInt32 {
-        let code = AWCharToKeyCode.objectForKey(key) as! Int
+    class func charToKeyCode(_ key:String) -> UInt32 {
+        let code = AWCharToKeyCode.object(forKey: key) as! Int
         return UInt32(code)
         
     }
     
-    class func modifiersToModCode(modifiers:[String]) -> UInt32 {
+    class func modifiersToModCode(_ modifiers:[String]) -> UInt32 {
         var code = 0 as UInt32
         for mod in modifiers {
-            let modCode:UInt32 = UInt32(AWCharToModCode.objectForKey(mod) as! Int)
+            let modCode:UInt32 = UInt32(AWCharToModCode.object(forKey: mod) as! Int)
             code |= modCode
         }
         return code

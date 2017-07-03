@@ -1,7 +1,8 @@
 import Foundation
 import Carbon
+import CoreServices
 
-typealias AWHotKeyCallback = (down:Bool, key:String, modifiers:[String]) -> Void
+typealias AWHotKeyCallback = (_ down:Bool, _ key:String, _ modifiers:[String]) -> Void
 
 class AWHotKeyManager {
     struct AWHotKeyInstance {
@@ -28,7 +29,7 @@ class AWHotKeyManager {
     
     class AWHotKeyCallbackWrapper {
         var callback:AWHotKeyCallback
-        init(callback:AWHotKeyCallback) {
+        init(callback:@escaping AWHotKeyCallback) {
             self.callback = callback
         }
     }
@@ -36,20 +37,20 @@ class AWHotKeyManager {
     var hotKeyInstances = [UInt64: AWHotKeyInstance]()
     var downRef:AWHotKeySelfRef?
     var upRef:  AWHotKeySelfRef?
-    var downPointer:UnsafeMutablePointer<Void>?
-    var upPointer:  UnsafeMutablePointer<Void>?
+    var downPointer:UnsafeMutableRawPointer?
+    var upPointer:  UnsafeMutableRawPointer?
     
     init() {
         downRef     = AWHotKeySelfRef(down: true, this: self)
         upRef       = AWHotKeySelfRef(down: false, this: self)
-        downPointer = UnsafeMutablePointer(Unmanaged.passUnretained(downRef!).toOpaque())
-        upPointer   = UnsafeMutablePointer(Unmanaged.passUnretained(upRef!).toOpaque())
+        downPointer = Unmanaged.passUnretained(downRef!).toOpaque()
+        upPointer   = Unmanaged.passUnretained(upRef!).toOpaque()
 
-        installHandlerHelper(kEventHotKeyPressed, pointer: downPointer!)
-        installHandlerHelper(kEventHotKeyReleased, pointer: upPointer!)
+        installHandlerHelper(kEventHotKeyPressed, pointer: downPointer!) //downPointer!)
+        installHandlerHelper(kEventHotKeyReleased, pointer: upPointer!) // !)
     }
     
-    func addHotKey(key:String, modifiers:[String], callback:AWHotKeyCallback) -> AWHotKeyRef {
+    func addHotKey(_ key:String, modifiers:[String], callback:@escaping AWHotKeyCallback) -> AWHotKeyRef {
         let keyCode = AWKeyCodes.charToKeyCode(key)
         let modCode = AWKeyCodes.modifiersToModCode(modifiers)
         let code = AWHotKeyManager.combineKeyAndModCode(keyCode, modCode: modCode)
@@ -57,14 +58,14 @@ class AWHotKeyManager {
         
         if let keyInstance = hotKeyInstances[code] {
             // we already have a listener, append the callback to the list
-            keyInstance.callbacks.addObject(callbackWrapper)
+            keyInstance.callbacks.add(callbackWrapper)
         } else {
             // No listener, register one and start tracking callbacks
-            var ref:EventHotKeyRef = nil
+            var ref:EventHotKeyRef? = nil
             let hotKeyID = EventHotKeyID(signature: modCode, id: keyCode)
             RegisterEventHotKey(keyCode, modCode, hotKeyID, GetEventMonitorTarget(), 0,  &ref)
             let keyInstance = AWHotKeyInstance(
-                ref: ref,
+                ref: ref!,
                 key: key,
                 modifiers: modifiers,
                 callbacks: [callbackWrapper])
@@ -73,50 +74,49 @@ class AWHotKeyManager {
         return AWHotKeyRef(keyCode: keyCode, modCode: modCode, handler: callbackWrapper)
     }
     
-    func removeHotKey(ref: AWHotKeyRef) {
+    func removeHotKey(_ ref: AWHotKeyRef) {
         let code = AWHotKeyManager.combineKeyAndModCode(ref.keyCode, modCode: ref.modCode)
         if let keyInstance = hotKeyInstances[code] {
-            keyInstance.callbacks.removeObject(ref.handler)
+            keyInstance.callbacks.remove(ref.handler)
             if (keyInstance.callbacks.count == 0) {
                 UnregisterEventHotKey(keyInstance.ref)
-                hotKeyInstances.removeValueForKey(code)
+                hotKeyInstances.removeValue(forKey: code)
             }
         }
     }
     
-    private func installHandlerHelper(eventKind: Int, pointer:UnsafeMutablePointer<Void>) {
+    fileprivate func installHandlerHelper(_ eventKind: Int, pointer:UnsafeMutableRawPointer) {
         var eventType = EventTypeSpec(eventClass: OSType(kEventClassKeyboard), eventKind: OSType(eventKind))
-
-        InstallEventHandler(GetEventMonitorTarget(), {
-            (handler: EventHandlerCallRef, event:EventRef, ptr:UnsafeMutablePointer<Void>) -> OSStatus in
-            let pair = Unmanaged<AWHotKeySelfRef>.fromOpaque(COpaquePointer(ptr)).takeUnretainedValue()
-            pair.this.eventHandler(pair.down, handler: handler, event: event)
+        let hotkey_callback: EventHandlerUPP = { (handler:EventHandlerCallRef?, event:EventRef?, ptr:UnsafeMutableRawPointer?) -> OSStatus in
+            let pair = Unmanaged<AWHotKeySelfRef>.fromOpaque(ptr!).takeUnretainedValue()
+            pair.this.eventHandler(pair.down, handler: handler!, event: event!)
             return noErr
-        }, 1, &eventType, pointer, nil)
+        }
+        InstallEventHandler(GetEventMonitorTarget(), hotkey_callback, 1, &eventType, pointer, nil)
     }
     
-    private func eventHandler(down: Bool, handler: EventHandlerCallRef, event:EventRef) {
+    fileprivate func eventHandler(_ down: Bool, handler: EventHandlerCallRef, event:EventRef) {
         var hotKeyId:EventHotKeyID = EventHotKeyID()
-        GetEventParameter(event, OSType(kEventParamDirectObject), OSType(typeEventHotKeyID), nil, sizeof(EventHotKeyID), nil, &hotKeyId)
+        GetEventParameter(event, OSType(kEventParamDirectObject), OSType(typeEventHotKeyID), nil, MemoryLayout<EventHotKeyID>.size, nil, &hotKeyId)
         let code = AWHotKeyManager.combineKeyAndModCode(hotKeyId.id, modCode: hotKeyId.signature)
         print("event handler", down, handler, event, hotKeyId.id, hotKeyId.signature)
         if let keyInstance = hotKeyInstances[code] {
-            for callback:AnyObject in keyInstance.callbacks {
+            for callback:Any in keyInstance.callbacks {
                 (callback as! AWHotKeyCallbackWrapper).callback(
-                    down: down,
-                    key: keyInstance.key,
-                    modifiers: keyInstance.modifiers)
+                    down,
+                    keyInstance.key,
+                    keyInstance.modifiers)
             }
         }
     }
     
-    static func combineKeyAndModCode(keyCode:UInt32, modCode: UInt32) -> UInt64 {
+    static func combineKeyAndModCode(_ keyCode:UInt32, modCode: UInt32) -> UInt64 {
         let code = UInt64(keyCode)
         let modCodeInt = UInt64(modCode)
         return modCodeInt << 32 | code
     }
     
-    static func keyAndModifiersToCode(key:String, modifiers:[String]) -> UInt64 {
+    static func keyAndModifiersToCode(_ key:String, modifiers:[String]) -> UInt64 {
         let keyCode = AWKeyCodes.charToKeyCode(key)
         let modCode = AWKeyCodes.modifiersToModCode(modifiers)
         return AWHotKeyManager.combineKeyAndModCode(keyCode, modCode: modCode)

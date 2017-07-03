@@ -8,13 +8,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var menuItem:AWStatusItem?
     var menuTarget:AWStatusTarget?
     var hk:AWHotKeyManager?
-    var ms:AWMouse?
+    //var ms:AWMouse?
     var accessibilityEnabled:AWAccessibilityEnabled?
-    var ref:EventHotKeyRef = nil
-    private var observerContext = 0
+    var ref:EventHotKeyRef? = nil
+    fileprivate var observerContext = 0
     var cc:JSContext?
 
-    func applicationDidFinishLaunching(aNotification: NSNotification) {
+    func applicationDidFinishLaunching(_ aNotification: Notification) {
         AWOpenAtLogin.setAppBundle()
         cc = JSContext()
         AWAccessibilityAPI.promptToTrustProcess()
@@ -31,7 +31,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 self.reloadJS()
             }
         })
-        accessibilityEnabled?.addObserver(self, forKeyPath: "enabled", options: .New, context: &context)
+        accessibilityEnabled?.addObserver(self, forKeyPath: "enabled", options: .new, context: &context)
     }
     
     func startApp() {
@@ -54,7 +54,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if context == &self.context {
             if accessibilityEnabled!.enabled {
                 startApp()
@@ -68,11 +68,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func loadJSEnvironment() {
         var savedFilePath = AWPreferences.getString(AWPreferences.JSFilePath)
         if savedFilePath == nil {
-            savedFilePath = NSBundle.mainBundle().pathForResource("demo", ofType: "js")
+            savedFilePath = Bundle.main.path(forResource: "demo", ofType: "js")
         }
   
         do {
-            let contents = try String(contentsOfFile: savedFilePath!, encoding:NSUTF8StringEncoding)
+            let contents = try String(contentsOfFile: savedFilePath!, encoding:String.Encoding.utf8)
             context = AWJSContext(manager: manager!, hotKeys: hk!, customContent: contents)
                 
         } catch _ {
@@ -80,7 +80,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
 
-    func applicationWillTerminate(aNotification: NSNotification) {
+    func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
         print("terminating")
     }

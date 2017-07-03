@@ -8,7 +8,7 @@ class AWStatusItem {
                  ["Quit","quit:"]]
     
     init(target:AWStatusTarget) {
-        item = NSStatusBar.systemStatusBar().statusItemWithLength(NSSquareStatusItemLength)
+        item = NSStatusBar.system().statusItem(withLength: NSSquareStatusItemLength)
         let menu = NSMenu()
         for menuItem in items {
             let newItem = NSMenuItem(title:menuItem[0], action:Selector(menuItem[1]), keyEquivalent: "")

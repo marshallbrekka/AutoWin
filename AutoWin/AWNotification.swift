@@ -6,24 +6,24 @@ import Foundation
 import Cocoa
 
 protocol AWNotificationTarget:class {
-    func receiveNotification(notifo: NSNotification)
+    func receiveNotification(_ notifo: Notification)
 }
 
 class AWNotification {
-    let center:NSNotificationCenter
+    let center:NotificationCenter
     var observers:[NSObjectProtocol] = []
     weak var target:AWNotificationTarget?
     
-    init (center: NSNotificationCenter, target:AWNotificationTarget, notifications:[String]) {
+    init (center: NotificationCenter, target:AWNotificationTarget, notifications:[NSNotification.Name]) {
         self.target = target
         
         self.center = center
         for notification in notifications {
-            let observer = center.addObserverForName(
-                notification,
+            let observer = center.addObserver(
+                forName: notification,
                 object: nil,
                 queue: nil,
-                usingBlock: receiver);
+                using: receiver);
             observers.append(observer)
         }
     }
@@ -41,8 +41,8 @@ class AWNotification {
         print("killing notifier")
     }
     
-    func receiver(notification:NSNotification!) {
-        print("got notification: " + notification.name)
+    func receiver(_ notification:Notification!) {
+//        print("got notification: " + notification.name)
         if target != nil {
             target!.receiveNotification(notification)
         }

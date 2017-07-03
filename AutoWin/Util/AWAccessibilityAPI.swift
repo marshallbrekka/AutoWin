@@ -2,7 +2,7 @@ import Foundation
 
 class AWAccessibilityAPI {
     
-    class func getPid(ref: AXUIElementRef) -> pid_t {
+    class func getPid(_ ref: AXUIElement) -> pid_t {
         var pid:pid_t = 0
         AXUIElementGetPid(ref, &pid)
         return pid
@@ -14,29 +14,29 @@ class AWAccessibilityAPI {
     
     class func promptToTrustProcess() -> Bool {
         let dict = [kAXTrustedCheckOptionPrompt.takeRetainedValue() as String :kCFBooleanTrue]
-        return AXIsProcessTrustedWithOptions(dict)
+        return AXIsProcessTrustedWithOptions(dict as CFDictionary?)
     }
     
-    class func performAction(ref: AXUIElementRef, action: String) -> Bool {
-        let status:AXError = AXUIElementPerformAction(ref, action)
-        return status == AXError.Success
+    class func performAction(_ ref: AXUIElement, action: String) -> Bool {
+        let status:AXError = AXUIElementPerformAction(ref, action as CFString)
+        return status == AXError.success
     }
     
-    class func getAttribute<T>(ref: AXUIElementRef, property: String) -> T? {
+    class func getAttribute<T>(_ ref: AXUIElement, property: String) -> T? {
         var pointer:AnyObject?
-        let status:AXError = AXUIElementCopyAttributeValue(ref, property, &pointer)
-        if status != AXError.Success {
+        let status:AXError = AXUIElementCopyAttributeValue(ref, property as CFString, &pointer)
+        if status != AXError.success {
             return nil
         } else {
             return pointer as? T
         }
     }
     
-    class func getAttributes<T: AnyObject>(ref: AXUIElementRef, property: String) -> [T]? {
+    class func getAttributes<T: AnyObject>(_ ref: AXUIElement, property: String) -> [T]? {
         // get the number of values for the attribute
         var attributeCount: CFIndex = 0
-        let countStatus:AXError = AXUIElementGetAttributeValueCount(ref, property, &attributeCount)
-        if countStatus != AXError.Success {
+        let countStatus:AXError = AXUIElementGetAttributeValueCount(ref, property as CFString, &attributeCount)
+        if countStatus != AXError.success {
             return nil
         } else if attributeCount == 0 {
             return [T]()
@@ -44,8 +44,8 @@ class AWAccessibilityAPI {
         
         // get the values for the attribute
         var pointer: CFArray?
-        let status:AXError = AXUIElementCopyAttributeValues(ref, property, 0, attributeCount, &pointer)
-        if status != AXError.Success {
+        let status:AXError = AXUIElementCopyAttributeValues(ref, property as CFString, 0, attributeCount, &pointer)
+        if status != AXError.success {
             return nil
         } else if pointer == nil {
             return nil
@@ -59,13 +59,13 @@ class AWAccessibilityAPI {
         }
     }
     
-    class func setAttribute<T: AnyObject>(ref: AXUIElementRef, property: String, value: T) -> Bool {
-        let status:AXError = AXUIElementSetAttributeValue(ref, property, value)
+    class func setAttribute<T: AnyObject>(_ ref: AXUIElement, property: String, value: T) -> Bool {
+        let status:AXError = AXUIElementSetAttributeValue(ref, property as CFString, value)
         print("set attr status", status)
-        return status == AXError.Success
+        return status == AXError.success
     }
     
-    class func getValueAttribute<T>(ref: AXUIElementRef, property: String, type: AXValueType, inout destination: T) -> T {
+    class func getValueAttribute<T>(_ ref: AXUIElement, property: String, type: AXValueType, destination: inout T) -> T {
         let value:AXValue? = getAttribute(ref, property: property) as AXValue?
         if (value != nil) {
             return AXValueToValue(value!, type: type, destination: &destination)
@@ -74,7 +74,7 @@ class AWAccessibilityAPI {
         }
     }
     
-    class func setValueAttribute<T>(ref:AXUIElementRef, property: String, type: AXValueType, inout source: T) -> Bool {
+    class func setValueAttribute<T>(_ ref:AXUIElement, property: String, type: AXValueType, source: inout T) -> Bool {
         if let axValue = ValueToAXValue(type, source: &source) {
             return setAttribute(ref, property: property, value: axValue)
         } else {
@@ -86,14 +86,14 @@ class AWAccessibilityAPI {
     Generic function for converting a AXValue to its real type.
     The destination can be one of CGSize, CGRect, CGRange, CGPoint.
     */
-    class func AXValueToValue<T>(value: AXValue, type: AXValueType, inout destination: T) -> T {
+    class func AXValueToValue<T>(_ value: AXValue, type: AXValueType, destination: inout T) -> T {
         AXValueGetValue(value, type, &destination)
         return destination
     }
     
-    class func ValueToAXValue<T>(type: AXValueType, inout source: T) -> AXValue? {
+    class func ValueToAXValue<T>(_ type: AXValueType, source: inout T) -> AXValue? {
         if let value = AXValueCreate(type, &source) {
-            return value.takeRetainedValue()
+            return value
         }
         return nil
     }

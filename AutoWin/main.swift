@@ -1,7 +1,8 @@
 import Cocoa
+import AXSwift
 
-NSUserDefaults.standardUserDefaults().setBool(true, forKey: "WebKitDeveloperExtras")
-NSUserDefaults.standardUserDefaults().synchronize()
+UserDefaults.standard.set(true, forKey: "WebKitDeveloperExtras")
+UserDefaults.standard.synchronize()
 //[[NSUserDefaults standardUserDefaults] setBool:TRUE forKey:@"WebKitDeveloperExtras"];
 //[[NSUserDefaults standardUserDefaults] synchronize];
-NSApplicationMain(Process.argc, Process.unsafeArgv)
+NSApplicationMain(CommandLine.argc, CommandLine.unsafeArgv)

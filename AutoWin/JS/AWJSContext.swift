@@ -24,6 +24,7 @@ class AWJSContext:NSObject {
     let window:      AWJSWindow
     let hotkeys:     AWJSHotKey
     let monitors:    AWJSMonitors
+    let mouse:       AWJSCursor
     
     let api:         NSDictionary
     
@@ -32,11 +33,11 @@ class AWJSContext:NSObject {
         // WKWebView
         // webView!.mainFrameURL = "https://www.google.com"
         // webView.configuration.preferences.setValue(true, forKey: "developerExtrasEnabled")
-        context = JSContext(JSGlobalContextRef: (webView?.mainFrame.globalContext)!)
+        context = JSContext(jsGlobalContextRef: (webView?.mainFrame.globalContext)!)
         context.exceptionHandler = { context, exception in
             NSLog("JS Error: \(exception)")
         }
-        context.setObject(AWJSConsole.self, forKeyedSubscript: "console")
+        context.setObject(AWJSConsole.self, forKeyedSubscript: "console" as (NSCopying & NSObjectProtocol)!)
         
         self.manager = manager
         
@@ -45,6 +46,7 @@ class AWJSContext:NSObject {
         window      = AWJSWindow(manager: manager, events: events)
         hotkeys     = AWJSHotKey(manager: hotKeys)
         monitors    = AWJSMonitors()
+        mouse       = AWJSCursor()
 
         // initialize api objects here
         api = [
@@ -52,17 +54,18 @@ class AWJSContext:NSObject {
             "window": window,
             "events": events,
             "hotkey": hotkeys,
-            "monitors": monitors
+            "monitors": monitors,
+            "cursor": mouse,
         ]
 
-        context.setObject(api, forKeyedSubscript: "aw")
+        context.setObject(api, forKeyedSubscript: "aw" as (NSCopying & NSObjectProtocol)!)
         context.evaluateScript(customContent)
     }
     
     deinit {
         print("deinitting context")
         //JSGlobalContextRelease((webView?.mainFrame.globalContext)!)
-        context.setObject(nil, forKeyedSubscript: "console")
-        context.setObject(nil, forKeyedSubscript: "aw")
+        context.setObject(nil, forKeyedSubscript: "console" as (NSCopying & NSObjectProtocol)!)
+        context.setObject(nil, forKeyedSubscript: "aw" as (NSCopying & NSObjectProtocol)!)
     }
 }

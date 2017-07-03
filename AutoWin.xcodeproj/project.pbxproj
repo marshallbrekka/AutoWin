@@ -23,7 +23,7 @@
 		3D2FD4B41AE617A2002641E0 /* AWJSEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2FD4B31AE617A2002641E0 /* AWJSEvent.swift */; };
 		3D2FD4B61AE69744002641E0 /* AWJSConsole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2FD4B51AE69744002641E0 /* AWJSConsole.swift */; };
 		3D2FD4B81AE6A365002641E0 /* AWManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2FD4B71AE6A365002641E0 /* AWManager.swift */; };
-		3D2FE1581BE911E100F3F2D6 /* AWMouse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2FE1571BE911E100F3F2D6 /* AWMouse.swift */; };
+		3D2FE1581BE911E100F3F2D6 /* AWCursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2FE1571BE911E100F3F2D6 /* AWCursor.swift */; };
 		3D3EACDF1C036C840062A525 /* AWObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3EACDE1C036C840062A525 /* AWObserver.swift */; };
 		3D4148431BFCCD540087417F /* AWHotKeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4148421BFCCD540087417F /* AWHotKeyManager.swift */; };
 		3D50BB901AF1455E00C1E583 /* AWNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D50BB8F1AF1455E00C1E583 /* AWNotification.swift */; };
@@ -34,6 +34,7 @@
 		3DAA7B541B1B7498004C2BFB /* AWJSWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAA7B531B1B7498004C2BFB /* AWJSWindow.swift */; };
 		3DAF21C91C0EABFF00265958 /* demo.js in Resources */ = {isa = PBXBuildFile; fileRef = 3DAF21C81C0EABFF00265958 /* demo.js */; };
 		3DDC025B1BF0F16300789740 /* AWAccessibilityEnabled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDC025A1BF0F16300789740 /* AWAccessibilityEnabled.swift */; };
+		8F4E7BB468ECA1C7281D5516 /* Pods_AutoWin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7BC050D30CF1A51FBFCF8BE /* Pods_AutoWin.framework */; };
 		AB0F93FC1D27647000FCD8C7 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB0F93FA1D27647000FCD8C7 /* MainMenu.xib */; };
 		AB38C18F1D31B8CF00D9A769 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = AB38C18E1D31B8CF00D9A769 /* README.md */; };
 		AB576D8A1AC61AD500AABBF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB576D891AC61AD500AABBF5 /* AppDelegate.swift */; };
@@ -43,6 +44,8 @@
 		AB576DA71AC633AB00AABBF5 /* AWWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB576DA61AC633AB00AABBF5 /* AWWindow.swift */; };
 		AB576DA91AC8CA8C00AABBF5 /* AWAccessibilityAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB576DA81AC8CA8C00AABBF5 /* AWAccessibilityAPI.swift */; };
 		AB8BBC3F1D276E3E00D130A3 /* AutoWinHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = AB1979911D27630F005F0656 /* AutoWinHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B4BFB5376F3A310157E7E32F /* Pods_AutoWinTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F487E5E3F5B35660DED54A3 /* Pods_AutoWinTests.framework */; };
+		DE2D97FA1EA5BEE2004AA546 /* AWJSCursor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2D97F91EA5BEE2004AA546 /* AWJSCursor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,7 +102,7 @@
 		3D2FD4B31AE617A2002641E0 /* AWJSEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWJSEvent.swift; path = JS/AWJSEvent.swift; sourceTree = "<group>"; };
 		3D2FD4B51AE69744002641E0 /* AWJSConsole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWJSConsole.swift; path = JS/AWJSConsole.swift; sourceTree = "<group>"; };
 		3D2FD4B71AE6A365002641E0 /* AWManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWManager.swift; sourceTree = "<group>"; };
-		3D2FE1571BE911E100F3F2D6 /* AWMouse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWMouse.swift; path = Model/AWMouse.swift; sourceTree = "<group>"; };
+		3D2FE1571BE911E100F3F2D6 /* AWCursor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWCursor.swift; path = Model/AWCursor.swift; sourceTree = "<group>"; };
 		3D3EACDE1C036C840062A525 /* AWObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWObserver.swift; path = Notifications/AWObserver.swift; sourceTree = "<group>"; };
 		3D4148421BFCCD540087417F /* AWHotKeyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWHotKeyManager.swift; path = Util/AWHotKeyManager.swift; sourceTree = "<group>"; };
 		3D50BB8F1AF1455E00C1E583 /* AWNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWNotification.swift; sourceTree = "<group>"; };
@@ -111,6 +114,12 @@
 		3DAF21C81C0EABFF00265958 /* demo.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = demo.js; sourceTree = "<group>"; };
 		3DDC01EB1BEBB43A00789740 /* AutoWinHelper.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AutoWinHelper.xcodeproj; path = AutoWinHelper/AutoWinHelper.xcodeproj; sourceTree = "<group>"; };
 		3DDC025A1BF0F16300789740 /* AWAccessibilityEnabled.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWAccessibilityEnabled.swift; path = Model/AWAccessibilityEnabled.swift; sourceTree = "<group>"; };
+		58A8D62D9A5974877C9D2434 /* Pods-AutoWinTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoWinTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AutoWinTests/Pods-AutoWinTests.release.xcconfig"; sourceTree = "<group>"; };
+		5E4B0342E9BF635D872832DA /* Pods-AutoWin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoWin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AutoWin/Pods-AutoWin.debug.xcconfig"; sourceTree = "<group>"; };
+		5F487E5E3F5B35660DED54A3 /* Pods_AutoWinTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AutoWinTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		74A9A8D05CC3C77125A4C45A /* Pods-AutoWin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoWin.release.xcconfig"; path = "Pods/Target Support Files/Pods-AutoWin/Pods-AutoWin.release.xcconfig"; sourceTree = "<group>"; };
+		A7BC050D30CF1A51FBFCF8BE /* Pods_AutoWin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AutoWin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8740B62F2EEFABE57940273 /* Pods-AutoWinTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoWinTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AutoWinTests/Pods-AutoWinTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AB0F93FB1D27647000FCD8C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		AB38C18E1D31B8CF00D9A769 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		AB576D841AC61AD500AABBF5 /* AutoWin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutoWin.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,6 +132,7 @@
 		AB576DA41AC6231100AABBF5 /* AWApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWApplication.swift; path = Model/AWApplication.swift; sourceTree = "<group>"; };
 		AB576DA61AC633AB00AABBF5 /* AWWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWWindow.swift; path = Model/AWWindow.swift; sourceTree = "<group>"; };
 		AB576DA81AC8CA8C00AABBF5 /* AWAccessibilityAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWAccessibilityAPI.swift; path = Util/AWAccessibilityAPI.swift; sourceTree = "<group>"; };
+		DE2D97F91EA5BEE2004AA546 /* AWJSCursor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWJSCursor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +140,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F4E7BB468ECA1C7281D5516 /* Pods_AutoWin.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,6 +148,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4BFB5376F3A310157E7E32F /* Pods_AutoWinTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,15 +189,16 @@
 		3D2FD4B21AE61780002641E0 /* JS */ = {
 			isa = PBXGroup;
 			children = (
+				3D2FD4AE1AE5EE7A002641E0 /* AWJSApplication.swift */,
 				3D1F0F6B1AF9B40700437F97 /* README.md */,
 				3D2D8BEF1AF0A749009406B8 /* AWJSType.swift */,
-				3D2FD4AE1AE5EE7A002641E0 /* AWJSApplication.swift */,
 				3D2FD4B01AE5FFB7002641E0 /* AWJSContext.swift */,
 				3D2FD4B31AE617A2002641E0 /* AWJSEvent.swift */,
 				3D2FD4B51AE69744002641E0 /* AWJSConsole.swift */,
 				3D1C3DD11AE83BE200EEE08A /* AWJSHotKey.swift */,
 				3D6AE0841AF08A8C00FC0B2D /* AWJSMonitors.swift */,
 				3DAA7B531B1B7498004C2BFB /* AWJSWindow.swift */,
+				DE2D97F91EA5BEE2004AA546 /* AWJSCursor.swift */,
 			);
 			name = JS;
 			sourceTree = "<group>";
@@ -198,7 +211,7 @@
 				AB576DA41AC6231100AABBF5 /* AWApplication.swift */,
 				AB576DA61AC633AB00AABBF5 /* AWWindow.swift */,
 				3D13A5E91BDCA0C700639FB1 /* AWPreferences.swift */,
-				3D2FE1571BE911E100F3F2D6 /* AWMouse.swift */,
+				3D2FE1571BE911E100F3F2D6 /* AWCursor.swift */,
 				3DDC025A1BF0F16300789740 /* AWAccessibilityEnabled.swift */,
 			);
 			name = Model;
@@ -221,6 +234,26 @@
 			name = internal;
 			sourceTree = "<group>";
 		};
+		497C485284B9C2AE901ECA77 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5E4B0342E9BF635D872832DA /* Pods-AutoWin.debug.xcconfig */,
+				74A9A8D05CC3C77125A4C45A /* Pods-AutoWin.release.xcconfig */,
+				A8740B62F2EEFABE57940273 /* Pods-AutoWinTests.debug.xcconfig */,
+				58A8D62D9A5974877C9D2434 /* Pods-AutoWinTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		757C19BFAA3590106968446D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A7BC050D30CF1A51FBFCF8BE /* Pods_AutoWin.framework */,
+				5F487E5E3F5B35660DED54A3 /* Pods_AutoWinTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		AB19798C1D27630F005F0656 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -239,6 +272,8 @@
 				AB576D971AC61AD500AABBF5 /* AutoWinTests */,
 				AB576D851AC61AD500AABBF5 /* Products */,
 				AB38C18E1D31B8CF00D9A769 /* README.md */,
+				497C485284B9C2AE901ECA77 /* Pods */,
+				757C19BFAA3590106968446D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -302,10 +337,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AB576D9E1AC61AD500AABBF5 /* Build configuration list for PBXNativeTarget "AutoWin" */;
 			buildPhases = (
+				F6125474943BA6FDCD884B74 /* [CP] Check Pods Manifest.lock */,
 				AB576D801AC61AD500AABBF5 /* Sources */,
 				AB576D811AC61AD500AABBF5 /* Frameworks */,
 				AB576D821AC61AD500AABBF5 /* Resources */,
 				3DDC02571BEBB5F200789740 /* CopyFiles */,
+				236129DFBBF3A438D5544ACE /* [CP] Embed Pods Frameworks */,
+				972F16D90298AD24B6280F2D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -320,9 +358,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AB576DA11AC61AD500AABBF5 /* Build configuration list for PBXNativeTarget "AutoWinTests" */;
 			buildPhases = (
+				1FA7835F62B364A059FA3F9C /* [CP] Check Pods Manifest.lock */,
 				AB576D901AC61AD500AABBF5 /* Sources */,
 				AB576D911AC61AD500AABBF5 /* Frameworks */,
 				AB576D921AC61AD500AABBF5 /* Resources */,
+				317D024195EF62A84B57D0BA /* [CP] Embed Pods Frameworks */,
+				74B1DA9F678B55DDAFB366DB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -347,9 +388,11 @@
 				TargetAttributes = {
 					AB576D831AC61AD500AABBF5 = {
 						CreatedOnToolsVersion = 6.1.1;
+						LastSwiftMigration = 0820;
 					};
 					AB576D931AC61AD500AABBF5 = {
 						CreatedOnToolsVersion = 6.1.1;
+						LastSwiftMigration = 0820;
 						TestTargetID = AB576D831AC61AD500AABBF5;
 					};
 				};
@@ -418,6 +461,99 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1FA7835F62B364A059FA3F9C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		236129DFBBF3A438D5544ACE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AutoWin/Pods-AutoWin-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		317D024195EF62A84B57D0BA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AutoWinTests/Pods-AutoWinTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		74B1DA9F678B55DDAFB366DB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AutoWinTests/Pods-AutoWinTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		972F16D90298AD24B6280F2D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AutoWin/Pods-AutoWin-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F6125474943BA6FDCD884B74 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		AB576D801AC61AD500AABBF5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -437,12 +573,13 @@
 				3D3EACDF1C036C840062A525 /* AWObserver.swift in Sources */,
 				3D4148431BFCCD540087417F /* AWHotKeyManager.swift in Sources */,
 				AB38C18F1D31B8CF00D9A769 /* README.md in Sources */,
-				3D2FE1581BE911E100F3F2D6 /* AWMouse.swift in Sources */,
+				3D2FE1581BE911E100F3F2D6 /* AWCursor.swift in Sources */,
 				3D13A5EA1BDCA0C700639FB1 /* AWPreferences.swift in Sources */,
 				3D2FD4B11AE5FFB7002641E0 /* AWJSContext.swift in Sources */,
 				3D13A5DE1BDC54DA00639FB1 /* AWPreferencesWindow.swift in Sources */,
 				3D1C3DD51AE8680D00EEE08A /* AWKeyCodes.swift in Sources */,
 				3D13A5E21BDC75E000639FB1 /* AWOpenAtLogin.swift in Sources */,
+				DE2D97FA1EA5BEE2004AA546 /* AWJSCursor.swift in Sources */,
 				3DDC025B1BF0F16300789740 /* AWAccessibilityEnabled.swift in Sources */,
 				AB576D8A1AC61AD500AABBF5 /* AppDelegate.swift in Sources */,
 				AB576DA71AC633AB00AABBF5 /* AWWindow.swift in Sources */,
@@ -564,6 +701,7 @@
 		};
 		AB576D9F1AC61AD500AABBF5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5E4B0342E9BF635D872832DA /* Pods-AutoWin.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -576,11 +714,13 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		AB576DA01AC61AD500AABBF5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 74A9A8D05CC3C77125A4C45A /* Pods-AutoWin.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -592,13 +732,14 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
 		AB576DA21AC61AD500AABBF5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A8740B62F2EEFABE57940273 /* Pods-AutoWinTests.debug.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
@@ -608,26 +749,26 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = AwesomeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Awesome.app/Contents/MacOS/Awesome";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AutoWin.app/Contents/MacOS/AutoWin";
 			};
 			name = Debug;
 		};
 		AB576DA31AC61AD500AABBF5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 58A8D62D9A5974877C9D2434 /* Pods-AutoWinTests.release.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = AwesomeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Awesome.app/Contents/MacOS/Awesome";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AutoWin.app/Contents/MacOS/AutoWin";
 			};
 			name = Release;
 		};

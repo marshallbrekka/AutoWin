@@ -12,10 +12,10 @@ class AWJSMonitorsEvent: AWNotificationTarget {
     
     init(events: AWJSEvent) {
         self.events = events
-        self.notifier = AWNotification(center: NSNotificationCenter.defaultCenter(), target: self, notifications: [NSApplicationDidChangeScreenParametersNotification])
+        self.notifier = AWNotification(center: NotificationCenter.default, target: self, notifications: [NSNotification.Name.NSApplicationDidChangeScreenParameters])
     }
     
-    func receiveNotification(notification: NSNotification) {
+    func receiveNotification(_ notification: Notification) {
         print("monitors changed")
         events.triggerEvent(
             "aw.monitors.layoutChange",
@@ -41,7 +41,7 @@ class AWJSMonitorsEvent: AWNotificationTarget {
         return monitorDictionarys
     }
     
-    class func monitorToDictionary(main: NSScreen, monitor:NSScreen) -> NSDictionary {
+    class func monitorToDictionary(_ main: NSScreen, monitor:NSScreen) -> NSDictionary {
         let frame = monitor.visibleFrame
         let objFrame = ["width": frame.size.width,
                         "height": frame.size.height,
@@ -51,7 +51,7 @@ class AWJSMonitorsEvent: AWNotificationTarget {
         let info:NSDictionary = monitor.deviceDescription as NSDictionary
         let result:NSDictionary = [
             "frame": objFrame,
-            "id": info.objectForKey("NSScreenNumber") as! NSNumber
+            "id": info.object(forKey: "NSScreenNumber") as! NSNumber
         ]
         return result
     }

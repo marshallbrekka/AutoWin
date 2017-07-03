@@ -26,12 +26,12 @@ import Cocoa
 
 @objc protocol AWJSWindowInterface : JSExport {
     func windows() -> [NSDictionary]
-    func close(pid: pid_t, _ windowId: uint) -> Bool
+    func close(_ pid: pid_t, _ windowId: uint) -> Bool
     func focusedWindow() -> NSDictionary?
-    func becomeMain(pid: pid_t, _ windowId: uint) -> Bool
-    func setFrame(pid: pid_t, _ windowId: uint, _ frame: NSDictionary) -> Bool
-    func setMinimized(pid: pid_t, _ windowId: uint, _ minimized: Bool) -> Bool
-    func getFrame(pid: pid_t, _ windowId: uint) -> NSDictionary?
+    func becomeMain(_ pid: pid_t, _ windowId: uint) -> Bool
+    func setFrame(_ pid: pid_t, _ windowId: uint, _ frame: NSDictionary) -> Bool
+    func setMinimized(_ pid: pid_t, _ windowId: uint, _ minimized: Bool) -> Bool
+    func getFrame(_ pid: pid_t, _ windowId: uint) -> NSDictionary?
 }
 
 /*
@@ -66,7 +66,7 @@ Class that provides the javascript interface for aw.window.
         return manager.windows().map(AWJSWindow.toDictionary)
     }
     
-    func close(pid: pid_t, _ windowId: uint) -> Bool {
+    func close(_ pid: pid_t, _ windowId: uint) -> Bool {
         print("calling close", pid, windowId)
         if let window = manager.getWindow(pid, windowId: windowId) {
             return window.close()
@@ -83,7 +83,7 @@ Class that provides the javascript interface for aw.window.
         }
     }
     
-    func becomeMain(pid: pid_t, _ windowId: uint) -> Bool {
+    func becomeMain(_ pid: pid_t, _ windowId: uint) -> Bool {
         if let window = manager.getWindow(pid, windowId: windowId) {
             return window.becomeMain()
         } else {
@@ -91,7 +91,7 @@ Class that provides the javascript interface for aw.window.
         }
     }
     
-    func setFrame(pid: pid_t, _ windowId: uint, _ frame: NSDictionary) -> Bool {
+    func setFrame(_ pid: pid_t, _ windowId: uint, _ frame: NSDictionary) -> Bool {
         print("frame", frame)
         if let window = manager.getWindow(pid, windowId: windowId) {
             return window.setFrame(frame)
@@ -100,7 +100,7 @@ Class that provides the javascript interface for aw.window.
         }
     }
     
-    func getFrame(pid: pid_t, _ windowId: uint) -> NSDictionary? {
+    func getFrame(_ pid: pid_t, _ windowId: uint) -> NSDictionary? {
         if let window = manager.getWindow(pid, windowId: windowId) {
             let frame = window.getFrame()
             print("frame!", frame)
@@ -110,7 +110,7 @@ Class that provides the javascript interface for aw.window.
         }
     }
     
-    func setMinimized(pid: pid_t, _ windowId: uint, _ minimized: Bool) -> Bool {
+    func setMinimized(_ pid: pid_t, _ windowId: uint, _ minimized: Bool) -> Bool {
         if let window = manager.getWindow(pid, windowId: windowId) {
             // DEFER
             //return window.setMinimized(minimized)
@@ -126,15 +126,15 @@ Class that provides the javascript interface for aw.window.
     created, destroyed, focused, mainWindow, moved, resized, titleChanged,
     minimized, unminimized.
     */
-    func windowEventCallback(eventName: String, window: AWWindow) {
+    func windowEventCallback(_ eventName: String, window: AWWindow) {
         print("triggering js window event: " + eventName)
         events.triggerEvent(
             "aw.window." + windowEvents[eventName]!,
             eventData: AWJSWindow.toDictionary(window))
     }
     
-    class func toDictionary(window: AWWindow) -> NSDictionary {
-        let windowId: NSNumber = NSNumber(unsignedLong: window.id)
-        return ["id": windowId, "pid": NSNumber(int: window.pid)]
+    class func toDictionary(_ window: AWWindow) -> NSDictionary {
+        let windowId: NSNumber = NSNumber(value: window.id as UInt)
+        return ["id": windowId, "pid": NSNumber(value: window.pid as Int32)]
     }
 }

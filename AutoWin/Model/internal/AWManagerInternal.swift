@@ -3,12 +3,12 @@ import Cocoa
 
 class AWManagerInternal {
     static let appNotifications = [
-        NSWorkspaceDidLaunchApplicationNotification,
-        NSWorkspaceDidTerminateApplicationNotification,
-        NSWorkspaceDidHideApplicationNotification,
-        NSWorkspaceDidUnhideApplicationNotification,
-        NSWorkspaceDidActivateApplicationNotification,
-        NSWorkspaceDidDeactivateApplicationNotification
+        NSNotification.Name.NSWorkspaceDidLaunchApplication,
+        NSNotification.Name.NSWorkspaceDidTerminateApplication,
+        NSNotification.Name.NSWorkspaceDidHideApplication,
+        NSNotification.Name.NSWorkspaceDidUnhideApplication,
+        NSNotification.Name.NSWorkspaceDidActivateApplication,
+        NSNotification.Name.NSWorkspaceDidDeactivateApplication
     ]
 
     static let windowNotifications = [
@@ -32,27 +32,27 @@ class AWManagerInternal {
     ]
 
     class func applications() -> [NSRunningApplication] {
-        let workspace = NSWorkspace.sharedWorkspace()
+        let workspace = NSWorkspace.shared()
         return workspace.runningApplications 
     }
 
     class func createAWObserver(
-        pid:pid_t,
-        appRef:AXUIElementRef,
-        callback:(AXObserverRef!, AXUIElementRef!, CFStringRef!) -> Void) -> AWObserver {
+        _ pid:pid_t,
+        appRef:AXUIElement,
+        callback:@escaping (AXObserver?, AXUIElement?, CFString?) -> Void) -> AWObserver {
         let observer = AWObserver(pid: pid, callback: callback);
             
         for notification in windowNotifications {
-            observer.addNotification(appRef, notification: notification)
+            observer.addNotification(appRef, notification: notification as CFString)
         }
         return observer
     }
 
-    class func applicationWindows(app: AWApplication) -> [AWWindow] {
+    class func applicationWindows(_ app: AWApplication) -> [AWWindow] {
         var windowObjects: [AWWindow] = []
-        let windowRefs: [AXUIElementRef]? = AWAccessibilityAPI.getAttributes(
+        let windowRefs: [AXUIElement]? = AWAccessibilityAPI.getAttributes(
             app.ref,
-            property: NSAccessibilityWindowsAttribute) as [AXUIElementRef]?
+            property: NSAccessibilityWindowsAttribute) as [AXUIElement]?
 
         if windowRefs != nil {
             windowRefs?.map({
@@ -64,15 +64,15 @@ class AWManagerInternal {
         return windowObjects
     }
 
-    class func trackWindow(windows: NSMutableDictionary, window: AWWindow) {
-        windows.setObject(window, forKey: window.id)
+    class func trackWindow(_ windows: NSMutableDictionary, window: AWWindow) {
+        windows.setObject(window, forKey: window.id as NSCopying)
     }
 
-    class func removeWindow(windows: NSMutableDictionary, window: AWWindow) {
-        windows.removeObjectForKey(window.id)
+    class func removeWindow(_ windows: NSMutableDictionary, window: AWWindow) {
+        windows.removeObject(forKey: window.id)
     }
 
-    class func createWindowDictonary(app: AWApplication) -> NSMutableDictionary {
+    class func createWindowDictonary(_ app: AWApplication) -> NSMutableDictionary {
         let windowDictionary = NSMutableDictionary()
         AWManagerInternal.applicationWindows(app).map({
             AWManagerInternal.trackWindow(windowDictionary, window: $0)
@@ -80,43 +80,43 @@ class AWManagerInternal {
         return windowDictionary
     }
 
-    class func trackApplication(apps: NSMutableDictionary, appMeta: AWManager.AppMeta) {
-        apps.setObject(appMeta, forKey: NSNumber(int: appMeta.app.pid))
+    class func trackApplication(_ apps: NSMutableDictionary, appMeta: AWManager.AppMeta) {
+        apps.setObject(appMeta, forKey: NSNumber(value: appMeta.app.pid as Int32))
     }
 
-    class func pidToApplication(apps: NSMutableDictionary, pid: pid_t) -> AWApplication? {
-        if let meta = apps.objectForKey(NSNumber(int: pid)) as? AWManager.AppMeta {
+    class func pidToApplication(_ apps: NSMutableDictionary, pid: pid_t) -> AWApplication? {
+        if let meta = apps.object(forKey: NSNumber(value: pid as Int32)) as? AWManager.AppMeta {
             return meta.app
         } else {
             return nil
         }
     }
 
-    class func removeApplication(apps: NSMutableDictionary, pid: pid_t) -> AWManager.AppMeta? {
-        let key = NSNumber(int: pid)
-        let meta = apps.objectForKey(key) as? AWManager.AppMeta
+    class func removeApplication(_ apps: NSMutableDictionary, pid: pid_t) -> AWManager.AppMeta? {
+        let key = NSNumber(value: pid as Int32)
+        let meta = apps.object(forKey: key) as? AWManager.AppMeta
         if (meta != nil) {
-            apps.removeObjectForKey(key)
+            apps.removeObject(forKey: key)
             return meta!
         } else {
             return nil
         }
     }
 
-    class func elementRefToAppMeta(apps: NSMutableDictionary, ref:AXUIElementRef) -> AWManager.AppMeta? {
-        let key = NSNumber(int: AWAccessibilityAPI.getPid(ref))
-        return apps.objectForKey(key) as! AWManager.AppMeta?
+    class func elementRefToAppMeta(_ apps: NSMutableDictionary, ref:AXUIElement) -> AWManager.AppMeta? {
+        let key = NSNumber(value: AWAccessibilityAPI.getPid(ref) as Int32)
+        return apps.object(forKey: key) as! AWManager.AppMeta?
     }
 
-    class func createApplicationListener(target:AWNotificationTarget) -> AWNotification {
+    class func createApplicationListener(_ target:AWNotificationTarget) -> AWNotification {
         // All notifications to listen for
         return AWNotification(
-            center: NSWorkspace.sharedWorkspace().notificationCenter,
+            center: NSWorkspace.shared().notificationCenter,
             target: target,
             notifications: appNotifications)
     }
 
-    class func createAndTrackWindow(apps: NSMutableDictionary, ref: AXUIElementRef) -> AWWindow {
+    class func createAndTrackWindow(_ apps: NSMutableDictionary, ref: AXUIElement) -> AWWindow {
         let appMeta = AWManagerInternal.elementRefToAppMeta(apps, ref: ref)
         let window = AWWindow(ref: ref, pid: appMeta!.app.pid)
         if (appMeta != nil) {
@@ -125,11 +125,11 @@ class AWManagerInternal {
         return window
     }
 
-    class func elementRefToWindow(apps: NSMutableDictionary, ref: AXUIElementRef) -> AWWindow? {
+    class func elementRefToWindow(_ apps: NSMutableDictionary, ref: AXUIElement) -> AWWindow? {
         let appMeta = AWManagerInternal.elementRefToAppMeta(apps, ref: ref)
         if (appMeta != nil) {
             let hash = CFHash(ref)
-            let window = appMeta!.windows.objectForKey(hash)
+            let window = appMeta!.windows.object(forKey: hash)
             if (window != nil) {
                 return window as? AWWindow
             }
@@ -137,10 +137,10 @@ class AWManagerInternal {
         return nil
     }
 
-    class func removeTrackedWindowByElement(apps: NSMutableDictionary, ref: AXUIElementRef) -> AWWindow? {
+    class func removeTrackedWindowByElement(_ apps: NSMutableDictionary, ref: AXUIElement) -> AWWindow? {
         let appMeta = AWManagerInternal.elementRefToAppMeta(apps, ref: ref)
         if (appMeta != nil) {
-            let window = appMeta!.windows.objectForKey(CFHash(ref))
+            let window = appMeta!.windows.object(forKey: CFHash(ref))
             if (window != nil) {
                 removeWindow(appMeta!.windows, window: window! as! AWWindow)
                 return window as? AWWindow

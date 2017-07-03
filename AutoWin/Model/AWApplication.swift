@@ -4,13 +4,13 @@ import Carbon
 
 class AWApplication {
     let app:NSRunningApplication
-    let ref:AXUIElementRef
+    let ref:AXUIElement
     let pid:pid_t
     
     init(app:NSRunningApplication) {
         self.app = app
         pid = app.processIdentifier
-        ref = AXUIElementCreateApplication(pid).takeRetainedValue()
+        ref = AXUIElementCreateApplication(pid)
     }
     
     deinit {
@@ -18,10 +18,11 @@ class AWApplication {
     }
     
     func activate() -> Bool {
+        // TODO: use this instead https://stackoverflow.com/questions/2333078/how-to-launch-application-and-bring-it-to-front-using-cocoa-api/2334362#2334362
         return AWAccessibilityAPI.setAttribute(
             ref,
             property: NSAccessibilityFrontmostAttribute,
-            value: true)
+            value: true as AnyObject)
     }
     
     func title() -> String {
@@ -32,10 +33,10 @@ class AWApplication {
         }
     }
 
-    class func isSupportedApplication(app: AWApplication) -> Bool {
-        print("getting application role", NSDate().timeIntervalSince1970, app.pid)
+    class func isSupportedApplication(_ app: AWApplication) -> Bool {
+        print("getting application role", Date().timeIntervalSince1970, app.pid)
         let role = AWAccessibilityAPI.getAttribute(app.ref, property: NSAccessibilityRoleAttribute) as String?
-        print("got application role", NSDate().timeIntervalSince1970, app.pid, role)
+        print("got application role", Date().timeIntervalSince1970, app.pid, role)
         if role != nil {
             return role! == NSAccessibilityApplicationRole
         } else {

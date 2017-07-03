@@ -140,6 +140,7 @@
 				TargetAttributes = {
 					3DDC01CC1BEBB43A00789740 = {
 						CreatedOnToolsVersion = 7.1;
+						LastSwiftMigration = 0820;
 					};
 					3DDC01DB1BEBB43A00789740 = {
 						CreatedOnToolsVersion = 7.1;
@@ -314,6 +315,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.marshallbrekka.AutoWin.AutoWinHelper;
 				PRODUCT_NAME = AutoWinHelper;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -327,6 +329,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.marshallbrekka.AutoWin.AutoWinHelper;
 				PRODUCT_NAME = AutoWinHelper;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

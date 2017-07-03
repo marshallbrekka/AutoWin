@@ -8,9 +8,9 @@ class AWPreferencesWindow:NSWindowController {
     @IBOutlet weak var openAtLoginButton:NSButton?
     @IBOutlet weak var enableAccessibilityButton:NSButton?
     @IBOutlet weak var accessibilityStatus:NSTextField?
-    private var context = 0
-    private var accessibilityEnabled:AWAccessibilityEnabled?
-    private var reloadJS:(() -> Void)?
+    fileprivate var context = 0
+    fileprivate var accessibilityEnabled:AWAccessibilityEnabled?
+    fileprivate var reloadJS:(() -> Void)?
     
     override init(window:NSWindow!) {
         super.init(window: window)
@@ -20,15 +20,15 @@ class AWPreferencesWindow:NSWindowController {
         super.init(coder: coder)!
     }
     
-    convenience init (accessibility:AWAccessibilityEnabled, reloadJS: () -> Void) {
+    convenience init (accessibility:AWAccessibilityEnabled, reloadJS: @escaping () -> Void) {
         self.init(window: nil)
-        NSBundle.mainBundle().loadNibNamed("AWPreferences", owner: self, topLevelObjects: nil)
+        Bundle.main.loadNibNamed("AWPreferences", owner: self, topLevelObjects: nil)
         accessibilityEnabled = accessibility
         self.reloadJS = reloadJS
-        accessibility.addObserver(self, forKeyPath: "enabled", options: .New, context: &context)
+        accessibility.addObserver(self, forKeyPath: "enabled", options: .new, context: &context)
     }
     
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if context == &self.context {
             updateAccessibilityEnabled()
         }
@@ -41,10 +41,10 @@ class AWPreferencesWindow:NSWindowController {
     
     func updateAccessibilityEnabled() {
         accessibilityStatus?.stringValue = accessibilityEnabled!.enabled ? "Enabled" : "Disabled"
-        enableAccessibilityButton?.enabled = !accessibilityEnabled!.enabled
+        enableAccessibilityButton?.isEnabled = !accessibilityEnabled!.enabled
     }
     
-    @IBAction override func showWindow(sender: AnyObject?) {
+    @IBAction override func showWindow(_ sender: Any?) {
         print("show window", window, jsFilePathLabel)
         let filePath = AWPreferences.getString(AWPreferences.JSFilePath)
         if (filePath != nil) {
@@ -57,18 +57,18 @@ class AWPreferencesWindow:NSWindowController {
         super.showWindow(sender)
     }
     
-    @IBAction func showFilePicker(sender:NSButton) {
+    @IBAction func showFilePicker(_ sender:NSButton) {
         let openPanel = NSOpenPanel()
         openPanel.allowedFileTypes = ["js"]
         openPanel.allowsMultipleSelection = false
         openPanel.canChooseDirectories = false
         openPanel.canCreateDirectories = false
         openPanel.canChooseFiles = true
-        openPanel.beginSheetModalForWindow(window!, completionHandler: { (result) -> Void in
+        openPanel.beginSheetModal(for: window!, completionHandler: { (result) -> Void in
             if result == NSFileHandlingPanelOKButton {
-                print(openPanel.URL?.path)
-                AWPreferences.setString(AWPreferences.JSFilePath, value: openPanel.URL!.path!)
-                self.jsFilePathLabel!.stringValue = openPanel.URL!.path!
+                print(openPanel.url?.path)
+                AWPreferences.setString(AWPreferences.JSFilePath, value: openPanel.url!.path)
+                self.jsFilePathLabel!.stringValue = openPanel.url!.path
                 //Do what you will
                 //If there's only one URL, surely 'openPanel.URL'
                 //but otherwise a for loop works
@@ -76,17 +76,17 @@ class AWPreferencesWindow:NSWindowController {
         })
     }
     
-    @IBAction func setOpenAtLogin(sender:NSButton) {
+    @IBAction func setOpenAtLogin(_ sender:NSButton) {
         print("set open at login")
         AWOpenAtLogin.setOpenAtLogin(sender.state == NSOnState)
     }
     
-    @IBAction func enableAccessibility(sender:NSButton) {
+    @IBAction func enableAccessibility(_ sender:NSButton) {
         print("enable accessibility")
         AWAccessibilityAPI.promptToTrustProcess()
     }
     
-    @IBAction func reloadJS(sender:NSButton) {
+    @IBAction func reloadJS(_ sender:NSButton) {
         print("reloading js")
         reloadJS!()
     }
