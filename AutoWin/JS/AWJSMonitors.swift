@@ -15,8 +15,13 @@ class AWJSMonitorsEvent: AWNotificationTarget {
         self.notifier = AWNotification(center: NotificationCenter.default, target: self, notifications: [NSNotification.Name.NSApplicationDidChangeScreenParameters])
     }
     
+    deinit {
+        NSLog("deinit AWJSMonitorsEvent")
+        notifier.stop()
+    }
+    
     func receiveNotification(_ notification: Notification) {
-        print("monitors changed")
+        NSLog("monitors changed")
         events.triggerEvent(
             "aw.monitors.layoutChange",
             eventData: nil)
@@ -25,7 +30,7 @@ class AWJSMonitorsEvent: AWNotificationTarget {
 
 @objc class AWJSMonitors: NSObject, AWJSMonitorsInterface {
     deinit {
-        print("deinit awjsmonitors")
+        NSLog("deinit AWJSMonitors")
     }
     
     /*
@@ -47,7 +52,7 @@ class AWJSMonitorsEvent: AWNotificationTarget {
                         "height": frame.size.height,
                         "x": frame.origin.x,
                         // screen frame is in cartisian coord system, flip it to match windows.
-                        "y": main.visibleFrame.size.height - frame.size.height - frame.origin.y]
+                        "y": main.frame.size.height - monitor.visibleFrame.size.height - frame.origin.y]
         let info:NSDictionary = monitor.deviceDescription as NSDictionary
         let result:NSDictionary = [
             "frame": objFrame,

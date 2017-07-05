@@ -3,7 +3,7 @@ import Foundation
 import CoreGraphics
 
 func callback(_ proxy:CGEventTapProxy, type:CGEventType, event:CGEvent, refcon: UnsafeMutableRawPointer) -> Unmanaged<CGEvent>? {
-    print("mouse moved")
+    //print("mouse moved")
     return Unmanaged.passRetained(event)
 }
 
@@ -32,7 +32,7 @@ class AWCursor {
     let etap:CFMachPort?
 
     init() {
-        print("creating mask!")
+        NSLog("creating cursor mask!")
         let mask = (1 << CGEventType.mouseMoved.rawValue)
         etap = CGEvent.tapCreate(tap: CGEventTapLocation.cgSessionEventTap,
             place: CGEventTapPlacement.headInsertEventTap,

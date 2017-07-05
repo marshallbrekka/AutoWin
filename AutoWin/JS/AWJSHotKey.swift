@@ -32,12 +32,12 @@ import JavaScriptCore
     }
     
     deinit {
-        print("deinit awjshotkey")
+        NSLog("deinit AWJSHotKey")
         unregisterAll()
     }
     
     func unregisterAll() {
-        print("deinnitting js hotkey")
+        NSLog("unregistering js hotkey")
         for (_, instance) in listeners {
             if let virtualMachine = instance.callback.value?.context?.virtualMachine {
                 virtualMachine.removeManagedReference(instance.callback, withOwner: self)

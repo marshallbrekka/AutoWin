@@ -29,7 +29,7 @@ class AWNotification {
     }
     
     func stop() {
-        print("calling stop")
+        NSLog("calling stop")
         // Unregister the notifications
         for observer in observers {
             center.removeObserver(observer)
@@ -38,11 +38,11 @@ class AWNotification {
     }
     
     deinit {
-        print("killing notifier")
+        NSLog("deinit AWNotification")
     }
     
     func receiver(_ notification:Notification!) {
-//        print("got notification: " + notification.name)
+        NSLog("AWNotification received: \(notification.name)")
         if target != nil {
             target!.receiveNotification(notification)
         }

@@ -33,7 +33,7 @@ import Cocoa
     }
     
     deinit {
-        print("deinit awjsmouse")
+        NSLog("deinit AWJSCursor")
     }
     
     // JS application api

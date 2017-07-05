@@ -46,7 +46,7 @@ Class that provides the javascript interface for aw.application.
     }
     
     deinit {
-        print("deinit awjsapp")
+        NSLog("deinit AWJSApplication")
     }
     
     // JS application api
@@ -68,7 +68,7 @@ Class that provides the javascript interface for aw.application.
     launched, terminated, activated, deactivated, hidden, unhidden.
     */
     func appEventCallback(_ eventName: NSNotification.Name, app: AWApplication) {
-        print("triggering js app event: " + eventName.rawValue)
+        NSLog("triggering js app event: \(eventName.rawValue)")
         events.triggerEvent(
             "aw.application." + ((appEvents as NSDictionary)[eventName]! as! String),
             eventData: AWJSApplication.applicationToDictionary(app))

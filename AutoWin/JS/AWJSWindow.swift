@@ -23,6 +23,7 @@ aw.window.setMinimized(window,boolean)
 import Foundation
 import JavaScriptCore
 import Cocoa
+import AXSwift
 
 @objc protocol AWJSWindowInterface : JSExport {
     func windows() -> [NSDictionary]
@@ -42,12 +43,12 @@ Class that provides the javascript interface for aw.window.
     let events:AWJSEvent
     
     let windowEvents = [
-        NSAccessibilityUIElementDestroyedNotification:"destroyed",
-        NSAccessibilityWindowCreatedNotification:"created",
-        NSAccessibilityWindowMovedNotification:"moved",
-        NSAccessibilityWindowResizedNotification:"resized",
-        NSAccessibilityFocusedWindowChangedNotification:"focused",
-        NSAccessibilityMainWindowChangedNotification:"mainWindow"
+        AXSwift.AXNotification.uiElementDestroyed:"destroyed",
+        AXSwift.AXNotification.windowCreated:"created",
+        AXSwift.AXNotification.windowMoved:"moved",
+        AXSwift.AXNotification.windowResized:"resized",
+        AXSwift.AXNotification.focusedWindowChanged:"focused",
+        AXSwift.AXNotification.mainWindowChanged:"mainWindow"
     ]
     
     init(manager:AWManager, events:AWJSEvent) {
@@ -58,7 +59,7 @@ Class that provides the javascript interface for aw.window.
     }
     
     deinit {
-        print("deinit awjswindow")
+        NSLog("deinit AWJSWindow")
     }
     
     // JS window api
@@ -67,7 +68,7 @@ Class that provides the javascript interface for aw.window.
     }
     
     func close(_ pid: pid_t, _ windowId: uint) -> Bool {
-        print("calling close", pid, windowId)
+        NSLog("calling close - pid: \(pid), windowId: \(windowId)")
         if let window = manager.getWindow(pid, windowId: windowId) {
             return window.close()
         } else {
@@ -92,7 +93,7 @@ Class that provides the javascript interface for aw.window.
     }
     
     func setFrame(_ pid: pid_t, _ windowId: uint, _ frame: NSDictionary) -> Bool {
-        print("frame", frame)
+        NSLog("setting frame - pid: \(pid), windowId: \(windowId), frame: \(frame)")
         if let window = manager.getWindow(pid, windowId: windowId) {
             return window.setFrame(frame)
         } else {
@@ -103,7 +104,7 @@ Class that provides the javascript interface for aw.window.
     func getFrame(_ pid: pid_t, _ windowId: uint) -> NSDictionary? {
         if let window = manager.getWindow(pid, windowId: windowId) {
             let frame = window.getFrame()
-            print("frame!", frame)
+            NSLog("got frame - pid: \(pid), windowId: \(windowId), frame: \(frame)")
             return frame
         } else {
             return nil
@@ -126,8 +127,8 @@ Class that provides the javascript interface for aw.window.
     created, destroyed, focused, mainWindow, moved, resized, titleChanged,
     minimized, unminimized.
     */
-    func windowEventCallback(_ eventName: String, window: AWWindow) {
-        print("triggering js window event: " + eventName)
+    func windowEventCallback(_ eventName: AXSwift.AXNotification, window: AWWindow) {
+        NSLog("triggering js window event: \(eventName)")
         events.triggerEvent(
             "aw.window." + windowEvents[eventName]!,
             eventData: AWJSWindow.toDictionary(window))

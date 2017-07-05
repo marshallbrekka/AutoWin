@@ -15,14 +15,14 @@ to an instance of a AWWindow.
 */
 import Foundation
 import Cocoa
-
+import AXSwift
 
 protocol AWManagerAppEvent:class {
     func appEventCallback(_ notifo:NSNotification.Name, app:AWApplication) -> Void
 }
 
 protocol AWManagerWindowEvent:class {
-    func windowEventCallback(_ notifo:String, window:AWWindow) -> Void
+    func windowEventCallback(_ notifo:AXSwift.AXNotification, window:AWWindow) -> Void
 }
 
 class AWManager:AWNotificationTarget {
@@ -30,14 +30,18 @@ class AWManager:AWNotificationTarget {
     class AppMeta {
         var app: AWApplication
         var windows: NSMutableDictionary
-        var observer: AWObserver
+        var observer: Observer
         
         init(app: AWApplication,
             windows: NSMutableDictionary,
-            observer: AWObserver) {
+            observer: Observer) {
                 self.app = app
                 self.windows = windows
                 self.observer = observer
+        }
+
+        deinit {
+            NSLog("deinit AppMeta: \(self.app.pid)")
         }
     }
     
@@ -57,18 +61,18 @@ class AWManager:AWNotificationTarget {
     }
     
     deinit {
-        print("killing manager")
+        NSLog("deinit AWManager")
     }
     
-    func triggerWindowNotification(_ notifo: String, window: AWWindow) {
-        print("trigger notifo", notifo, window.id, AWAccessibilityAPI.getAttribute(window.ref, property: NSAccessibilitySubroleAttribute) as String?)
+    func triggerWindowNotification(_ notifo: AXSwift.AXNotification, window: AWWindow) {
+        NSLog("trigger window notification: \(notifo), \(window.id)")
         if windowEvent != nil {
             windowEvent!.windowEventCallback(notifo, window: window)
         }
     }
     
     func triggerAppNotification(_ notifo: NSNotification.Name, app: AWApplication) {
-        print("trigger app notifo", notifo, app.pid)
+        NSLog("trigger app notifification: \(notifo), \(app.pid)")
         if appEvent != nil {
             appEvent!.appEventCallback(notifo, app: app)
         }
@@ -80,7 +84,7 @@ class AWManager:AWNotificationTarget {
             triggerAppNotification(NSNotification.Name.NSWorkspaceDidLaunchApplication, app: app!.app)
             let enumerator = app!.windows.objectEnumerator()
             while let window = enumerator.nextObject() as? AWWindow {
-                triggerWindowNotification(NSAccessibilityWindowCreatedNotification, window: window)
+                triggerWindowNotification(AXSwift.AXNotification.windowCreated, window: window)
             }
         }
     }
@@ -88,22 +92,22 @@ class AWManager:AWNotificationTarget {
     func triggerAppPostTerminateEvents(_ meta: AppMeta) {
         let enumerator = meta.windows.objectEnumerator()
         while let window = enumerator.nextObject() as? AWWindow {
-            triggerWindowNotification(NSAccessibilityUIElementDestroyedNotification, window: window)
+            triggerWindowNotification(AXSwift.AXNotification.uiElementDestroyed, window: window)
         }
         triggerAppNotification(NSNotification.Name.NSWorkspaceDidTerminateApplication, app: meta.app)
     }
     
     func receiveNotification(_ notification: Notification) {
         let app = notification.userInfo![NSWorkspaceApplicationKey] as! NSRunningApplication
-        print("app event:", notification.name, app.processIdentifier)
+        NSLog("app event - pid: \(app.processIdentifier), name: \(notification.name)")
         switch notification.name {
         case NSNotification.Name.NSWorkspaceDidTerminateApplication:
             if let meta = AWManagerInternal.removeApplication(apps, pid: app.processIdentifier) {
                 triggerAppPostTerminateEvents(meta)
             }
-            print("removed app notifications")
+            NSLog("removed app notifications")
         case NSNotification.Name.NSWorkspaceDidLaunchApplication:
-            print("tracking app")
+            NSLog("tracking app")
             if initApp(app) {
                triggerAppPostLaunchEvents(app.processIdentifier)
             }
@@ -114,34 +118,33 @@ class AWManager:AWNotificationTarget {
         }
     }
     
-    func observerHandler(_ observer: AXObserver!, element: AXUIElement!, notification: CFString!) {
-        print("window event:", notification, CFHash(element), kAXWindowCreatedNotification, NSAccessibilityWindowCreatedNotification)
+    func observerHandler(_ observer: AXSwift.Observer, element: AXSwift.UIElement, notification: AXSwift.AXNotification) {
+        NSLog("window event: \(notification) \(CFHash(element))")
         
         let appMeta = AWManagerInternal.elementRefToAppMeta(apps, ref: element)
         if appMeta != nil {
-            let notifo = notification! as String
             // If the notification is one that can occur on window create,
             // and if the window doesn't yet exist, create the window and
             // trigger a window create event.
-            let contains = AWManagerInternal.windowCreateNotifications.contains(notifo)
+            let contains = AWManagerInternal.windowCreateNotifications.contains(notification)
             if contains {
                 var window = AWManagerInternal.elementRefToWindow(apps, ref: element)
                 if window == nil && AWWindow.isWindow(element) {
                     window = AWManagerInternal.createAndTrackWindow(apps, ref: element)
-                    triggerWindowNotification(NSAccessibilityWindowCreatedNotification, window: window!)
+                    triggerWindowNotification(AXSwift.AXNotification.windowCreated, window: window!)
                 }
             }
-            if notifo != NSAccessibilityWindowCreatedNotification {
-                switch notifo {
-                case NSAccessibilityUIElementDestroyedNotification:
+            if notification != AXSwift.AXNotification.windowCreated {
+                switch notification {
+                case AXSwift.AXNotification.uiElementDestroyed:
                     let window = AWManagerInternal.removeTrackedWindowByElement(apps, ref: element)
                     if window != nil {
-                        triggerWindowNotification(notifo, window: window!)
+                        triggerWindowNotification(notification, window: window!)
                     }
 
                 default:
-                    if let window = AWManagerInternal.elementRefToWindow(apps, ref: element!) {
-                        triggerWindowNotification(notifo, window: window)
+                    if let window = AWManagerInternal.elementRefToWindow(apps, ref: element) {
+                        triggerWindowNotification(notification, window: window)
                     }
                 }
             }
@@ -149,27 +152,27 @@ class AWManager:AWNotificationTarget {
     }
 
     func initApp(_ app: NSRunningApplication) -> Bool {
-        print("initing app", app.processIdentifier, Date().timeIntervalSince1970)
+        NSLog("initing app - pid: \(app.processIdentifier)")
         let awApp = AWApplication(app: app)
-        print("created awApp", app.processIdentifier, Date().timeIntervalSince1970)
+        NSLog("created AWApplication - pid: \(app.processIdentifier)")
         if AWApplication.isSupportedApplication(awApp) {
-            let observer = AWManagerInternal.createAWObserver(
+            let observer = AWManagerInternal.createObserver(
                 awApp.pid,
                 appRef: awApp.ref,
                 callback: {
-                    [unowned self] (observer: AXObserver?, element: AXUIElement?, notification: CFString?) -> Void in
-                    print("NOTIFICATION:", notification ?? "no notification")
+                    [unowned self] (observer: AXSwift.Observer, element: AXSwift.UIElement, notification: AXSwift.AXNotification) -> Void in
+                    NSLog("NOTIFICATION: \(notification)")
                     self.observerHandler(observer, element: element, notification: notification)
                 })
             let meta = AppMeta(
                 app: awApp,
                 windows: AWManagerInternal.createWindowDictonary(awApp),
-                observer: observer)
+                observer: observer!)
             AWManagerInternal.trackApplication(self.apps, appMeta: meta)
-            print("done init app", app.processIdentifier, Date().timeIntervalSince1970)
+            NSLog("done init app: \(app.processIdentifier)")
             return true
         } else {
-            print("not init app", app.processIdentifier, Date().timeIntervalSince1970)
+            NSLog("not init app: \(app.processIdentifier)")
             return false
         }
         
@@ -209,15 +212,12 @@ class AWManager:AWNotificationTarget {
     }
     
     func focusedWindow() -> AWWindow? {
-        let system = AXUIElementCreateSystemWide()
-        let app = AWAccessibilityAPI.getAttribute(system, property: kAXFocusedApplicationAttribute) as AXUIElement?
-        if app != nil {
-            if let window:AXUIElement = AWAccessibilityAPI.getAttribute(app!, property: NSAccessibilityFocusedWindowAttribute) as AXUIElement? {
-                return AWWindow(ref: window, pid: AWAccessibilityAPI.getPid(app!))
-            } else {
-                return nil
-            }
-        } else {
+        do {
+            let appElement: AXSwift.UIElement = try AXSwift.systemWideElement.attribute(.focusedApplication)!
+            let app = try AXSwift.Application(forProcessID: appElement.pid())!
+            let window:AXSwift.UIElement = try app.attribute(.focusedWindow)!
+            return AWWindow(ref: window, pid: (try app.pid()))
+        } catch {
             return nil
         }
     }

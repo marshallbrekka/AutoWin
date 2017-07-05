@@ -14,11 +14,11 @@ import JavaScriptCore
     }
     
     deinit {
-        print("deinit awjsevent")
+        NSLog("deinit AWJSEvent")
     }
 
     func addEvent(_ eventName: String, _ listener:JSValue) {
-        print("adding event listener: " + eventName)
+        NSLog("adding event listener: \(eventName)")
         let wrapped = JSManagedValue(value: listener)
         listener.context.virtualMachine.addManagedReference(wrapped, withOwner: self)
         var listeners:[JSManagedValue]? = eventListeners.object(forKey: eventName) as! [JSManagedValue]?
@@ -37,7 +37,7 @@ import JavaScriptCore
     }
     
     func removeEvent(_ eventName: String, _ listener:JSValue) {
-        print("removing event listener: " + eventName)
+        NSLog("removing event listener: \(eventName)")
         var listeners:[JSManagedValue]? = eventListeners.object(forKey: eventName) as! [JSManagedValue]?
         if (listeners != nil) {
             listeners = listeners!.filter( {(existingListener: JSManagedValue) -> Bool in
@@ -55,7 +55,7 @@ import JavaScriptCore
     func triggerEvent(_ eventName: String, eventData: NSDictionary?) {
         let listeners: [JSManagedValue]? = eventListeners.object(forKey: eventName) as! [JSManagedValue]?
         if (listeners != nil) {
-            print("triggering listeners for: " + eventName)
+            NSLog("triggering listeners for: \(eventName)")
             for listener in listeners! {
                 if eventData == nil {
                     listener.value.call(withArguments: [eventName])
@@ -64,7 +64,7 @@ import JavaScriptCore
                 }
             }
         } else {
-            print("no listeners for: " + eventName)
+            NSLog("no listeners for: \(eventName)")
         }
     }
 }

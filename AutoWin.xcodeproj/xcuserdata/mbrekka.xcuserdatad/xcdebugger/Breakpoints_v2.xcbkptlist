@@ -150,48 +150,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AutoWin/Model/internal/AWManagerInternal.swift"
-            timestampString = "514309961.23129"
+            timestampString = "520801871.248767"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
-            landmarkName = "createAWObserver(_:appRef:callback:)"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "createObserver(_:appRef:callback:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AutoWin/Model/internal/AWManagerInternal.swift"
-            timestampString = "514312058.191707"
+            timestampString = "520801871.248767"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
-            landmarkName = "createAWObserver(_:appRef:callback:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AutoWin/AWManager.swift"
-            timestampString = "520726604.990339"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "161"
-            endingLineNumber = "161"
-            landmarkName = "initApp(_:)"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "createObserver(_:appRef:callback:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

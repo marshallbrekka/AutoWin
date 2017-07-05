@@ -1,28 +1,25 @@
 import Foundation
 import Cocoa
 import Carbon
+import AXSwift
 
 class AWApplication {
     let app:NSRunningApplication
-    let ref:AXUIElement
+    let ref:AXSwift.Application
     let pid:pid_t
     
     init(app:NSRunningApplication) {
         self.app = app
         pid = app.processIdentifier
-        ref = AXUIElementCreateApplication(pid)
+        ref = AXSwift.Application(app)!
     }
     
     deinit {
-        print("deinit awapplication")
+        NSLog("deinit AWApplication: \(pid)")
     }
     
     func activate() -> Bool {
-        // TODO: use this instead https://stackoverflow.com/questions/2333078/how-to-launch-application-and-bring-it-to-front-using-cocoa-api/2334362#2334362
-        return AWAccessibilityAPI.setAttribute(
-            ref,
-            property: NSAccessibilityFrontmostAttribute,
-            value: true as AnyObject)
+        return app.activate(options: [NSApplicationActivationOptions.activateIgnoringOtherApps])
     }
     
     func title() -> String {
@@ -34,12 +31,15 @@ class AWApplication {
     }
 
     class func isSupportedApplication(_ app: AWApplication) -> Bool {
-        print("getting application role", Date().timeIntervalSince1970, app.pid)
-        let role = AWAccessibilityAPI.getAttribute(app.ref, property: NSAccessibilityRoleAttribute) as String?
-        print("got application role", Date().timeIntervalSince1970, app.pid, role)
-        if role != nil {
-            return role! == NSAccessibilityApplicationRole
+        NSLog("getting application role \(app.pid)")
+        do {
+        if let role: AXSwift.Role = try app.ref.role() {
+            NSLog("got application role: \(app.pid), \(role)")
+            return role == AXSwift.Role.application
         } else {
+            return false
+            }
+        } catch {
             return false
         }
     }

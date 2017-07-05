@@ -99,7 +99,7 @@ class AWHotKeyManager {
         var hotKeyId:EventHotKeyID = EventHotKeyID()
         GetEventParameter(event, OSType(kEventParamDirectObject), OSType(typeEventHotKeyID), nil, MemoryLayout<EventHotKeyID>.size, nil, &hotKeyId)
         let code = AWHotKeyManager.combineKeyAndModCode(hotKeyId.id, modCode: hotKeyId.signature)
-        print("event handler", down, handler, event, hotKeyId.id, hotKeyId.signature)
+        NSLog("event handler:: down: \(down), handler: \(handler), event: \(event), hotkeyId: \(hotKeyId.id), signature: \(hotKeyId.signature)")
         if let keyInstance = hotKeyInstances[code] {
             for callback:Any in keyInstance.callbacks {
                 (callback as! AWHotKeyCallbackWrapper).callback(

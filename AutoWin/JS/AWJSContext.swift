@@ -24,6 +24,7 @@ class AWJSContext:NSObject {
     let window:      AWJSWindow
     let hotkeys:     AWJSHotKey
     let monitors:    AWJSMonitors
+    let monitorEvents: AWJSMonitorsEvent
     let mouse:       AWJSCursor
     
     let api:         NSDictionary
@@ -46,6 +47,7 @@ class AWJSContext:NSObject {
         window      = AWJSWindow(manager: manager, events: events)
         hotkeys     = AWJSHotKey(manager: hotKeys)
         monitors    = AWJSMonitors()
+        monitorEvents = AWJSMonitorsEvent(events: events)
         mouse       = AWJSCursor()
 
         // initialize api objects here
@@ -63,7 +65,7 @@ class AWJSContext:NSObject {
     }
     
     deinit {
-        print("deinitting context")
+        NSLog("deinit AWJSContext")
         //JSGlobalContextRelease((webView?.mainFrame.globalContext)!)
         context.setObject(nil, forKeyedSubscript: "console" as (NSCopying & NSObjectProtocol)!)
         context.setObject(nil, forKeyedSubscript: "aw" as (NSCopying & NSObjectProtocol)!)

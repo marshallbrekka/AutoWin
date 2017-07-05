@@ -1,5 +1,6 @@
 import Foundation
 import Cocoa
+import AXSwift
 
 class AWManagerInternal {
     static let appNotifications = [
@@ -12,12 +13,12 @@ class AWManagerInternal {
     ]
 
     static let windowNotifications = [
-        NSAccessibilityUIElementDestroyedNotification,
-        NSAccessibilityWindowCreatedNotification,
-        NSAccessibilityWindowMovedNotification,
-        NSAccessibilityWindowResizedNotification,
-        NSAccessibilityFocusedWindowChangedNotification,
-        NSAccessibilityMainWindowChangedNotification
+        AXSwift.AXNotification.uiElementDestroyed,
+        AXSwift.AXNotification.windowCreated,
+        AXSwift.AXNotification.windowMoved,
+        AXSwift.AXNotification.windowResized,
+        AXSwift.AXNotification.focusedWindowChanged,
+        AXSwift.AXNotification.mainWindowChanged
     ]
 
     // Some or all of these events are fired when a window is created
@@ -26,9 +27,9 @@ class AWManagerInternal {
     // and if it doesnt we will track it and trigger a window creation
     // event (if the original event was not a window creation event).
     static let windowCreateNotifications = [
-        NSAccessibilityWindowCreatedNotification,
-        NSAccessibilityFocusedWindowChangedNotification,
-        NSAccessibilityMainWindowChangedNotification
+        AXSwift.AXNotification.windowCreated,
+        AXSwift.AXNotification.focusedWindowChanged,
+        AXSwift.AXNotification.mainWindowChanged
     ]
 
     class func applications() -> [NSRunningApplication] {
@@ -36,23 +37,26 @@ class AWManagerInternal {
         return workspace.runningApplications 
     }
 
-    class func createAWObserver(
+    class func createObserver(
         _ pid:pid_t,
-        appRef:AXUIElement,
-        callback:@escaping (AXObserver?, AXUIElement?, CFString?) -> Void) -> AWObserver {
-        let observer = AWObserver(pid: pid, callback: callback);
+        appRef:AXSwift.UIElement,
+        callback:@escaping AXSwift.Observer.Callback) -> AXSwift.Observer? {
+        guard let observer = try? AXSwift.Observer(processID: pid, callback: callback) else {
+            // TODO do something here to handle error case
+            return nil
+        }
             
         for notification in windowNotifications {
-            observer.addNotification(appRef, notification: notification as CFString)
+            try? observer.addNotification(notification, forElement: appRef)
         }
         return observer
     }
 
     class func applicationWindows(_ app: AWApplication) -> [AWWindow] {
         var windowObjects: [AWWindow] = []
-        let windowRefs: [AXUIElement]? = AWAccessibilityAPI.getAttributes(
-            app.ref,
-            property: NSAccessibilityWindowsAttribute) as [AXUIElement]?
+        guard let windowRefs: [AXSwift.UIElement]? = try? app.ref.windows() else {
+                return windowObjects
+        }
 
         if windowRefs != nil {
             windowRefs?.map({
@@ -96,6 +100,7 @@ class AWManagerInternal {
         let key = NSNumber(value: pid as Int32)
         let meta = apps.object(forKey: key) as? AWManager.AppMeta
         if (meta != nil) {
+            meta?.observer.stop()
             apps.removeObject(forKey: key)
             return meta!
         } else {
@@ -103,9 +108,13 @@ class AWManagerInternal {
         }
     }
 
-    class func elementRefToAppMeta(_ apps: NSMutableDictionary, ref:AXUIElement) -> AWManager.AppMeta? {
-        let key = NSNumber(value: AWAccessibilityAPI.getPid(ref) as Int32)
-        return apps.object(forKey: key) as! AWManager.AppMeta?
+    class func elementRefToAppMeta(_ apps: NSMutableDictionary, ref:AXSwift.UIElement) -> AWManager.AppMeta? {
+        do {
+            let key = NSNumber(value: (try ref.pid()) as Int32)
+            return apps.object(forKey: key) as! AWManager.AppMeta?
+        } catch {
+            return nil
+        }
     }
 
     class func createApplicationListener(_ target:AWNotificationTarget) -> AWNotification {
@@ -116,7 +125,7 @@ class AWManagerInternal {
             notifications: appNotifications)
     }
 
-    class func createAndTrackWindow(_ apps: NSMutableDictionary, ref: AXUIElement) -> AWWindow {
+    class func createAndTrackWindow(_ apps: NSMutableDictionary, ref: AXSwift.UIElement) -> AWWindow {
         let appMeta = AWManagerInternal.elementRefToAppMeta(apps, ref: ref)
         let window = AWWindow(ref: ref, pid: appMeta!.app.pid)
         if (appMeta != nil) {
@@ -125,7 +134,7 @@ class AWManagerInternal {
         return window
     }
 
-    class func elementRefToWindow(_ apps: NSMutableDictionary, ref: AXUIElement) -> AWWindow? {
+    class func elementRefToWindow(_ apps: NSMutableDictionary, ref: AXSwift.UIElement) -> AWWindow? {
         let appMeta = AWManagerInternal.elementRefToAppMeta(apps, ref: ref)
         if (appMeta != nil) {
             let hash = CFHash(ref)
@@ -137,7 +146,7 @@ class AWManagerInternal {
         return nil
     }
 
-    class func removeTrackedWindowByElement(_ apps: NSMutableDictionary, ref: AXUIElement) -> AWWindow? {
+    class func removeTrackedWindowByElement(_ apps: NSMutableDictionary, ref: AXSwift.UIElement) -> AWWindow? {
         let appMeta = AWManagerInternal.elementRefToAppMeta(apps, ref: ref)
         if (appMeta != nil) {
             let window = appMeta!.windows.object(forKey: CFHash(ref))

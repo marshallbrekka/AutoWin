@@ -11,6 +11,6 @@ import JavaScriptCore
     }
     
     deinit {
-        print("deinit awjsconsole")
+        NSLog("deinit AWJSConsole")
     }
 }
